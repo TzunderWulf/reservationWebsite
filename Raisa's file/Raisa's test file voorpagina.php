@@ -13,7 +13,7 @@
     <input type="text" id="kenteken" name="Kenteken" value=""><br>
     <label for="telefoonnummer">Telefoonnummer:</label><br>
     <input type="text" id="telefoonnummer" name="Telefoonnummer" value=""><br>
-    <label for="Email">Email:></label>
-    <input type="email" id="Email" name="Email" value=""<br
+    <label for="Email">Email:</label><br>
+    <input type="email" id="Email" name="Email" value=""><br>
     <input type="submit" value="Verzend">
 </form>
