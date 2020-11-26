@@ -17,7 +17,7 @@
 
         <form action="confirmation.php" method="post">
             <label for="voornaam">Voornaam:</label><br>
-            <input type="text" id="voornaam" name="voornaam" required><br>
+            <input type="text" id="voornaam" name="Voornaam" required><br>
 
             <label for="achternaam">Achternaam:</label><br>
             <input type="text" id="achternaam" name="Achternaam" required><br>
@@ -32,7 +32,7 @@
             <input type="email" id="email" name="Email" required><br>
 
             <label for="werkzaamheden">Werkzaamheden: </label>
-            <input type="text" id="werkzaamheden" name="werkzaamheden">
+            <input type="text" id="werkzaamheden" name="Werkzaamheden">
 
             <input type="submit" value="Verzend">
         </form>
