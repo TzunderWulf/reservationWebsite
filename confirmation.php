@@ -13,7 +13,15 @@
         <title>Afspraak maken</title>
     </head>
     <body>
-        <h1>Afspraak maken</h1>
-
+        <h1>Afspraak bevestigd</h1>
+        <h3>Er is een afspraak gemaakt voor [afspraak] op [date]</h3>
+        <h3>De volgende informatie is doorgegeven: </h3>
+        <ul>
+            <li>Naam: <?php echo $_POST['Voornaam'] . " " . $_POST['Voornaam'];?></li>
+            <li>Telefoonnummer: <?php echo $_POST['Telefoonnummer'];?></li>
+            <li>Emailadres: <?php echo $_POST['Email'];?></li>
+            <li>Kenteken: <?php echo $_POST['Kenteken'];?></li>
+            <li>Werkzaamheden: <?php echo $_POST['Werkzaamheden'];?></li>
+        </ul>
     </body>
 </html>
