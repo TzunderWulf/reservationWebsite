@@ -32,7 +32,7 @@
             <input type="email" id="email" name="Email" required><br>
 
             <label for="werkzaamheden">Werkzaamheden: </label>
-            <input type="text" id="werkzaamheden" name="Werkzaamheden">
+            <input type="text" id="werkzaamheden" name="Werkzaamheden"><br>
 
             <input type="submit" value="Verzend">
         </form>
