@@ -31,7 +31,7 @@
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="Email" required><br>
 
-            <label for="werkzaamheden">Werkzaamheden: </label>
+            <label for="werkzaamheden">Werkzaamheden: </label><br>
             <input type="text" id="werkzaamheden" name="Werkzaamheden"><br>
 
             <input type="submit" value="Verzend">
