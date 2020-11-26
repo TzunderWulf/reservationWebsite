@@ -17,19 +17,19 @@
 
         <form action="confirmation.php" method="post">
             <label for="voornaam">Voornaam:</label><br>
-            <input type="text" id="voornaam" name="voornaam" value=""><br>
+            <input type="text" id="voornaam" name="voornaam" required><br>
 
             <label for="achternaam">Achternaam:</label><br>
-            <input type="text" id="achternaam" name="Achternaam" value=""><br>
+            <input type="text" id="achternaam" name="Achternaam" required><br>
 
             <label for="kenteken">Kenteken:</label><br>
-            <input type="text" id="kenteken" name="Kenteken" value=""><br>
+            <input type="text" id="kenteken" name="Kenteken" required><br>
 
             <label for="telefoonnummer">Telefoonnummer:</label><br>
-            <input type="text" id="telefoonnummer" name="Telefoonnummer" value=""><br>
+            <input type="text" id="telefoonnummer" name="Telefoonnummer" required><br>
 
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="Email" value=""><br>
+            <input type="email" id="email" name="Email" required><br>
 
             <label for="werkzaamheden">Werkzaamheden: </label>
             <input type="text" id="werkzaamheden" name="werkzaamheden">
