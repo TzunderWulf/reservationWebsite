@@ -25,7 +25,7 @@
 
         <h3>APK keuring</h3>
         <p>APK keuringen zijn verplicht om eens in het jaar te doen. Hier hebben wij gelukkig ook een optie voor.</p>
-        <a href="">Maak nu een afspraak</a>
+        <a href="reservationAPK.php">Maak nu een afspraak</a>
 
         <h3>Auto lenen</h3>
         <p>Tijdelijk een auto nodig? Maak gerust een afspraak en hij staat voor u klaar.</p>
