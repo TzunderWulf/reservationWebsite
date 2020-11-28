@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="nl">
 
 <h1> Reseverings systeem test 1</h1>
 <h2> Afspraak keuze </h2>
