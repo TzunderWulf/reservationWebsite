@@ -15,9 +15,9 @@
     <body>
         <h1>Afspraak bevestigd</h1>
         <h3>Er is een afspraak gemaakt voor [afspraak] op [date]</h3>
-        <h3>De volgende informatie is doorgegeven: </h3>
+        <h3>De volgende informatie is doorgegeven (deze informatie wordt ook naar uw verzonden per email): </h3>
         <ul>
-            <li>Naam: <?php echo $_POST['Voornaam'] . " " . $_POST['Voornaam'];?></li>
+            <li>Naam: <?php echo $_POST['Voornaam'] . " " . $_POST['Achternaam'];?></li>
             <li>Telefoonnummer: <?php echo $_POST['Telefoonnummer'];?></li>
             <li>Emailadres: <?php echo $_POST['Email'];?></li>
             <li>Kenteken: <?php echo $_POST['Kenteken'];?></li>
