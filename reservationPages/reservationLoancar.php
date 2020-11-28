@@ -5,13 +5,13 @@
 <!doctype html>
 <html lang="nl">
     <head>
-        <title>Reserveren APK</title>
-        <link rel="stylesheet" href="stylesheet.css">
+        <title>Reserveren auto</title>
+        <link rel="stylesheet" href="../stylesheet.css">
     </head>
 
     <body>
-        <a href="index.php">Terug</a>
-        <h1>Afspraak maken voor APK keuring</h1>
+        <a href="../index.php">Terug</a>
+        <h1>Afspraak maken voor het lenen van een auto</h1>
         <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
 
         <form action="" method="post">
@@ -28,11 +28,14 @@
             <input type="email" id="email" name="email" placeholder="example@example.nl"><br>
 
             <!-- input for license plate !-->
-            <label for="kenteken">Kenteken*: </label>
-            <input type="text" id="kenteken" name="kenteken" maxlength="8" placeholder="AB-C3D-5"><br>
+            <p>Kies een van de twee auto's*: </p>
+            <input type="radio" id="keuze_auto" name="keuze_auto" value="Auto 1">
+            <label for="keuze_auto">Auto 1</label>
+            <input type="radio" id="keuze_auto" name="keuze_auto" value="Auto 2">
+            <label for="keuze_auto">Auto 2</label><br>
         </form>
 
-        <h3>Kies hieronder een datum voor de resevering.</h3>
+        <h3>Selecteer hieronder de periode dat u de auto wilt lenen.</h3>
 
         <!-- agenda with possible times !-->
 
