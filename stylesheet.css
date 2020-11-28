@@ -1,4 +1,11 @@
+html {
+    background-color: darkgrey;
+}
+
 body {
+    background-color: whitesmoke;
     width: 900px;
     margin: auto;
+    padding: 30px;
+    min-height: 950px;
 }
