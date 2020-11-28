@@ -9,3 +9,7 @@ body {
     padding: 30px;
     min-height: 950px;
 }
+
+p.error {
+    color: red;
+}
