@@ -36,11 +36,11 @@ if (isset($_POST['submit'])) {
         $kenteken = htmlspecialchars($_POST['kenteken']);
     }
     // validatie voor onderhoud
-    if (!isset($_POST['omschrijving werkzaamheden']) || $_POST['omschrijving werkzaamheden'] === '') {
+    if (!isset($_POST['omschrijving onderhoudt']) || $_POST['omschrijving werkzaamheden'] === '') {
         $validForm = false;
-        $omschrijvingWerkzaamheden = 'Dit veld is verplicht.';
+        $omschrijvingOnderhoud= 'Dit veld is verplicht.';
     } else {
-        $omschrijvingWerkzaamheden = htmlspecialchars($_POST['omschrijving werkzaamheden']);
+        $omschrijvingOnderhoud = htmlspecialchars($_POST['omschrijving werkzaamheden']);
     }
     //Telefoonummer
     $telefoonnummer = $_POST['telefoonNummer'];
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="nl">
 <head>
-    <title>Afspraak voor auto reparatie en schadeherstelling</title>
+    <title>Afspraak voor auto onderhoud</title>
     <link rel="stylesheet" href="../stylesheet.css">
 </head>
 
