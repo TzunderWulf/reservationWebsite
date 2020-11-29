@@ -4,12 +4,12 @@ $naam = '';
 $telefoonnummer = '';
 $email = '';
 $kenteken= '';
-$omschrijvingWerkzaamheden = '';
+$omschrijvingOnderhoud = '';
 
 $naamErr = '';
 $emailErr = '';
 $kentekenErr = '';
-$omschrijvingWerkzaamhedenErr = '';
+$omschrijvingOnderhoudErr = '';
 
 if (isset($_POST['submit'])) {
     $validForm = true; // boolean dat checked of iets leeg is of niet
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     } else {
         $kenteken = htmlspecialchars($_POST['kenteken']);
     }
-    // validatie voor werkzaamheden
+    // validatie voor onderhoud
     if (!isset($_POST['omschrijving werkzaamheden']) || $_POST['omschrijving werkzaamheden'] === '') {
         $validForm = false;
         $omschrijvingWerkzaamheden = 'Dit veld is verplicht.';
@@ -91,12 +91,12 @@ if (isset($_POST['submit'])) {
     ?>">
     <p class="error"><?=$kentekenErr;?></p><br>
 
-    <!-- input voor Omschrijving werkzaamheden !-->
-    <label for = "omschrijving werkzaamheden" >Omschrijving werkzaamheden</label>
-    <input type="text" id="omschrijving werkzaamheden" name="Omschrijving wekrzaamheden" maxlength="1000" placeholder="Voer hierin wat uw problemen zijn met u auto..." value="<?=
-    htmlspecialchars($omschrijvingWerkzaamheden, ENT_QUOTES);
+    <!-- input voor Omschrijving type onderhoudt !-->
+    <label for = "omschrijving onderhoud" >Omschrijving wat voor type onderhoud</label>
+    <input type="text" id="omschrijving onderhoud" name="Omschrijving onderhoud" maxlength="1000" placeholder="Voer hierin wat uw problemen zijn met u auto..." value="<?=
+    htmlspecialchars($omschrijvingOnderhoud, ENT_QUOTES);
     ?>">
-    <p class="error"><?=$omschrijvingWerkzaamheden;?></p><br>
+    <p class="error"><?=$omschrijvingOnderhoudErr;?></p><br>
 
     <h3>Kies hieronder een datum voor de resevering.</h3>
 

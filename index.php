@@ -15,7 +15,7 @@
 
         <h3>Onderhoud</h3>
         <p>Auto's moeten nou eenmaal onderhouden worden. Daar kunt u bij ons voor terrecht.</p>
-        <a href="reservationUpkeep.php">Maak nu een afspraak</a>
+        <a href="reservationPages/reservationUpkeep.php">Maak nu een afspraak</a>
 
         <h3>Reperatie</h3>
         <p>Soms gaat er iets kapot, gelukkig kunt u bij ons daarvoor terrecht.</p>
