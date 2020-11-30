@@ -1,25 +1,28 @@
 <?php
-#variabelen
-$naam = '';
-$telefoonnummer = '';
+#R: Heb alle $ een engelse naam gegeven
+// variabelen
+$name = '';
+$phoneNumber = '';
 $email = '';
-$kenteken= '';
-$omschrijvingOnderhoud = '';
+$licensePlate= '';
+$descMaintenace = '';
 
-$naamErr = '';
+// Error variabelen
+$nameErr = '';
 $emailErr = '';
-$kentekenErr = '';
-$omschrijvingOnderhoudErr = '';
+$licensePlateErr = '';
+$descMaintenaceErr = '';
 
 if (isset($_POST['submit'])) {
-    $validForm = true; // boolean dat checked of iets leeg is of niet
+    $validForm = true; // boolean dat checked of iets leeg is of niet, S: veranderd op basis daarvan en zorgt
+    // voor form niet valid is.
 
     // validatie van gegevens
-    if (!isset($_POST['naam']) || $_POST['naam'] === '') {
+    if (!isset($_POST['name']) || $_POST['name'] === '') {
         $validForm = false;
-        $naamErr = 'Dit veld is verplicht.';
+        $nameErr = 'Dit veld is verplicht.';
     } else {
-        $naam = htmlspecialchars($_POST['naam']);
+        $name = htmlspecialchars($_POST['name']);
     }
     // validatie voor email
     if (!isset($_POST['email']) || $_POST['email'] === '') {
@@ -29,21 +32,22 @@ if (isset($_POST['submit'])) {
         $email = htmlspecialchars($_POST['email']);
     }
     // validatie voor kenteken
-    if (!isset($_POST['kenteken']) || $_POST['kenteken'] === '') {
+    if (!isset($_POST['licensePlate']) || $_POST['licensePlate'] === '') {
         $validForm = false;
-        $kenteken = 'Dit veld is verplicht.';
+        $licensePlateErr = 'Dit veld is verplicht.'; // S: was $kenteken, moest $kentekenErr
     } else {
-        $kenteken = htmlspecialchars($_POST['kenteken']);
+        $licensePlate = htmlspecialchars($_POST['licensePlate']);
     }
     // validatie voor onderhoud
-    if (!isset($_POST['omschrijving onderhoudt']) || $_POST['omschrijving werkzaamheden'] === '') {
+    if (!isset($_POST['descMaintenace']) || $_POST['descMaintenace'] === '') {
         $validForm = false;
-        $omschrijvingOnderhoud= 'Dit veld is verplicht.';
+        $descMaintenaceErr= 'Dit veld is verplicht.';
     } else {
-        $omschrijvingOnderhoud = htmlspecialchars($_POST['omschrijving werkzaamheden']);
+        $descMaintenace = htmlspecialchars($_POST['descMaintenace']);
     }
     //Telefoonummer
-    $telefoonnummer = $_POST['telefoonNummer'];
+    $phoneNumber = $_POST['phoneNumber']; // S: was $_POST['telefoonNummer'] moest _POST['telefoonnummer'] zijn
+    // (overeenkomen met name van input)
 
     // if the entire form is valid sent user to confirmation page
     if ($validForm) {
@@ -61,22 +65,21 @@ if (isset($_POST['submit'])) {
 
 <body>
 <a href="../index.php">Terug</a>
-<h1>Afspraak maken voor auto reparatie en autoschade </h1>
+<h1>Afspraak maken voor auto onderhoud?</h1>
 <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
 
 <form action="" method="post">
     <!-- input voor naam !-->
-    <label for="naam">Naam*: </label>
-    <input type="text" id="naam" name="Naam" value="<?=
-    htmlspecialchars($naam, ENT_QUOTES);
-    ?>">
-    <p class="error"><?=$naamErr;?></p><br>
+    <label for="name">Naam*: </label>
+    <input type="text" id="name" name="name" value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
+
+    <p class="error"><?=$nameErr;?></p><br>
 
     <!-- input voor telefoon nummer !-->
-    <label for="telefoonnummer">Telefoonnummer: </label>
-    <input type="text" id="telefoonnummer" name="Telefoonnummer" maxlength="11" placeholder="06-12345678" value="<?=
-    htmlspecialchars($telefoonnummer, ENT_QUOTES);
-    ?>"><br>
+    <label for="phoneNumber">Telefoonnummer: </label>
+    <input type="text" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="06-12345678"
+           value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>"><br>
+    <br>
 
     <!-- input voor email address !-->
     <label for="email">Emailadres*: </label>
@@ -85,18 +88,18 @@ if (isset($_POST['submit'])) {
     <p class="error"><?=$emailErr;?></p><br>
 
     <!-- input voor kenteken !-->
-    <label for="kenteken">Kenteken*: </label>
-    <input type="text" id="kenteken" name="Kenteken" maxlength="8" placeholder="AB-C3D-5" value="<?=
-    htmlspecialchars($kenteken, ENT_QUOTES);
+    <label for="licensePlate">Kenteken*: </label>
+    <input type="text" id="licensePlate" name="licensePlate" maxlength="8" placeholder="AB-C3D-5" value="<?=
+    htmlspecialchars($licensePlate, ENT_QUOTES);
     ?>">
-    <p class="error"><?=$kentekenErr;?></p><br>
+    <p class="error"><?=$licensePlateErr;?></p><br>
 
     <!-- input voor Omschrijving type onderhoudt !-->
-    <label for = "omschrijving onderhoud" >Omschrijving wat voor type onderhoud</label>
-    <input type="text" id="omschrijving onderhoud" name="Omschrijving onderhoud" maxlength="1000" placeholder="Voer hierin wat uw problemen zijn met u auto..." value="<?=
-    htmlspecialchars($omschrijvingOnderhoud, ENT_QUOTES);
-    ?>">
-    <p class="error"><?=$omschrijvingOnderhoudErr;?></p><br>
+    <!-- R: heb descRepairation in plaats van textInput een textArea gemaakt-->
+    <label for = "descMaintenace" >Omschrijving wat voor type onderhoud*</label><br>
+    <label> <textarea name="Omschrijving wat voor type onderhoud"></textarea> </label><br>
+    <?= htmlspecialchars($descMaintenace, ENT_QUOTES); ?>
+    <p class="error"><?=$descMaintenaceErr;?></p><br>
 
     <h3>Kies hieronder een datum voor de resevering.</h3>
 
@@ -108,4 +111,4 @@ if (isset($_POST['submit'])) {
     <input type="submit" name="submit" value="Bevestigen">
 </form>
 </body>
-</html>
+</html
