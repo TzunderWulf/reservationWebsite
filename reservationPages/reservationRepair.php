@@ -95,8 +95,7 @@ if (isset($_POST['submit'])) {
     <!-- input voor omschrijving reparatie of herstel !-->
     <!-- R: heb descRepairation in plaats van textInput een textArea gemaakt-->
     <label for = "descRepairation" >Omschrijving wat er gerepareerd of hersteld moet worden*</label><br>
-    <label> <textarea name="descRepairation"></textarea> </label><br>
-    <?= htmlspecialchars($descRepairation, ENT_QUOTES); ?>
+    <label> <textarea id="descRepairation" name="descRepairation" rows="4" cols="50"  value=" <?= htmlspecialchars($descRepairation, ENT_QUOTES); ?>"></textarea> </label><br>
     <p class="error"><?=$descRepairation;?></p><br>
 
     <h3>Kies hieronder een datum voor de resevering.</h3>

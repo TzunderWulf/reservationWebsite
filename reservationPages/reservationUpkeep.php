@@ -90,21 +90,18 @@ if (isset($_POST['submit'])) {
     <!-- input voor kenteken !-->
     <label for="licensePlate">Kenteken*: </label>
     <input type="text" id="licensePlate" name="licensePlate" maxlength="8" placeholder="AB-C3D-5" value="<?=
-    htmlspecialchars($licensePlate, ENT_QUOTES);
-    ?>">
+    htmlspecialchars($licensePlate, ENT_QUOTES); ?>">
     <p class="error"><?=$licensePlateErr;?></p><br>
 
     <!-- input voor Omschrijving type onderhoudt !-->
     <!-- R: heb descRepairation in plaats van textInput een textArea gemaakt-->
     <label for = "descMaintenace" >Omschrijving wat voor type onderhoud*</label><br>
-    <label> <textarea name="Omschrijving wat voor type onderhoud"></textarea> </label><br>
-    <?= htmlspecialchars($descMaintenace, ENT_QUOTES); ?>
+    <label> <textarea id="descMaintenace" name="descMaintenace" rows="4" cols="50" value="<?= htmlspecialchars($descMaintenace, ENT_QUOTES); ?>"></textarea> </label><br>
     <p class="error"><?=$descMaintenaceErr;?></p><br>
 
     <h3>Kies hieronder een datum voor de resevering.</h3>
 
     <!-- agenda!-->
-
     <!-- Reset knop van Sara-->
     <!-- Form validatie fout? Wordt gegeven-->
     <input type="reset" name="reset" value="Reset">
