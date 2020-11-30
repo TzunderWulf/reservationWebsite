@@ -1,18 +1,23 @@
 <?php
-#variabelen
+// S: ik heb overal $_POST['key'] aangepast zodat 'key' overeenkomt met de name value
+// van de inputs (hoofdlettergevoelig btw)
+
+// variabelen
 $naam = '';
 $telefoonnummer = '';
 $email = '';
 $kenteken= '';
 $omschrijvingWerkzaamheden = '';
 
+// Error variabelen
 $naamErr = '';
 $emailErr = '';
 $kentekenErr = '';
 $omschrijvingWerkzaamhedenErr = '';
 
 if (isset($_POST['submit'])) {
-    $validForm = true; // boolean dat checked of iets leeg is of niet
+    $validForm = true; // boolean dat checked of iets leeg is of niet, S: veranderd op basis daarvan en zorgt
+    // voor form niet valid is
 
     // validatie van gegevens
     if (!isset($_POST['naam']) || $_POST['naam'] === '') {
@@ -31,19 +36,21 @@ if (isset($_POST['submit'])) {
     // validatie voor kenteken
     if (!isset($_POST['kenteken']) || $_POST['kenteken'] === '') {
         $validForm = false;
-        $kenteken = 'Dit veld is verplicht.';
+        $kentekenErr = 'Dit veld is verplicht.'; // S: was $kenteken, moest $kentekenErr
     } else {
         $kenteken = htmlspecialchars($_POST['kenteken']);
     }
     // validatie voor werkzaamheden
-    if (!isset($_POST['omschrijving werkzaamheden']) || $_POST['omschrijving werkzaamheden'] === '') {
+    if (!isset($_POST['omschrijvingWerkzaamheden']) || $_POST['omschrijvingWerkzaamheden'] === '') {
         $validForm = false;
-        $omschrijvingWerkzaamheden = 'Dit veld is verplicht.';
+        $omschrijvingWerkzaamhedenErr = 'Dit veld is verplicht.';
+        // S: was $omschrijvingWerkzaamheden, moest $omschrijvingWerkzaamhedenErr
     } else {
-        $omschrijvingWerkzaamheden = htmlspecialchars($_POST['omschrijving werkzaamheden']);
+        $omschrijvingWerkzaamheden = htmlspecialchars($_POST['omschrijvingWerkzaamheden']);
     }
     //Telefoonummer
-    $telefoonnummer = $_POST['telefoonNummer'];
+    $telefoonnummer = $_POST['telefoonnummer']; // S: was $_POST['telefoonNummer'] moest _POST['telefoonnummer'] zijn
+    // (overeenkomen met name van input)
 
     // if the entire form is valid sent user to confirmation page
     if ($validForm) {
@@ -67,14 +74,12 @@ if (isset($_POST['submit'])) {
 <form action="" method="post">
     <!-- input voor naam !-->
     <label for="naam">Naam*: </label>
-    <input type="text" id="naam" name="Naam" value="<?=
-    htmlspecialchars($naam, ENT_QUOTES);
-    ?>">
+    <input type="text" id="naam" name="naam" value="<?=htmlspecialchars($naam, ENT_QUOTES);?>">
     <p class="error"><?=$naamErr;?></p><br>
 
     <!-- input voor telefoon nummer !-->
     <label for="telefoonnummer">Telefoonnummer: </label>
-    <input type="text" id="telefoonnummer" name="Telefoonnummer" maxlength="11" placeholder="06-12345678" value="<?=
+    <input type="text" id="telefoonnummer" name="telefoonnummer" maxlength="11" placeholder="06-12345678" value="<?=
     htmlspecialchars($telefoonnummer, ENT_QUOTES);
     ?>"><br>
 
@@ -86,24 +91,26 @@ if (isset($_POST['submit'])) {
 
     <!-- input voor kenteken !-->
     <label for="kenteken">Kenteken*: </label>
-    <input type="text" id="kenteken" name="Kenteken" maxlength="8" placeholder="AB-C3D-5" value="<?=
+    <input type="text" id="kenteken" name="kenteken" maxlength="8" placeholder="AB-C3D-5" value="<?=
     htmlspecialchars($kenteken, ENT_QUOTES);
     ?>">
     <p class="error"><?=$kentekenErr;?></p><br>
 
+    <!-- Hiervoor kijken naar textarea's !-->
+    <!-- https://www.w3schools.com/tags/tag_textarea.asp en het stylen: https://www.w3schools.com/css/css_form.asp !-->
     <!-- input voor Omschrijving werkzaamheden !-->
-    <label for = "omschrijving werkzaamheden" >Omschrijving werkzaamheden</label>
-    <input type="text" id="omschrijving werkzaamheden" name="Omschrijving wekrzaamheden" maxlength="1000" placeholder="Voer hierin wat uw problemen zijn met u auto..." value="<?=
-    htmlspecialchars($omschrijvingWerkzaamheden, ENT_QUOTES);
-    ?>">
-    <p class="error"><?=$omschrijvingWerkzaamheden;?></p><br>
+    <label for = "omschrijving werkzaamheden" >Omschrijving werkzaamheden*: </label>
+    <input type="text" id="omschrijving werkzaamheden" name="omschrijvingWerkzaamheden" maxlength="1000"
+        placeholder="Voer hierin wat uw problemen zijn met u auto..." value="<?=
+        htmlspecialchars($omschrijvingWerkzaamheden, ENT_QUOTES);?>">
+    <p class="error"><?=$omschrijvingWerkzaamhedenErr;?></p><br>
 
     <h3>Kies hieronder een datum voor de resevering.</h3>
 
     <!-- agenda!-->
 
     <!-- Reset knop van Sara-->
-    <!-- Form validatie fout? Wordt gegeven-->
+    <!-- Form validatie gaat mis, error wordt gegeven-->
     <input type="reset" name="reset" value="Reset">
     <input type="submit" name="submit" value="Bevestigen">
 </form>
