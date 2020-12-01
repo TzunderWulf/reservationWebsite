@@ -11,10 +11,12 @@
         $reservationsMain[] = $row;
         break;
     }
-    $reservationsAPK = [];
 
     $queryAPK = "SELECT orderId,name,phoneNumber,email,licensePlate FROM reservations WHERE meeting = 'APK'";
     $resultAPK = mysqli_query($db, $queryAPK);
+
+    $reservationsAPK = [];
+
     // loop trough with while
     while($row = mysqli_fetch_assoc($resultAPK)) {
         $reservationsAPK[] = $row;
@@ -34,6 +36,7 @@
 
 <body>
     <h1>Welkom!</h1>
+    <a href="login.php">Uitloggen</a>
 
     <h3>Alle onderhoud afspraken</h3>
     <table>
