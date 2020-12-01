@@ -28,6 +28,11 @@
             $emailErr = 'Dit veld is verplicht.';
         } else {
             $email = htmlspecialchars($_POST['email']);
+            // validation for the valid email
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $validForm = false;
+                $emailErr = 'Vekeerde email.';
+            }
         }
 
         // validation for the license plate input
@@ -68,22 +73,23 @@
 
                 <!-- input for phone number !-->
                 <label for="telefoonnummer">Telefoonnummer: </label>
-                <input type="text" id="telefoonnummer" name="phoneNumber" maxlength="11" placeholder="06-12345678"><br>
+                <input type="text" id="telefoonnummer" name="phoneNumber" maxlength="11" placeholder="06-12345678"
+                value="<?=$phoneNumber?>"><br>
 
                 <!-- input for email address !-->
                 <label for="email">Emailadres*: </label>
-                <input type="email" id="email" name="email" placeholder="example@example.nl"value="<?=
+                <input type="text" id="email" name="email" placeholder="example@example.nl"value="<?=
                 htmlspecialchars($email, ENT_QUOTES);?>">
                 <p class="error"><?=$emailErr;?></p><br>
 
                 <!-- input for license plate !-->
                 <label for="autoKeuze">Kies een van de twee auto's*: </label>
-                <input type="radio" id="autoKeuze" name="carChoice" value="car1"<?php
-                if ($carChoice == 'car1') {
+                <input type="radio" id="autoKeuze" name="carChoice" value="1"<?php
+                if ($carChoice == '1') {
                     echo ' checked';
                 }?>>Auto 1
-                <input type="radio" id="autoKeuze" name="carChoice" value="car2"<?php
-                if ($carChoice == 'car2') {
+                <input type="radio" id="autoKeuze" name="carChoice" value="2"<?php
+                if ($carChoice == '2') {
                     echo ' checked';
                 }?>>Auto 2
                 <p class="error"><?=$carChoiceErr;?></p>

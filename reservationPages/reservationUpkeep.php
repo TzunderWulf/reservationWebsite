@@ -32,6 +32,11 @@
             $emailErr = 'Dit veld is verplicht.';
         } else {
             $email = htmlspecialchars($_POST['email']);
+            // validation for the valid email
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $validForm = false;
+                $emailErr = 'Vekeerde email.';
+            }
         }
 
         // validation for the license plate input
@@ -56,8 +61,8 @@
             header('Location: ../confirmation.php');
         }
     }
-    // <?=htmlspecialchars($descMaintenace, ENT_QUOTES);?>
 ?>
+
 
 <!doctype html>
     <html lang="nl">
@@ -84,7 +89,7 @@
 
                 <!-- input voor email address !-->
                 <label for="email">Emailadres*: </label>
-                <input type="email" id="email" name="email" placeholder="example@example.nl" value="<?=
+                <input type="text" id="email" name="email" placeholder="example@example.nl" value="<?=
                 htmlspecialchars($email, ENT_QUOTES);?>">
                 <p class="error"><?=$emailErr;?></p><br>
 
