@@ -1,5 +1,5 @@
 <?php
-    require_once('../includes/connect.php'); // to connect to database
+    // require_once('../includes/connect.php'); // to connect to database
 
     // variables for inputs
     $name = '';
@@ -39,12 +39,11 @@
         } else {
             $licensePlate = htmlspecialchars($_POST['licensePlate']);
         }
-        $phoneNumber = $_POST['phoneNumber'];
+        $phoneNumber = $_POST['phoneNumber']; // phonenumber
 
         // if the entire form is valid sent user to confirmation page
         if ($validForm) {
             header('Location: ../confirmation.php');
-
         }
     }
 ?>
