@@ -29,6 +29,7 @@
 <head>
     <title>Homescreen</title>
     <link rel="stylesheet" href="../stylesheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -54,7 +55,7 @@
                 <td><?php print_r($row['name']);?></td>
                 <td><?php print_r($row['phoneNumber']);?></td>
                 <td><?php print_r($row['email']);?></td>
-                <td><?php print_r($row['licensePlate']);?></td>
+                <td><?php print_r(strtoupper($row['licensePlate']));?></td>
                 <td><?php print_r($row['description']);?></td>
                 <td><a href="detail.php?index=<?=$row['orderId']?>">Details</a></td>
             </tr>
@@ -80,7 +81,7 @@
                 <td><?php print_r($row['name']);?></td>
                 <td><?php print_r($row['phoneNumber']);?></td>
                 <td><?php print_r($row['email']);?></td>
-                <td><?php print_r($row['licensePlate']);?></td>
+                <td><?php print_r(strtoupper($row['licensePlate']));?></td>
                 <td><a href="detail.php?index=<?=$row['orderId']?>">Details</a></td>
             </tr>
         <?php } ?>

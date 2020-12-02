@@ -43,6 +43,7 @@
             $licensePlateErr = 'Dit veld is verplicht.';
         } else {
             $licensePlate = htmlspecialchars($_POST['licensePlate']);
+            $licensePlate = strtoupper($_POST['licensePlate']);
         }
         $phoneNumber = $_POST['phoneNumber']; // phonenumber
 
@@ -58,6 +59,8 @@
         <head>
             <title>Reserveren APK</title>
             <link rel="stylesheet" href="../stylesheet.css">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
         </head>
 
         <body>
