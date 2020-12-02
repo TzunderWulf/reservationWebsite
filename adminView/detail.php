@@ -41,7 +41,7 @@
 
                 <!-- license plate (if it is exists) -->
                 <?php if (isset($row['licensePlate'])) { ?>
-                    <li>Kenteken <?php print_r($row['licensePlate']);?></li>
+                    <li>Kenteken: <?php print_r($row['licensePlate']);?></li>
                 <?php } ?>
 
                 <!-- description (if it is exists) -->
