@@ -64,7 +64,8 @@
         </head>
 
         <body>
-            <a href="../index.php">Terug</a>
+        <!-- R: Button bij gedaan bij de terug knop--->
+            <a href="../index.php"><button2>Terug</button2></a>
             <h1>Afspraak maken voor APK keuring</h1>
             <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
 
