@@ -1,22 +1,24 @@
 html {
-    background-color: darkgrey;
+    background-color: #D8D8D8;
 }
 
 body {
     background-color: white;
-    width: 900px;
+    width: 1050px;
     margin: auto;
     padding: 30px;
     min-height: 950px;
-    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: Georgia;
 }
 
-p.error {
-    color: red;
+#header {
+    margin-bottom: 15px;
+    width: 1050px;
+    height: 131px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Georgia;
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 h1{
@@ -33,6 +35,12 @@ button {
     font-size: 13px;
     margin: 2px 2px;
     cursor: pointer;
+    font-family: Georgia;
+    transition: all 0.4s ease-in 0.1ms;
+}
+
+button:hover {
+    background-color: #80C4FC;
 }
 
 button2 {
@@ -46,6 +54,10 @@ button2 {
     font-size: 13px;
     margin: 2px 2px;
     cursor: pointer;
+    font-family: Georgia;
 }
 
+p.error {
+    color: red;
+}
 

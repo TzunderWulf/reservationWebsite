@@ -10,9 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     </head>
 
-    <!--R: Ik heb de buttons kleuren gegeven en hierbij de stylesheet een beetje ge-update.-->
-    <!--Verder heb ik ook de banner bij gedaan.-->
-    <img src="https://cdn.discordapp.com/attachments/753726186747592736/784457075240468510/cropped-header45.png" alt="Garage nieuw rijswijk" width="900" height="110">
+    <img id=header src="https://garagenieuwrijswijk.nl/wp-content/uploads/2014/01/cropped-header45.png" alt="Garage nieuw rijswijk">
 
     <body>
     <a href="https://garagenieuwrijswijk.nl"><button2>Terug naar de website</button2></a>
