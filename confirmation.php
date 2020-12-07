@@ -19,5 +19,6 @@
 <h3>Er is een afspraak gemaakt voor [afspraak] op [date]</h3>
 <h3>De volgende informatie is doorgegeven (deze informatie wordt ook naar uw verzonden per email): </h3>
 <p>Informatie</p>
+<a href="https://garagenieuwrijswijk.nl"><button2>Terug naar de website</button2></a>
 </body>
 </html>
