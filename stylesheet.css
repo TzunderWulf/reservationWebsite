@@ -8,7 +8,7 @@ body {
     margin: auto;
     padding: 30px;
     min-height: 950px;
-    font-family: Georgia;
+    font-family: Georgia, serif;
 }
 
 #header {
@@ -35,15 +35,15 @@ button {
     font-size: 13px;
     margin: 2px 2px;
     cursor: pointer;
-    font-family: Georgia;
-    transition: all 0.4s ease-in 0.1ms;
+    font-family: Georgia, serif;
+    transition: all 0.4s ease 0.1ms;
 }
 
 button:hover {
     background-color: #80C4FC;
 }
 
-button2 {
+.button2 {
     background-color: #d8d8d8;
     border: black;
     color: grey;
@@ -54,10 +54,19 @@ button2 {
     font-size: 13px;
     margin: 2px 2px;
     cursor: pointer;
-    font-family: Georgia;
+    font-family: Georgia, serif;
 }
 
 p.error {
     color: red;
+}
+
+td, th {
+    border: 1px solid black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
