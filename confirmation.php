@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheet.css">
 
-    <img src="https://cdn.discordapp.com/attachments/753726186747592736/784457075240468510/cropped-header45.png" alt="Garage nieuw rijswijk" width="900" height="110">
+    <img id=header src="https://garagenieuwrijswijk.nl/wp-content/uploads/2014/01/cropped-header45.png" alt="Garage nieuw rijswijk">
 
     <title>Afspraak maken</title>
 </head>
