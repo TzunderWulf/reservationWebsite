@@ -1,18 +1,24 @@
 <?php
     require_once('../includes/connect.php');
+    $currentDate = date('j F'); // to see what the current date is
+    $currentWeek = date('W'); // to see what the current week is
 
     // get the result set from the database with query
-    $queryRepair = "SELECT orderId,name,phoneNumber,email,licensePlate,description FROM reservations WHERE meeting = 'Onderhoud'";
-    $resultRepair = mysqli_query($db, $queryRepair);
+    $queryToday = "SELECT orderId,name,phoneNumber,email,licensePlate,description,dateReservation FROM reservations WHERE dateReservation = '$currentDate'";
+    $resultToday = mysqli_query($db, $queryToday);
 
     $reservationsMain = [];
     // loop trough with while
-    while($row = mysqli_fetch_assoc($resultRepair)) {
+    while($row = mysqli_fetch_assoc($resultToday)) {
         $reservationsMain[] = $row;
         break;
     }
 
-    $queryAPK = "SELECT orderId,name,phoneNumber,email,licensePlate FROM reservations WHERE meeting = 'APK'";
+    $queryAPK = "SELECT orderId,name,phoneNumber,email,licensePlate,dateReservation 
+    FROM reservations 
+    WHERE dateReservation   
+    BETWEEN CAST(timestampadd(SQL_TSI_DAY, -(dayofweek(curdate())-2), curdate()) AS date) 
+        and CAST(timestampadd(SQL_TSI_DAY, 5-(dayofweek(curdate())-1), curdate()) AS date)";
     $resultAPK = mysqli_query($db, $queryAPK);
 
     $reservationsAPK = [];
@@ -37,8 +43,7 @@
 <body>
     <h1>Welkom!</h1>
     <a href="login.php">Uitloggen</a>
-
-    <h3>Alle onderhoud afspraken</h3>
+    <h2>Alle afspraken voor vandaag <?=$currentDate?></h2>
     <table>
         <thead>
         <tr>
@@ -48,11 +53,12 @@
             <th>email*</th>
             <th>kenteken</th>
             <th>beschrijving</th>
-            <th><?php if (isset ($row['carChoice'])) {?>auto keuze<?php } ?></th>
+            <th>afspraak</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($resultRepair as $row) { ?>
+        <?php foreach ($resultToday as $row) { ?>
             <tr>
                 <td><?php print_r($row['orderId']);?></td>
                 <td><?php print_r($row['name']);?></td>
@@ -60,13 +66,14 @@
                 <td><?php print_r($row['email']);?></td>
                 <td><?php print_r(strtoupper($row['licensePlate']));?></td>
                 <td><?php print_r($row['description']);?></td>
+                <td><?php print_r($row['dateReservation']);?></td>
                 <td><a href="detail.php?index=<?=$row['orderId']?>">Details</a></td>
             </tr>
         <?php } ?>
         </tbody>
     </table>
 
-    <h3>Alle APK afspraken</h3>
+    <h2>Alle afspraken voor deze week <?=$currentWeek?></h2>
     <table>
         <thead>
         <tr>
@@ -75,6 +82,8 @@
             <th>telefoonnummer</th>
             <th>email*</th>
             <th>kenteken</th>
+            <th>afspraak</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -85,6 +94,7 @@
                 <td><?php print_r($row['phoneNumber']);?></td>
                 <td><?php print_r($row['email']);?></td>
                 <td><?php print_r(strtoupper($row['licensePlate']));?></td>
+                <td><?php print_r($row['dateReservation']);?></td>
                 <td><a href="detail.php?index=<?=$row['orderId']?>">Details</a></td>
             </tr>
         <?php } ?>
