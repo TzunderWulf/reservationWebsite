@@ -7,12 +7,14 @@
     $email = '';
     $licensePlate= '';
     $descRepair = '';
+    $date='';
 
     // error variables
     $nameErr = '';
     $emailErr = '';
     $licensePlateErr = '';
     $descRepairErr  = '';
+    $dateErr = '';
 
     // php validation of form
     if (isset($_POST['submit'])) {
@@ -80,36 +82,48 @@
 
             <form action="" method="post">
                 <!-- input voor naam !-->
+                <div>
                 <label for="name">Naam*: </label>
                 <input type="text" id="name" name="name" value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
                 <p class="error"><?=$nameErr;?></p><br>
-
+                </div>
                 <!-- input voor telefoon nummer !-->
                 <label for="phoneNumber">Telefoonnummer: </label>
                 <input type="text" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="06-12345678"
                 value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>"><br>
 
                 <!-- input voor email address !-->
+                <div>
                 <label for="email">Emailadres*: </label>
                 <input type="text" id="email" name="email" placeholder="example@example.nl" value="<?=
                 htmlspecialchars($email, ENT_QUOTES);?>">
                 <p class="error"><?=$emailErr;?></p><br>
+                </div>
 
                 <!-- input voor kenteken !-->
+                <div>
                 <label for="licensePlate">Kenteken*: </label>
                 <input type="text" id="licensePlate" name="licensePlate" maxlength="8" placeholder="AB-C3D-5" value="<?=
                 htmlspecialchars($licensePlate, ENT_QUOTES);?>">
                 <p class="error"><?=$licensePlateErr;?></p><br>
+                </div>
 
                 <!-- input voor omschrijving reparatie of herstel !-->
-                <label for = "descRepairation">Omschrijving wat er gerepareerd of hersteld moet worden*: </label><br>
-                <textarea id="descRepairation" name="descRepair" rows="4" cols="50"></textarea>
-                <p class="error"><?=$descRepairErr;?></p><br>
+                <div>
+                 <label for = "descRepairation">Omschrijving wat er gerepareerd of hersteld moet worden*: </label><br>
+                 <textarea id="descRepairation" name="descRepair" rows="4" cols="50"></textarea>
+                 <p class="error"><?=$descRepairErr;?></p><br>
+                </div>
 
-                <h3>Kies hieronder een datum voor de resevering.</h3>
-
-                <!-- agenda!-->
-
+                <!-- input datum !-->
+                <!-- R: Testen van Datum functie !-->
+                <div>
+                    <label for = "start">Kies hieronder een datum voor de resevering: </label><br>
+                    <input type="date" id="start" name="tripStart" value="<?=
+                    htmlspecialchars($date, ENT_QUOTES);?>">
+                    <p class="error"><?=$dateErr;?></p><br>>
+                </div>
+               
                 <!-- Reset knop van Sara-->
                 <!-- Form validatie fout? Wordt gegeven-->
                 <input type="reset" name="reset" value="Reset">
