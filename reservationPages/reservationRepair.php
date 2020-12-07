@@ -121,9 +121,9 @@
                     <label for = "start">Kies hieronder een datum voor de resevering: </label><br>
                     <input type="date" id="start" name="tripStart" value="<?=
                     htmlspecialchars($date, ENT_QUOTES);?>">
-                    <p class="error"><?=$dateErr;?></p><br>>
+                    <p class="error"><?=$dateErr;?></p><br>
                 </div>
-               
+
                 <!-- Reset knop van Sara-->
                 <!-- Form validatie fout? Wordt gegeven-->
                 <input type="reset" name="reset" value="Reset">
