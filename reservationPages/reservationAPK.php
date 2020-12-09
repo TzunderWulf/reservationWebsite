@@ -1,106 +1,160 @@
 <?php
-    // require_once('../includes/connect.php'); // to connect to database
+    require_once('../includes/connect.php'); // File to connect to database
 
-    // variables for inputs
-    $name = '';
-    $phoneNumber = '';
-    $email = '';
-    $licensePlate = '';
+    // Variables for inputs
+    $name = $phoneNumber = $emailAddress = $licensePlate = $pickedDate = $pickedTime = '';
+    $nameErr = $emailAddressErr = $licensePlateErr = $dateErr = $timeErr = $databaseErr= '';
 
-    // error variables
-    $nameErr = '';
-    $emailErr = '';
-    $licensePlateErr = '';
+    // variable for the current date + 1
+    $currentDate = date('Y-m-d', strtotime("+1 day"));
 
-    // php validation of form
+    // PHP validation of the form
     if (isset($_POST['submit'])) {
-        $validForm = true; // boolean to check if form is valid, changes based on if field is empty
+        $validForm = true; // boolean to check if the form is valid, can change based per field input
 
-        // validation for the name input
-        if (!isset($_POST['name']) || $_POST['name'] === '') {
+        // validation for the name input, checks if it is empty and if theres numbers in the name
+        if (empty($_POST['name'])) {
             $validForm = false;
-            $nameErr = 'Dit veld is verplicht.';
+            $nameErr = "Dit veld is verplicht.";
+        } elseif (preg_match("/(\d)/i", $_POST['name'])) {
+            $validform = false;
+            $nameErr = "Er zitten nummers in de opgegeven naam.";
         } else {
             $name = htmlspecialchars($_POST['name']);
         }
 
-        // validation for the email input
-        if (!isset($_POST['email']) || $_POST['email'] === '') {
+        // validation for the email input, checks if it is empty and if it is a valid email
+        if (empty($_POST['email-address'])) {
             $validForm = false;
-            $emailErr = 'Dit veld is verplicht.';
+            $emailAddressErr = "Dit veld is verplicht.";
+        } elseif (!filter_var($_POST['email-address'], FILTER_VALIDATE_EMAIL)) {
+            $validForm = false;
+            $emailErr = 'Geen geldige email ingevoerd.';
         } else {
-            $email = htmlspecialchars($_POST['email']);
-            // validation for the valid email
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $validForm = false;
-                $emailErr = 'Vekeerde email.';
-            }
+            $emailAddress = htmlspecialchars($_POST['email-address']);
         }
 
-        // validation for the license plate input
-        if (!isset($_POST['licensePlate']) || $_POST['licensePlate'] === '') {
+        // validation for the license plate input, checks if it is empty
+        // and *if it is a valid license plate*
+        if (empty($_POST['license-plate'])) {
             $validForm = false;
             $licensePlateErr = 'Dit veld is verplicht.';
         } else {
-            $licensePlate = htmlspecialchars($_POST['licensePlate']);
-            $licensePlate = strtoupper($_POST['licensePlate']);
+            $licensePlate = htmlspecialchars($_POST['license-plate']);
         }
-        $phoneNumber = $_POST['phoneNumber']; // phonenumber
+        $phoneNumber = htmlspecialchars($_POST['phone-number']);
+        $pickedDate = htmlspecialchars($_POST['picked-date']);
+        $pickedTime = htmlspecialchars($_POST['picked-time']);
 
-        // if the entire form is valid sent user to confirmation page
         if ($validForm) {
-            header('Location: ../confirmation.php');
+            header('../confirmation.php');
+/*
+            $reservationQuery = sprintf("INSERT INTO users (Date, Time) VALUES ('%s', '%s')",
+                $db ->real_escape_string($pickedDate),
+                $db->real_escape_string($pickedTime));
+
+            $customerQuery = sprintf("INSERT INTO users (Name, PhoneNumber, Email, LicensePlate) VALUES ('%s', '%s', '%s', '%s')",
+                $db ->real_escape_string($name),
+                $db->real_escape_string($phoneNumber),
+                $db->real_escape_string($emailAddress),
+                $db->real_escape_string($licensePlate));
+
+            $reservationResult = mysqli_query($db, $reservationQuery);
+            $customerResult = mysqli_query($db, $customerQuery);
+
+            if (!$reservationResult || !$customerResult) {
+                $databaseErr = "Resevering mislukt." . mysqli_error($db);
+            }
+*/
         }
     }
 ?>
 
 <!doctype html>
-    <html lang="nl">
-        <head>
-            <title>Reserveren APK</title>
-            <link rel="stylesheet" href="../stylesheet.css">
-            <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
-        </head>
+<html lang="nl">
+    <head>
+        <title>Reserveren</title>
+        <link rel="stylesheet" href="../stylesheet.css">
 
-        <body>
-        <!-- R: Button bij gedaan bij de terug knop--->
-            <a href="../index.php"><button2>Terug</button2></a>
-            <h1>Afspraak maken voor APK keuring</h1>
-            <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
+        <!-- Google Font-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+    </head>
+
+
+    <body>
+        <header>
+            <img id="header" src="https://garagenieuwrijswijk.nl/wp-content/uploads/2014/01/cropped-header45.png"
+            alt="Garage nieuw rijswijk">
+        </header>
+
+        <main>
+            <a href="../index.php">
+                <button>Terug</button>
+            </a>
+
+            <h1>Reservering voor APK keuring</h1>
+            <h3>Vul hieronder uw gegevens in, de gegevens met * zijn verplicht.</h3>
+
+            <h3><?=$databaseErr;?></h3>
 
             <form action="" method="post">
-                <!-- input for name !-->
-                <label for="naam">Naam*: </label>
-                <input type="text" id="naam" name="name" value="<?=
-                htmlspecialchars($name, ENT_QUOTES);?>">
-                <p class="error"><?=$nameErr;?></p><br>
 
-                <!-- input for phone number !-->
-                <label for="telefoonnummer">Telefoonnummer: </label>
-                <input type="text" id="telefoonnummer" name="phoneNumber" maxlength="11" placeholder="06-12345678" value="<?=
-                htmlspecialchars($phoneNumber, ENT_QUOTES);?>"><br>
+                <!-- Inputs for user data that is needed for reservation -->
+                <!-- Input for name, required -->
+                <div>
+                    <label for="naam">Naam*: </label>
+                    <input type="text" id="naam" name="name"
+                        value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
+                    <p class="error-message"><?=$nameErr;?></p>
+                </div>
 
-                <!-- input for email address !-->
-                <label for="email">Emailadres*: </label>
-                <input type="text" id="email" name="email" placeholder="example@example.nl" value="<?=
-                htmlspecialchars($email, ENT_QUOTES);?>">
-                <p class="error"><?=$emailErr;?></p><br>
+                <!-- Input for phone number -->
+                <div>
+                    <label for="telefoonnummer">Telefoonnummer: </label>
+                    <input type="text" id="telefoonnummer" name="phone-number"
+                        maxlength="11" value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+                </div>
 
-                <!-- input for license plate !-->
-                <label for="kenteken">Kenteken*: </label>
-                <input type="text" id="kenteken" name="licensePlate" maxlength="8" placeholder="AB-C3D-5" value="<?=
-                htmlspecialchars($licensePlate, ENT_QUOTES);?>">
-                <p class="error"><?=$licensePlateErr;?></p><br>
+                <!-- Input for email address, required -->
+                <div>
+                    <label for="email-adres">Email*: </label>
+                    <input type="text" id="email-adres" name="email-address"
+                        value="<?=htmlspecialchars($emailAddress, ENT_QUOTES);?>">
+                    <p class="error-message"><?=$emailAddressErr;?></p>
+                </div>
 
-                <h3>Kies hieronder een datum voor de resevering.</h3>
+                <!-- Input for license plate, required -->
+                <div>
+                    <label for="kenteken">Kenteken*: </label>
+                    <input type="text" id="kenteken" name="license-plate"
+                        maxlength="8" value="<?=htmlspecialchars($licensePlate, ENT_QUOTES);?>">
+                    <p class="error-message"><?=$licensePlateErr;?></p>
+                </div>
 
-                <!-- agenda with possible times !-->
+                <!-- Inputs for choosing a date and time for the reservation -->
+                <!-- Input for choosing a date, required -->
+                <div>
+                    <label for="datum">Datum*: </label>
+                    <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>">
+                </div>
 
-                <!-- resetting and submitting the form to validate !-->
-                <!-- in case the form fails to validate, user is send back here and error is shown !-->
-                <input type="reset" name="reset" value="Reset">
-                <input type="submit" name="submit" value="Bevestigen">
+                <!-- Input for choosing a time, required -->
+                <div>
+                    <label for="tijd">Tijd*: </label>
+                    <input type="time" id="tijd" name="picked-time" min="10:00" max="17:00" step="900">
+                </div>
+
+                <div>
+                    <input type="submit" name="submit" value="Bevestigen">
+                </div>
             </form>
-        </body>
-    </html>
+        </main>
+
+        <!--
+        <footer>
+            <p>Made with the power of PHP</p>
+        </footer>
+        -->
+    </body>
+</html>

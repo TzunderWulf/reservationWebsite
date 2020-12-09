@@ -57,7 +57,7 @@ button:hover {
     font-family: Georgia, serif;
 }
 
-p.error {
+p.error-message {
     color: red;
 }
 
