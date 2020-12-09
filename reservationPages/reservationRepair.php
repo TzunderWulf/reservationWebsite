@@ -59,7 +59,7 @@
         }
         if (!isset($_POST['date']) || $_POST['date'] === '') {
             $validForm = false;
-            $dateErr= 'Dit veld is verplicht.'; // S: was $kenteken, moest $kentekenErr
+            $dateErr= 'Dit veld is verplicht.'; // Date error
         } else {
             $date = htmlspecialchars($_POST['licensePlate']);
         }
