@@ -1,24 +1,48 @@
 <?php
+    session_start();
+
+    if(isset($_SESSION['pickedDate']) && isset($_SESSION['pickedTime'])) {
+        // do nothing
+    } else {
+        header('Location: index.php');
+    }
 ?>
 
 <!doctype html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles/stylesheet.css">
+    <head>
+        <title>Bevestiging</title>
+        <link rel="stylesheet" href="styles/stylesheet.css">
 
-    <img id=header src="https://garagenieuwrijswijk.nl/wp-content/uploads/2014/01/cropped-header45.png" alt="Garage nieuw rijswijk">
+        <!-- Google Font-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+    </head>
 
-    <title>Afspraak maken</title>
-</head>
-<body>
-<h1>Afspraak bevestigd</h1>
-<h3>Er is een afspraak gemaakt voor [afspraak] op [date]</h3>
-<h3>De volgende informatie is doorgegeven (deze informatie wordt ook naar uw verzonden per email): </h3>
-<p>Informatie</p>
-<a href="https://garagenieuwrijswijk.nl"><button2>Terug naar de website</button2></a>
-</body>
+    <body>
+        <header>
+            <img id="header" src="https://garagenieuwrijswijk.nl/wp-content/uploads/2014/01/cropped-header45.png"
+                 alt="Garage nieuw rijswijk">
+        </header>
+
+        <main>
+            <section>
+                <h1 class="confirmation">Reservering geslaagd!</h1>
+                <h3 class="confirmation">Bij deze heeft u een reservering gemaakt op <?=$_SESSION['pickedDate'];?> om
+                    <?=$_SESSION['pickedTime'];?></h3>
+                <img src="" alt="bevestiging">
+                <h3 class="confirmation">U ontvangt ook een bevestigingsmail binnenkort.</h3>
+            </section>
+
+            <a href="https://garagenieuwrijswijk.nl" onclick="<?php session_unset(); session_destroy();?>">
+                <button>Terug naar de website</button>
+            </a>
+        </main>
+
+        <footer>
+
+        </footer>
+    </body>
+
+
 </html>
