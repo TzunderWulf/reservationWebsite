@@ -59,12 +59,25 @@ button:hover {
 
 p.error-message {
     color: red;
+    display: inline-block;
+    padding: 5px 20px;
 }
 
-input:valid {
-    border-bottom: 2px solid green;
+label {
+    width: 120px;
+    padding: 5px 0;
+    display: inline-block;
 }
 
-input:required:invalid {
-    border-bottom: 2px solid red;
+input {
+    background-color: white;
+    width: 150px;
+    border: 2px solid black;
+    padding: 5px 5px;
+    margin: 5px;
+}
+
+.confirmation {
+    text-align: center;
+    font-size: 1.4em;
 }
