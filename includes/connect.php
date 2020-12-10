@@ -1,9 +1,9 @@
 <?php
     // general settings
-    $host = "localhost";
-    $user = "root";
+    $host = "";
+    $user = "";
     $password = "";
-    $database = "reservervation_db";
+    $database = "";
 
     $db = mysqli_connect($host, $user, $password, $database)
         or die("Error: " . mysqli_connect_error()); // if it dies give the error
