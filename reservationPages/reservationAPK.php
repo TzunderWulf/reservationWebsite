@@ -1,6 +1,8 @@
 <?php
     require_once('../includes/connect.php'); // To connect to database
 
+    session_start(); // start a session
+
     // Variables for type reservation to send to database
     $typeReservation = "APK";
 
@@ -45,34 +47,43 @@
         } else {
             $licensePlate = htmlspecialchars($_POST['license-plate']);
         }
-        // vaidation for date
-        $pickedDate = htmlspecialchars($_POST['picked-date']);
-        // vaidation for time
-        $pickedTime = htmlspecialchars($_POST['picked-time']);
-
+        // validation for date
+        if (empty($_POST['picked-date'])) {
+            $validForm = false;
+            $dateErr = "Dit veld is verplicht.";
+        } else {
+            $pickedDate = htmlspecialchars($_POST['picked-date']);
+            $_SESSION['pickedDate'] = $pickedDate;
+        }
+        // validation for time
+        if (empty($_POST['picked-time'])) {
+            $validForm = false;
+            $timeErr = "Dit veld is verplicht.";
+        } else {
+            $pickedTime = htmlspecialchars($_POST['picked-time']);
+            $_SESSION['pickedTime'] = $pickedTime;
+        }
         $phoneNumber = htmlspecialchars($_POST['phone-number']);
 
         if ($validForm) {
-            header('../confirmation.php');
-/*
-            $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) VALUES ('%s', '%s', '%s')",
-                $db ->real_escape_string($typeReservation),
-                $db ->real_escape_string($pickedDate),
-                $db->real_escape_string($pickedTime));
+            header('Location: ../confirmation.php');
+            /*
+                        $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) VALUES ('%s', '%s', '%s')",
+                            $db ->real_escape_string($typeReservation),
+                            $db ->real_escape_string($pickedDate),
+                            $db->real_escape_string($pickedTime));
 
-            $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) VALUES ('%s', '%s', '%s', '%s')",
-                $db ->real_escape_string($name),
-                $db->real_escape_string($phoneNumber),
-                $db->real_escape_string($emailAddress),
-                $db->real_escape_string($licensePlate));
+                        $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) VALUES ('%s', '%s', '%s', '%s')",
+                            $db ->real_escape_string($name),
+                            $db->real_escape_string($phoneNumber),
+                            $db->real_escape_string($emailAddress),
+                            $db->real_escape_string($licensePlate));
 
-            $reservationResult = mysqli_query($db, $reservationQuery);
-            $customerResult = mysqli_query($db, $customerQuery);
-
-            if (!$reservationResult || !$customerResult) {
-                $databaseErr = "Resevering mislukt.";
-            }
-*/
+                        $reservationResult = mysqli_query($db, $reservationQuery);
+                        $customerResult = mysqli_query($db, $customerQuery)
+                            or die("Reservering mislukt"); // if it dies give the error
+                    }
+                    */
         }
     }
 ?>
@@ -102,8 +113,6 @@
 
             <h1>Reservering voor APK keuring</h1>
             <h3>Vul hieronder uw gegevens in, de gegevens met * zijn verplicht.</h3>
-
-            <h3><?=$databaseErr;?></h3>
 
             <form action="" method="post">
 
@@ -144,6 +153,7 @@
                 <div>
                     <label for="datum">Datum*: </label>
                     <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>" value="<?=$pickedDate;?>">
+                    <p class="error-message"><?=$dateErr;?></p>
                 </div>
 
                 <!-- Input for choosing a time, required -->
@@ -151,6 +161,7 @@
                     <label for="tijd">Tijd*: </label>
                     <input type="time" id="tijd" name="picked-time" min="10:00" max="17:00" step="900"
                            value="<?=$pickedTime;?>">
+                    <p class="error-message"><?=$timeErr;?></p>
                 </div>
 
                 <div>
