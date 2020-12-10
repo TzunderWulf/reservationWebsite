@@ -1,11 +1,14 @@
 <?php
-    require_once('../includes/connect.php'); // File to connect to database
+    require_once('../includes/connect.php'); // To connect to database
 
-    // Variables for inputs
+    // Variables for type reservation to send to database
+    $typeReservation = "APK";
+
+    // Variables for inputs and errors
     $name = $phoneNumber = $emailAddress = $licensePlate = $pickedDate = $pickedTime = '';
     $nameErr = $emailAddressErr = $licensePlateErr = $dateErr = $timeErr = $databaseErr= '';
 
-    // variable for the current date + 1
+    // Variable for the current date + 1
     $currentDate = date('Y-m-d', strtotime("+1 day"));
 
     // PHP validation of the form
@@ -16,7 +19,7 @@
         if (empty($_POST['name'])) {
             $validForm = false;
             $nameErr = "Dit veld is verplicht.";
-        } elseif (preg_match("/(\d)/i", $_POST['name'])) {
+        } elseif (preg_match("/(\d)/", $_POST['name'])) {
             $validform = false;
             $nameErr = "Er zitten nummers in de opgegeven naam.";
         } else {
@@ -42,18 +45,22 @@
         } else {
             $licensePlate = htmlspecialchars($_POST['license-plate']);
         }
-        $phoneNumber = htmlspecialchars($_POST['phone-number']);
+        // vaidation for date
         $pickedDate = htmlspecialchars($_POST['picked-date']);
+        // vaidation for time
         $pickedTime = htmlspecialchars($_POST['picked-time']);
+
+        $phoneNumber = htmlspecialchars($_POST['phone-number']);
 
         if ($validForm) {
             header('../confirmation.php');
 /*
-            $reservationQuery = sprintf("INSERT INTO users (Date, Time) VALUES ('%s', '%s')",
+            $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) VALUES ('%s', '%s', '%s')",
+                $db ->real_escape_string($typeReservation),
                 $db ->real_escape_string($pickedDate),
                 $db->real_escape_string($pickedTime));
 
-            $customerQuery = sprintf("INSERT INTO users (Name, PhoneNumber, Email, LicensePlate) VALUES ('%s', '%s', '%s', '%s')",
+            $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) VALUES ('%s', '%s', '%s', '%s')",
                 $db ->real_escape_string($name),
                 $db->real_escape_string($phoneNumber),
                 $db->real_escape_string($emailAddress),
@@ -63,7 +70,7 @@
             $customerResult = mysqli_query($db, $customerQuery);
 
             if (!$reservationResult || !$customerResult) {
-                $databaseErr = "Resevering mislukt." . mysqli_error($db);
+                $databaseErr = "Resevering mislukt.";
             }
 */
         }
@@ -74,7 +81,7 @@
 <html lang="nl">
     <head>
         <title>Reserveren</title>
-        <link rel="stylesheet" href="../stylesheet.css">
+        <link rel="stylesheet" href="../styles/stylesheet.css">
 
         <!-- Google Font-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -136,13 +143,14 @@
                 <!-- Input for choosing a date, required -->
                 <div>
                     <label for="datum">Datum*: </label>
-                    <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>">
+                    <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>" value="<?=$pickedDate;?>">
                 </div>
 
                 <!-- Input for choosing a time, required -->
                 <div>
                     <label for="tijd">Tijd*: </label>
-                    <input type="time" id="tijd" name="picked-time" min="10:00" max="17:00" step="900">
+                    <input type="time" id="tijd" name="picked-time" min="10:00" max="17:00" step="900"
+                           value="<?=$pickedTime;?>">
                 </div>
 
                 <div>

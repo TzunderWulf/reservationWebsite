@@ -36,11 +36,13 @@
 <html lang="nl">
 <head>
     <title>Homescreen</title>
-    <link rel="stylesheet" href="../stylesheet.css">
+    <link rel="stylesheet" href="../styles/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
+<img id=header src="https://garagenieuwrijswijk.nl/wp-content/uploads/2014/01/cropped-header45.png" alt="Garage nieuw rijswijk">
     <h1>Welkom!</h1>
     <a href="login.php">Uitloggen</a>
     <h2>Alle afspraken voor vandaag <?=$currentDate?></h2>

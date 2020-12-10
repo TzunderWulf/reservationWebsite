@@ -1,52 +1,71 @@
 <?php
-    // variables for inputs
-    $name = '';
-    $phoneNumber = '';
-    $email = '';
-    $carChoice = '';
+    require_once('../includes/connect.php'); // To connect to database
 
-    // error variables
-    $nameErr = '';
-    $emailErr = '';
-    $carChoiceErr = '';
+    // Variables for inputs and errors
+    $name = $phoneNumber = $email = $carChoice = $pickedDate = $pickedTime = '';
+    $nameErr = $emailErr = $carChoiceErr = $dateErr = $timeErr = $databaseErr= '';
 
-    // php validation of form
+    // Variable for the current date + 1
+    // for picking date
+
+    // PHP validation of the form
     if (isset($_POST['submit'])) {
-        $validForm = true; // boolean to check if form is valid, changes based on if field is empty
+        $validForm = true; // boolean to check if the form is valid, can change based per field input
 
-        // validation for the name input
-        if (!isset($_POST['name']) || $_POST['name'] === '') {
+        // validation for the name input, checks if it is empty and if theres numbers in the name
+        if (empty($_POST['name'])) {
             $validForm = false;
-            $nameErr = 'Dit veld is verplicht.';
+            $nameErr = "Dit veld is verplicht.";
+        } elseif (preg_match("/(\d)/i", $_POST['name'])) {
+            $validform = false;
+            $nameErr = "Veld verkeerd ingevoerd.";
         } else {
             $name = htmlspecialchars($_POST['name']);
         }
 
-        // validation for the email input
-        if (!isset($_POST['email']) || $_POST['email'] === '') {
+        // validation for the email input, checks if it is empty and if it is a valid email
+        if (empty($_POST['email-address'])) {
             $validForm = false;
-            $emailErr = 'Dit veld is verplicht.';
+            $emailAddressErr = "Dit veld is verplicht.";
+        } elseif (!filter_var($_POST['email-address'], FILTER_VALIDATE_EMAIL)) {
+            $validForm = false;
+            $emailErr = "Veld verkeerd ingevoerd.";
         } else {
-            $email = htmlspecialchars($_POST['email']);
-            // validation for the valid email
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $validForm = false;
-                $emailErr = 'Vekeerde email.';
-            }
+            $emailAddress = htmlspecialchars($_POST['email-address']);
         }
 
-        // validation for the license plate input
-        if (!isset($_POST['carChoice']) || $_POST['carChoice'] === '') {
+        // validation for the car input
+        if (!isset($_POST['car']) || $_POST['car'] === '') {
             $validForm = false;
             $carChoiceErr = 'Dit veld is verplicht.';
         } else {
-            $carChoice = htmlspecialchars($_POST['carChoice']);
+            $carChoice = htmlspecialchars($_POST['car']);
         }
-        $phoneNumber = $_POST['phoneNumber'];
+        $phoneNumber = $_POST['phone-number'];
+        $pickedDate = htmlspecialchars($_POST['picked-date']);
+        $pickedTime = htmlspecialchars($_POST['picked-time']);
 
         // if the entire form is valid sent user to confirmation page
         if ($validForm) {
             header('Location: ../confirmation.php');
+/*
+            $reservationQuery = sprintf("INSERT INTO users (Date, Time) VALUES ('%s', '%s')",
+                $db ->real_escape_string($pickedDate),
+                $db->real_escape_string($pickedTime));
+
+            $customerQuery = sprintf("INSERT INTO users (Name, PhoneNumber, Email, LicensePlate) VALUES ('%s', '%s', '%s', '%s')",
+                $db ->real_escape_string($name),
+                $db->real_escape_string($phoneNumber),
+                $db->real_escape_string($emailAddress),
+                $db->real_escape_string($licensePlate));
+
+            $reservationResult = mysqli_query($db, $reservationQuery);
+            $customerResult = mysqli_query($db, $customerQuery);
+
+            if (!$reservationResult || !$customerResult) {
+                $databaseErr = "Resevering mislukt.";
+            }
+*/
         }
     }
 ?>
@@ -56,7 +75,7 @@
     <html lang="nl">
         <head>
             <title>Reserveren auto</title>
-            <link rel="stylesheet" href="../stylesheet.css">
+            <link rel="stylesheet" href="../styles/stylesheet.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
         </head>
