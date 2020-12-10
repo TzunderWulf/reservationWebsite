@@ -57,6 +57,12 @@
         } else {
             $descRepair = htmlspecialchars($_POST['descRepair']);
         }
+        if (!isset($_POST['date']) || $_POST['date'] === '') {
+            $validForm = false;
+            $dateErr= 'Dit veld is verplicht.'; // Date error
+        } else {
+            $date = htmlspecialchars($_POST['licensePlate']);
+        }
         $phoneNumber = $_POST['phoneNumber']; // phonenumber
 
         // if the entire form is valid sent user to confirmation page
