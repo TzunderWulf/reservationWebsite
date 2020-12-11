@@ -1,5 +1,6 @@
 <?php
     require_once('../includes/connect.php'); // To connect to database
+    require_once('../vendor/autoload.php');
 
     session_start(); // start a session
 
@@ -40,12 +41,17 @@
         }
 
         // validation for the license plate input, checks if it is empty
-        // and *if it is a valid license plate*
+        // and if it is a valid license plate
         if (empty($_POST['license-plate'])) {
             $validForm = false;
             $licensePlateErr = 'Dit veld is verplicht.';
-        } else {
+        }
+        $licenseplate = new \Intrepidity\LicensePlate\DutchLicensePlate($_POST['license-plate']);
+        if($licenseplate->isValid()) {
             $licensePlate = htmlspecialchars($_POST['license-plate']);
+        } else {
+            $validForm = false;
+            $licensePlateErr = 'Dit veld is verkeerd ingevoerd.';
         }
         // validation for date
         if (empty($_POST['picked-date'])) {
