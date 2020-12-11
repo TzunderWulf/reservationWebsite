@@ -63,6 +63,13 @@ p.error-message {
     padding: 5px 20px;
 }
 
+img.confirmation {
+    display: block;
+    width: 20%;
+    margin: 0 auto;
+    padding: 0 80px;
+}
+
 label {
     width: 120px;
     padding: 5px 0;

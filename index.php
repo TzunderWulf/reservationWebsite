@@ -34,7 +34,7 @@
                     <h3>Onderhoud</h3>
                     <p>Auto's moeten nou eenmaal onderhouden worden. Daar kunt u bij ons voor terrecht.</p>
                     <a href="reservation/maintenance.php">
-                        <button>Terug naar de website</button>
+                        <button>Maak een afspraak</button>
                     </a>
                 </div>
 
@@ -42,7 +42,7 @@
                     <h3>Reperatie</h3>
                     <p>Soms gaat er iets kapot, gelukkig kunt u bij ons daarvoor terrecht.</p>
                     <a href="reservation/repair.php">
-                        <button>Terug naar de website</button>
+                        <button>Maak een afspraak</button>
                     </a>
                 </div>
 
@@ -50,7 +50,7 @@
                     <h3>APK</h3>
                     <p>APK keuringen zijn verplicht om eens in het jaar te doen. Hier hebben wij gelukkig ook een optie voor.</p>
                     <a href="reservation/apk.php">
-                        <button>Terug naar de website</button>
+                        <button>Maak een afspraak</button>
                     </a>
                 </div>
 
@@ -58,7 +58,7 @@
                     <h3>Auto uitlenen</h3>
                     <p>Tijdelijk een auto nodig, door reperatie of onderhoud? Maak gerust een afspraak en hij staat voor u klaar.</p>
                     <a href="reservation/car.php">
-                        <button>Terug naar de website</button>
+                        <button>Maak een afspraak</button>
                     </a>
                 </div>
             </section>

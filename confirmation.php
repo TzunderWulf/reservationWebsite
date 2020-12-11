@@ -1,11 +1,5 @@
 <?php
-    session_start();
 
-    if(isset($_SESSION['pickedDate']) && isset($_SESSION['pickedTime'])) {
-        // do nothing
-    } else {
-        header('Location: index.php');
-    }
 ?>
 
 <!doctype html>
@@ -26,17 +20,14 @@
         </header>
 
         <main>
-            <section>
-                <h1 class="confirmation">Reservering geslaagd!</h1>
-                <h3 class="confirmation">Bij deze heeft u een reservering gemaakt op <?=$_SESSION['pickedDate'];?> om
-                    <?=$_SESSION['pickedTime'];?></h3>
-                <img src="" alt="bevestiging">
-                <h3 class="confirmation">U ontvangt ook een bevestigingsmail binnenkort.</h3>
-            </section>
-
-            <a href="https://garagenieuwrijswijk.nl" onclick="<?php session_unset(); session_destroy();?>">
+            <a href="https://garagenieuwrijswijk.nl">
                 <button>Terug naar de website</button>
             </a>
+            <section>
+                <h1 class="confirmation">Reservering geslaagd!</h1>
+                <h3 class="confirmation">U ontvangt ook een bevestigingsmail binnenkort.</h3>
+                <img class=confirmation src="images/confirmationmail.png" alt="bevestiging">
+            </section>
         </main>
 
         <footer>
