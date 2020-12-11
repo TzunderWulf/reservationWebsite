@@ -1,0 +1,57 @@
+{
+    "packages": [
+        {
+            "name": "divtag-nl/license-plate",
+            "version": "v1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/divtag-nl/license-plate.git",
+                "reference": "8de254feaddb0db53adfb90f11886efc385b767e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/divtag-nl/license-plate/zipball/8de254feaddb0db53adfb90f11886efc385b767e",
+                "reference": "8de254feaddb0db53adfb90f11886efc385b767e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.7"
+            },
+            "time": "2019-04-16T08:28:36+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Bart Guliker",
+                    "email": "bart1987@gmail.com"
+                }
+            ],
+            "description": "PHP library to validate and format license plate numbers.",
+            "homepage": "https://github.com/divtag-nl/license-plate.git",
+            "keywords": [
+                "License plate",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/divtag-nl/license-plate/issues",
+                "source": "https://github.com/divtag-nl/license-plate/tree/v1.0.0"
+            },
+            "install-path": "../divtag-nl/license-plate"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
