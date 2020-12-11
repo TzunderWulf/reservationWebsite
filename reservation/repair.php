@@ -1,5 +1,5 @@
 <?php
-    require_once('../includes/connect.php'); // To connect to database
+    require_once('../includes/config.php'); // To connect to database
     require_once('../vendor/autoload.php');
     // variables for inputs
     $name = '';
