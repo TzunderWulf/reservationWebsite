@@ -1,7 +1,7 @@
 <?php
 require_once('../includes/config.php'); // To connect to database
 require_once('../vendor/autoload.php'); // To load license plate validation
-require('../includes/validation.php'); // To validate form
+require('../includes/validation_reservervation.php'); // To validate form
 
 $typeReservation = "APK"; // Var for type reservation
 $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day
