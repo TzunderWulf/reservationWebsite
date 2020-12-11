@@ -41,9 +41,9 @@
         } else {
             $carChoice = htmlspecialchars($_POST['car']);
         }
-        $phoneNumber = $_POST['phone-number'];
-        $pickedDate = htmlspecialchars($_POST['picked-date']);
-        $pickedTime = htmlspecialchars($_POST['picked-time']);
+        // $phoneNumber = $_POST['phone-number'];
+        // $pickedDate = htmlspecialchars($_POST['picked-date']);
+        // $pickedTime = htmlspecialchars($_POST['picked-time']);
 
         // if the entire form is valid sent user to confirmation page
         if ($validForm) {
@@ -100,7 +100,7 @@
 
                 <!-- input for email address !-->
                 <label for="email">Emailadres*: </label>
-                <input type="text" id="email" name="email" placeholder="example@example.nl"value="<?=
+                <input type="text" id="email" name="email" placeholder="example@example.nl" value="<?=
                 htmlspecialchars($email, ENT_QUOTES);?>">
                 <p class="error"><?=$emailErr;?></p><br>
 

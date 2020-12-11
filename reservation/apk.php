@@ -1,8 +1,6 @@
 <?php
     require_once('../includes/connect.php'); // To connect to database
-    require_once('../vendor/autoload.php');
-
-    session_start(); // start a session
+    require_once('../vendor/autoload.php'); // To load license plate validation
 
     // Variables for type reservation to send to database
     $typeReservation = "APK";
@@ -72,6 +70,8 @@
         $phoneNumber = htmlspecialchars($_POST['phone-number']);
 
         if ($validForm) {
+            $_POST['picked-date'];
+            $_POST['picked-time'];
             header('Location: ../confirmation.php');
             /*
                         $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) VALUES ('%s', '%s', '%s')",
