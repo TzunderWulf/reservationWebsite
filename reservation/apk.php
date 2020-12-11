@@ -1,97 +1,10 @@
 <?php
-    require_once('../includes/connect.php'); // To connect to database
-    require_once('../vendor/autoload.php'); // To load license plate validation
+require_once('../includes/config.php'); // To connect to database
+require_once('../vendor/autoload.php'); // To load license plate validation
+require('../includes/validation.php'); // To validate form
 
-    // Variables for type reservation to send to database
-    $typeReservation = "APK";
-
-    // Variables for inputs and errors
-    $name = $phoneNumber = $emailAddress = $licensePlate = $pickedDate = $pickedTime = '';
-    $nameErr = $emailAddressErr = $licensePlateErr = $dateErr = $timeErr = $databaseErr= '';
-
-    // Variable for the current date + 1
-    $currentDate = date('Y-m-d', strtotime("+1 day"));
-
-    // PHP validation of the form
-    if (isset($_POST['submit'])) {
-        $validForm = true; // boolean to check if the form is valid, can change based per field input
-
-        // validation for the name input, checks if it is empty and if theres numbers in the name
-        if (empty($_POST['name'])) {
-            $validForm = false;
-            $nameErr = "Dit veld is verplicht.";
-        } elseif (preg_match("/(\d)/", $_POST['name'])) {
-            $validform = false;
-            $nameErr = "Er zitten nummers in de opgegeven naam.";
-        } else {
-            $name = htmlspecialchars($_POST['name']);
-        }
-
-        // validation for the email input, checks if it is empty and if it is a valid email
-        if (empty($_POST['email-address'])) {
-            $validForm = false;
-            $emailAddressErr = "Dit veld is verplicht.";
-        } elseif (!filter_var($_POST['email-address'], FILTER_VALIDATE_EMAIL)) {
-            $validForm = false;
-            $emailErr = 'Geen geldige email ingevoerd.';
-        } else {
-            $emailAddress = htmlspecialchars($_POST['email-address']);
-        }
-
-        // validation for the license plate input, checks if it is empty
-        // and if it is a valid license plate
-        if (empty($_POST['license-plate'])) {
-            $validForm = false;
-            $licensePlateErr = 'Dit veld is verplicht.';
-        }
-        $licenseplate = new \Intrepidity\LicensePlate\DutchLicensePlate($_POST['license-plate']);
-        if($licenseplate->isValid()) {
-            $licensePlate = htmlspecialchars($_POST['license-plate']);
-        } else {
-            $validForm = false;
-            $licensePlateErr = 'Dit veld is verkeerd ingevoerd.';
-        }
-        // validation for date
-        if (empty($_POST['picked-date'])) {
-            $validForm = false;
-            $dateErr = "Dit veld is verplicht.";
-        } else {
-            $pickedDate = htmlspecialchars($_POST['picked-date']);
-            $_SESSION['pickedDate'] = $pickedDate;
-        }
-        // validation for time
-        if (empty($_POST['picked-time'])) {
-            $validForm = false;
-            $timeErr = "Dit veld is verplicht.";
-        } else {
-            $pickedTime = htmlspecialchars($_POST['picked-time']);
-            $_SESSION['pickedTime'] = $pickedTime;
-        }
-        $phoneNumber = htmlspecialchars($_POST['phone-number']);
-
-        if ($validForm) {
-            $_POST['picked-date'];
-            $_POST['picked-time'];
-            header('Location: ../confirmation.php');
-            /*
-                        $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) VALUES ('%s', '%s', '%s')",
-                            $db ->real_escape_string($typeReservation),
-                            $db ->real_escape_string($pickedDate),
-                            $db->real_escape_string($pickedTime));
-
-                        $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) VALUES ('%s', '%s', '%s', '%s')",
-                            $db ->real_escape_string($name),
-                            $db->real_escape_string($phoneNumber),
-                            $db->real_escape_string($emailAddress),
-                            $db->real_escape_string($licensePlate));
-
-                        $reservationResult = mysqli_query($db, $reservationQuery);
-                        $customerResult = mysqli_query($db, $customerQuery)
-                            or die("Reservering mislukt"); // if it dies give the error
-                    }
-                    */
-        }
-    }
+$typeReservation = "APK"; // Var for type reservation
+$currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day
 ?>
 
 <!doctype html>
@@ -135,15 +48,16 @@
                 <div>
                     <label for="telefoonnummer">Telefoonnummer: </label>
                     <input type="text" id="telefoonnummer" name="phone-number"
-                        maxlength="11" value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+                        value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+                    <p class="error-message"><?=$phoneErr;?></p>
                 </div>
 
                 <!-- Input for email address, required -->
                 <div>
                     <label for="email-adres">Email*: </label>
                     <input type="text" id="email-adres" name="email-address"
-                        value="<?=htmlspecialchars($emailAddress, ENT_QUOTES);?>">
-                    <p class="error-message"><?=$emailAddressErr;?></p>
+                        value="<?=htmlspecialchars($email, ENT_QUOTES);?>">
+                    <p class="error-message"><?=$emailErr;?></p>
                 </div>
 
                 <!-- Input for license plate, required -->
@@ -159,7 +73,7 @@
                 <div>
                     <label for="datum">Datum*: </label>
                     <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>" value="<?=$pickedDate;?>">
-                    <p class="error-message"><?=$dateErr;?></p>
+                    <p class="error-message"><?=$pickedDateErr;?></p>
                 </div>
 
                 <!-- Input for choosing a time, required -->
@@ -167,7 +81,7 @@
                     <label for="tijd">Tijd*: </label>
                     <input type="time" id="tijd" name="picked-time" min="10:00" max="17:00" step="900"
                            value="<?=$pickedTime;?>">
-                    <p class="error-message"><?=$timeErr;?></p>
+                    <p class="error-message"><?=$pickedTimeErr;?></p>
                 </div>
 
                 <div>
