@@ -81,6 +81,10 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                         <div>
                             <input type="submit" name="submit" value="Bevestigen">
                         </div>
+
+                        <div>
+                            <input type="hidden" name="type-reservation" value="car">
+                        </div>
                     </form>
                 </section>
             </main>
