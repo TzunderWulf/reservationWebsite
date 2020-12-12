@@ -1,5 +1,4 @@
 <?php
-
 // variables for inputs and error messages
 $name = $phoneNumber = $email = $licensePlate = $description = $pickedCar = $pickedDate = $pickedTime = $typeReservation = '';
 $nameErr = $phoneErr = $emailErr = $licensePlateErr = $descriptionErr = $pickedCarErr = $pickedDateErr = $pickedTimeErr = '';
@@ -66,7 +65,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['picked-car'])) {
         // validation for the car choice input, checks if it is empty
         if (empty($_POST['picked-car'])) {
             $validForm = false;
@@ -75,6 +74,7 @@ if (isset($_POST['submit'])) {
             $pickedCar = $_POST['picked-car'];
         }
     }
+
 /*
     // validation for date
     if (empty($_POST['picked-date'])) {
@@ -95,21 +95,18 @@ if (isset($_POST['submit'])) {
     // if the entire form is valid:
     if ($validForm) {
         header('Location: ../confirmation.php');
-        /*
-                $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) VALUES ('%s', '%s', '%s')",
-                    $db ->real_escape_string($typeReservation),
-                    $db ->real_escape_string($pickedDate),
-                    $db->real_escape_string($pickedTime));
+        $reservationQuery = sprintf("INSERT INTO reservations (date, time) VALUES ('%s', '%s', '%s')",
+            $db ->real_escape_string($pickedDate),
+            $db->real_escape_string($pickedTime));
 
-                $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) VALUES ('%s', '%s', '%s', '%s')",
-                    $db ->real_escape_string($name),
-                    $db->real_escape_string($phoneNumber),
-                    $db->real_escape_string($email),
-                    $db->real_escape_string($licensePlate));
+        $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) VALUES ('%s', '%s', '%s', '%s')",
+            $db ->real_escape_string($name),
+            $db->real_escape_string($phoneNumber),
+            $db->real_escape_string($email),
+            $db->real_escape_string($licensePlate));
 
-                $reservationResult = mysqli_query($db, $reservationQuery);
-                $customerResult = mysqli_query($db, $customerQuery);
-            }
-        */
-    }
+        $reservationResult = mysqli_query($db, $reservationQuery);
+        $customerResult = mysqli_query($db, $customerQuery);
+        $customerIdResult = mysqli_query($db, $customerIdQuery);
+        }
 }
