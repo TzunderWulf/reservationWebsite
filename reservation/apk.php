@@ -3,15 +3,7 @@ require_once('../includes/config.php'); // To connect to database
 require_once('../vendor/autoload.php'); // To load license plate validation
 require('../includes/validation_reservervation.php'); // To validate form
 
-$typeReservation = "APK"; // Var for type reservation
 $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day
-
-if ($validForm) {
-    $reservationTypeQuery = sprintf("INSERT INTO reservations (type_reservation) VALUES ('%s')",
-        $db->real_escape_string($typeReservation));
-
-    $reservationTypeResult = mysqli_query($db, $reservationTypeQuery);
-}
 ?>
 
 <!doctype html>
@@ -96,6 +88,10 @@ if ($validForm) {
 
                     <div>
                         <input type="submit" name="submit" value="Bevestigen">
+                    </div>
+
+                    <div>
+                        <input type="hidden" name="type-reservation" value="APK">
                     </div>
                 </form>
             </section>

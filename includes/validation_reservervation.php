@@ -75,10 +75,12 @@ if (isset($_POST['submit'])) {
         }
     }
 
+    $typeReservation = $_POST['type-reservation'];
+
 /*
     // validation for date
     if (empty($_POST['picked-date'])) {
-        $validForm = false;
+        $validForm = false
         $pickedDateErr = "Dit veld is verplicht.";
     } else {
         $pickedDate = htmlspecialchars($_POST['picked-date']);
@@ -95,18 +97,25 @@ if (isset($_POST['submit'])) {
     // if the entire form is valid:
     if ($validForm) {
         header('Location: ../confirmation.php');
-        $reservationQuery = sprintf("INSERT INTO reservations (date, time) VALUES ('%s', '%s', '%s')",
-            $db ->real_escape_string($pickedDate),
-            $db->real_escape_string($pickedTime));
-
-        $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) VALUES ('%s', '%s', '%s', '%s')",
+        $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) 
+                                  VALUES ('%s', '%s', '%s', '%s')",
             $db ->real_escape_string($name),
             $db->real_escape_string($phoneNumber),
             $db->real_escape_string($email),
             $db->real_escape_string($licensePlate));
 
+        $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) 
+                                     VALUES ('%s', '%s', '%s')",
+            $db->real_escape_string($typeReservation),
+            $db ->real_escape_string($pickedDate),
+            $db->real_escape_string($pickedTime));
+
+        /*$customerIdQuery = sprintf("INSERT INTO reservations (customerid)
+                                    SELECT id 
+                                    FROM customers"); */
+
         $reservationResult = mysqli_query($db, $reservationQuery);
         $customerResult = mysqli_query($db, $customerQuery);
-        $customerIdResult = mysqli_query($db, $customerIdQuery);
+        // $customerIdResult = mysqli_query($db, $customerIdQuery);
         }
 }
