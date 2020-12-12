@@ -1,0 +1,21 @@
+html {
+    background-color: #D8D8D8;
+}
+
+body {
+    background-color: white;
+    width: 1050px;
+    margin: auto;
+    padding: 30px;
+    min-height: 950px;
+    font-family: Georgia, serif;
+}
+
+td, th {
+    border: 1px solid black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}

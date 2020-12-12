@@ -1,5 +1,5 @@
 <?php
-    require_once('../includes/connect.php');
+    require_once('../includes/config.php');
 
     $indexNumber = $_GET['index'];
 
@@ -22,7 +22,7 @@
     <html lang="nl">
         <head>
             <title>Homescreen</title>
-            <link rel="stylesheet" href="../styles/admin.css">
+            <link rel="stylesheet" href="../styles/stylesheet_employee.css">
             <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
         </head>
 
@@ -55,6 +55,6 @@
                     <li>Keuze auto: <?php print_r($row['carChoice']);?></li>
                 <?php } ?>
             </ul>
-            <a href="startScreen.php">Terug naar de startpagina</a>
+            <a href="index_employee.php">Terug naar de startpagina</a>
         </body>
     </html>

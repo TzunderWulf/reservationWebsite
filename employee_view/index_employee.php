@@ -1,5 +1,5 @@
 <?php
-    require_once('../includes/connect.php');
+    require_once('../includes/config.php');
     $currentDate = date('j F'); // to see what the current date is
     $currentWeek = date('W'); // to see what the current week is
 
@@ -36,7 +36,7 @@
 <html lang="nl">
 <head>
     <title>Homescreen</title>
-    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="../styles/stylesheet_employee.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
 </head>
 
