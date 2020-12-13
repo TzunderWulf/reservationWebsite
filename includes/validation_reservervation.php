@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
         $validForm = false;
         $nameErr = "Veld verkeerd ingevuld.";
     } else {
-        $name = htmlspecialchars($_POST['name']);
+        $name = trim(htmlspecialchars($_POST['name']));
     }
 
     // * if phone number is given, then validate that as well
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
             $validForm = false;
             $phoneErr = "Veld verkeerd ingevuld.";
         } else {
-            $phoneNumber = htmlspecialchars($_POST['phone-number']);
+            $phoneNumber = trim(htmlspecialchars($_POST['phone-number']));
         }
     }
 
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
         $validForm = false;
         $emailErr = "Veld verkeerd ingevuld.";
     } else {
-        $email = htmlspecialchars($_POST['email-address']);
+        $email = trim(htmlspecialchars($_POST['email-address']));
     }
 
     // * checks if license plate is even in the form
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
             $validForm = false;
             $licensePlateErr = "Dit veld is verplicht.";
         } elseif ($licenseplate->isValid()) {
-            $licensePlate = htmlspecialchars($_POST['license-plate']);
+            $licensePlate = trim(htmlspecialchars($_POST['license-plate']));
         } else {
             $validForm = false;
             $licensePlateErr = "Veld verkeerd ingevuld.";
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
             $validForm = false;
             $descriptionError = "Dit veld is verplicht.";
         } else {
-            $description = $_POST['description'];
+            $description = trim(htmlspecialchars(trim($_POST['description'])));
         }
     }
 
