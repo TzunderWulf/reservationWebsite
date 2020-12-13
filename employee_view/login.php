@@ -1,5 +1,5 @@
 <?php
-
+require_once("../includes/validation_login.php")
 ?>
 
 <!doctype html>
@@ -12,17 +12,17 @@
 
         <body>
             <h1>Welkom, log hieronder in.</h1>
-            <form action="index_employee.php" method="post">
+            <form action="" method="post">
                 <div>
                 <label for="gebruikersnaam">Gebruikersnaam: </label>
                 <input type="text" id="gebruikersnaam" name="username">
-                <p class="error"></p>
+                <p class="error"><?=$usernameErr?></p>
                 </div>
 
                 <div>
                 <label for="wachtwoord">Wachtwoord: </label>
                 <input type="password" id="wachtwoord" name="password">
-                <p class="error"></p>
+                <p class="error"><?=$passwordErr?></p>
                 </div>
 
                 <div>
