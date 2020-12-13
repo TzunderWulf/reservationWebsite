@@ -33,60 +33,58 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                     <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
                 </div>
 
-                <section>
-                    <form action="" method="post">
+                <form action="" method="post">
+                    <!-- Inputs for user data that is needed for reservation -->
+                    <!-- input for name !-->
+                    <div>
+                        <label for="naam">Naam*: </label>
+                        <input type="text" id="naam" name="name"
+                               value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
+                        <p class="error-message"><?=$nameErr;?></p>
+                    </div>
 
-                        <!-- Inputs for user data that is needed for reservation -->
-                        <!-- input for name !-->
-                        <div>
-                            <label for="naam">Naam*: </label>
-                            <input type="text" id="naam" name="name"
-                                   value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
-                            <p class="error-message"><?=$nameErr;?></p>
-                        </div>
+                    <!-- Input for phone number -->
+                    <div>
+                        <label for="telefoonnummer">Telefoonnummer: </label>
+                        <input type="text" id="telefoonnummer" name="phone-number"
+                               value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+                        <p class="error-message"><?=$phoneErr;?></p>
+                    </div>
 
-                        <!-- Input for phone number -->
-                        <div>
-                            <label for="telefoonnummer">Telefoonnummer: </label>
-                            <input type="text" id="telefoonnummer" name="phone-number"
-                                   value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
-                            <p class="error-message"><?=$phoneErr;?></p>
-                        </div>
+                    <!-- Input for email address, required -->
+                    <div>
+                        <label for="email-adres">Email*: </label>
+                        <input type="text" id="email-adres" name="email-address"
+                               value="<?=htmlspecialchars($email, ENT_QUOTES);?>">
+                        <p class="error-message"><?=$emailErr;?></p>
+                    </div>
 
-                        <!-- Input for email address, required -->
-                        <div>
-                            <label for="email-adres">Email*: </label>
-                            <input type="text" id="email-adres" name="email-address"
-                                   value="<?=htmlspecialchars($email, ENT_QUOTES);?>">
-                            <p class="error-message"><?=$emailErr;?></p>
-                        </div>
+                    <!-- Input for picking a car, required -->
+                    <div>
+                        <label for="auto-keuze">Kies een van de twee auto's*: </label>
+                        <input type="radio" id="auto-keuze" name="picked-car" value="1"<?php
+                        if ($pickedCar == '1') {
+                            echo ' checked';
+                        }?>>Auto 1
+                        <input type="radio" id="auto-keuze" name="picked-car" value="2"<?php
+                            if ($pickedCar == '2') {
+                                echo ' checked';
+                            }?>>Auto 2
+                        <p class="error-message"><?=$pickedCarErr;?></p>
+                    </div>
 
-                        <!-- Input for picking a car, required -->
-                        <div>
-                            <label for="auto-keuze">Kies een van de twee auto's*: </label>
-                            <input type="radio" id="auto-keuze" name="picked-car" value="1"<?php
-                             if ($pickedCar == '1') {
-                                    echo ' checked';
-                                }?>>Auto 1
-                            <input type="radio" id="auto-keuze" name="picked-car" value="2"<?php
-                                if ($pickedCar == '2') {
-                                    echo ' checked';
-                                }?>>Auto 2
-                            <p class="error-message"><?=$pickedCarErr;?></p>
-                        </div>
-                        <h3>Selecteer hieronder de periode dat u de auto wilt lenen.</h3>
+                    <h3>Selecteer hieronder de periode dat u de auto wilt lenen.</h3>
 
                         <!-- agenda with possible times !-->
 
-                        <div>
-                            <input type="submit" name="submit" value="Bevestigen">
-                        </div>
+                    <div>
+                        <input type="hidden" name="type-reservation" value="car">
+                    </div>
 
-                        <div>
-                            <input type="hidden" name="type-reservation" value="car">
-                        </div>
-                    </form>
-                </section>
+                    <div>
+                        <input type="submit" name="submit" value="Bevestigen">
+                    </div>
+                </form>
             </main>
 
             <!--
