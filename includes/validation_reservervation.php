@@ -3,6 +3,8 @@
 $name = $phoneNumber = $email = $licensePlate = $description = $pickedCar = $pickedDate = $pickedTime = $typeReservation = '';
 $nameErr = $phoneErr = $emailErr = $licensePlateErr = $descriptionErr = $pickedCarErr = $pickedDateErr = $pickedTimeErr = '';
 
+$currentDate = date('Y-m-d'); // Var for the current date + 1 day
+
 // PHP validation of forms
 if (isset($_POST['submit'])) {
     $validForm = true; // boolean to check if form is valid, can change per field input
@@ -77,15 +79,17 @@ if (isset($_POST['submit'])) {
 
     $typeReservation = $_POST['type-reservation'];
 
-/*
     // validation for date
     if (empty($_POST['picked-date'])) {
-        $validForm = false
+        $validForm = false;
         $pickedDateErr = "Dit veld is verplicht.";
+    } elseif ($_POST['picked-date'] <= $currentDate) {
+        $validForm = false;
+        $pickedDateErr = "U kunt deze datum niet kiezen";
     } else {
         $pickedDate = htmlspecialchars($_POST['picked-date']);
     }
-
+/*
     // validation for time
     if (empty($_POST['picked-time'])) {
         $validForm = false;
