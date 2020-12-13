@@ -116,4 +116,5 @@ if (isset($_POST['submit'])) {
             $db->real_escape_string($pickedTime));
         $reservationResult = mysqli_query($db, $reservationQuery);
         }
+    mysqli_close($db);
 }
