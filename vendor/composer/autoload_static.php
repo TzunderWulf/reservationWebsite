@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita471ec5faaf1040ab6ce87a3e7cba191
 {
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+    );
+
     public static $fallbackDirsPsr0 = array (
         0 => __DIR__ . '/..' . '/divtag-nl/license-plate/src',
     );
@@ -17,6 +31,8 @@ class ComposerStaticInita471ec5faaf1040ab6ce87a3e7cba191
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInita471ec5faaf1040ab6ce87a3e7cba191::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita471ec5faaf1040ab6ce87a3e7cba191::$prefixDirsPsr4;
             $loader->fallbackDirsPsr0 = ComposerStaticInita471ec5faaf1040ab6ce87a3e7cba191::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInita471ec5faaf1040ab6ce87a3e7cba191::$classMap;
 

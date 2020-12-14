@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '5641380d71b62216b44136de21d4feabbff84865',
+    'reference' => '54a667702892b368c6ed0a1ad5808bb13724cc30',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '5641380d71b62216b44136de21d4feabbff84865',
+      'reference' => '54a667702892b368c6ed0a1ad5808bb13724cc30',
     ),
     'divtag-nl/license-plate' => 
     array (
@@ -51,6 +51,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '8de254feaddb0db53adfb90f11886efc385b767e',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.2.0',
+      'version' => '6.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e38888a75c070304ca5514197d4847a59a5c853f',
     ),
   ),
 );
