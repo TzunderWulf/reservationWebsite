@@ -2,6 +2,7 @@
 // variables for inputs and error messages
 $name = $phoneNumber = $email = $licensePlate = $description = $pickedCar = $pickedDate = $pickedTime = $typeReservation = '';
 $nameErr = $phoneErr = $emailErr = $licensePlateErr = $descriptionErr = $pickedCarErr = $pickedDateErr = $pickedTimeErr = '';
+$currentYear = date('Y');
 
 $currentDate = date('Y-m-d'); // Var for the current date + 1 day
 
@@ -89,7 +90,7 @@ if (isset($_POST['submit'])) {
     } else {
         $pickedDate = htmlspecialchars($_POST['picked-date']);
     }
-/*
+
     // validation for time
     if (empty($_POST['picked-time'])) {
         $validForm = false;
@@ -97,7 +98,7 @@ if (isset($_POST['submit'])) {
     } else {
         $pickedTime = htmlspecialchars($_POST['picked-time']);
     }
-*/
+
     // if the entire form is valid:
     if ($validForm) {
         header('Location: ../confirmation.php');
@@ -109,11 +110,12 @@ if (isset($_POST['submit'])) {
             $db->real_escape_string($licensePlate));
         $customerResult = mysqli_query($db, $customerQuery);
 
-        $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) 
-                                     VALUES ('%s', '%s', '%s')",
+        $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time, year) 
+                                     VALUES ('%s', '%s', '%s', '%s')",
             $db->real_escape_string($typeReservation),
             $db ->real_escape_string($pickedDate),
-            $db->real_escape_string($pickedTime));
+            $db->real_escape_string($pickedTime),
+            $db->real_escape_string($currentYear));
         $reservationResult = mysqli_query($db, $reservationQuery);
         }
     mysqli_close($db);
