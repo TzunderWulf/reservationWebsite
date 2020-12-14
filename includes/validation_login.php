@@ -3,7 +3,7 @@ session_start();
 
 // Checks if user is already logged in, if so send trough
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-    header('Location: index_employee');
+    header('Location: index_employee.php');
     exit();
 }
 
