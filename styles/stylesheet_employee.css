@@ -43,3 +43,23 @@ a.reservation {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'PT Sans Narrow', sans-serif;
 }
+
+label {
+    width: 120px;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+input {
+    background-color: white;
+    width: 150px;
+    border: 2px solid black;
+    padding: 5px 5px;
+    margin: 5px;
+}
+
+p.error-message {
+    color: red;
+    display: inline-block;
+    padding: 5px 20px;
+}

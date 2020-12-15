@@ -15,14 +15,14 @@ require_once("../includes/validation_login.php")
             <form action="" method="post">
                 <div>
                 <label for="gebruikersnaam">Gebruikersnaam: </label>
-                <input type="text" id="gebruikersnaam" name="username">
-                <p class="error"><?=$usernameErr?></p>
+                <input type="text" id="gebruikersnaam" name="username" value="<?=$username?>">
+                <p class="error-message"><?=$usernameErr?></p>
                 </div>
 
                 <div>
                 <label for="wachtwoord">Wachtwoord: </label>
                 <input type="password" id="wachtwoord" name="password">
-                <p class="error"><?=$passwordErr?></p>
+                <p class="error-message"><?=$passwordErr?></p>
                 </div>
 
                 <div>
