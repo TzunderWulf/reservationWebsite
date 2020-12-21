@@ -29,7 +29,7 @@ html, body {
 img {
     width: 800px;
     height: auto;
-    transform: translate(0, 40%);
+    transform: translate(0, 50%);
 }
 .item-b {
     grid-area: main;
@@ -88,8 +88,19 @@ img {
     margin: auto;
     width: 100px;
     height: 36px;
-    color: black;
-    text-decoration: none;
+}
+
+.reservation-today {
+    border: 2px solid black;
+    margin: 5px;
+    padding: 0 10px;
+    transition: all 0.4s ease-in-out 0.2ms;
+    font-size: 1.2em;
+    line-height: 5px;
+}
+
+.reservation-today:hover {
+    background-color: #3399ef;
 }
 
 /* buttons */
@@ -97,7 +108,7 @@ img {
     margin: 10px 0;
     padding: 0;
     text-align: center;
-    border: 1px solid black;
+    border: 2px solid black;
     transition: all 0.4s ease-in-out 0.2ms;
     cursor: pointer;
 }
@@ -114,7 +125,7 @@ img {
 .user-button {
     margin: 5px 0;
     padding: 5px;
-    border: 1px solid black;
+    border: 2px solid black;
     transition: all 0.4s ease-in-out 0.2ms;
     cursor: pointer;
 }
@@ -131,7 +142,7 @@ img {
 
 #information, #reservation {
     padding: 10px 20px;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 @media (max-width: 1133px) {

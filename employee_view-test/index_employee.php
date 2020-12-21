@@ -26,13 +26,13 @@ $weekQuery = "SELECT id,customerid,type_reservation,date,time,car,description
 $weekResult = mysqli_query($db, $weekQuery)
     or die('Error '.mysqli_error($db).' with query '. $weekQuery);
 
-
+$currentDay = date('Y-m-d');
 $dayQuery = "SELECT id,customerid,type_reservation,date,time,car, description
                                 FROM reservations
-                                WHERE date = date('Y-m-d')
-                                ORDER BY time ASC";
+                                    WHERE date = '$currentDay'
+                                    ORDER BY time ASC";
 $dayResult = mysqli_query($db, $dayQuery)
-    or die('Error '.mysqli_error($db).' with query '. $dayQuery);
+    or die('Error ' .mysqli_error($db).' with query '. $dayQuery);
 
 $reservationsWeek = [];
 // loop trough week reservations with while
@@ -127,16 +127,16 @@ $monday = date("Y-m-d", strtotime('monday this week'));
 </div>
     <div class="item-c">
         <h2>Afspraken voor vandaag <?=$currentDate?></h2>
-        <?php foreach ($dayResult as $reservation) { ?>
-            <a href="detail.php?index=<?=$reservation['id']?>">
-                <div>
-                    <p><?=$reservation['type_reservation']?></p>
-                    <p><?=date('H:i',strtotime($reservation['time']))?></p>
-                    <p><?php if (isset($reservation['description'])) { ?>
-                            Opmerkingen: <?=$reservation['description']?>
+        <?php foreach ($dayResult as $todayReservation) { ?>
+            <a class="link-button" href="detail.php?index=<?=$todayReservation['id']?>">
+                <div class="reservation-today">
+                    <p><?=$todayReservation['type_reservation']?></p>
+                    <p><?=date('H:i',strtotime($todayReservation['time']))?></p>
+                    <p><?php if (isset($todayReservation['description'])) { ?>
+                            Opmerkingen: <?=$todayReservation['description']?>
                         <?php } ?></p>
-                    <p><?php if (isset($reservation['car'])) { ?>
-                            Autokeuze: <?=$reservation['car']?>
+                    <p><?php if (isset($todayReservation['car'])) { ?>
+                            Autokeuze: <?=$todayReservation['car']?>
                         <?php } ?></p>
                 </div>
             </a>
