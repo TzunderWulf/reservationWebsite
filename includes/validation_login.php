@@ -58,7 +58,6 @@ if (isset($_POST['submit'])) {
                 } else {
                     $usernameErr = "Deze gebruikersnaam is niet gevonden.";
                 }
-
             } else {
                 echo "Er is iets verkeerd gegaan. Probeer het later opnieuw.";
             }
