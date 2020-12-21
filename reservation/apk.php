@@ -41,7 +41,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                     <label for="naam">Naam*: </label>
                     <input type="text" id="naam" name="name"
                            value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
-                    <p class="error-message"><?=$nameErr;?></p>
+                    <p class="error-message"><?=$nameErr?></p>
                 </div>
 
                 <!-- Input for phone number -->

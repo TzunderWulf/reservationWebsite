@@ -101,6 +101,7 @@ if (isset($_POST['submit'])) {
     // if the entire form is valid:
     if ($validForm) {
         header('Location: ../confirmation.php');
+
         $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) 
                                   VALUES ('%s', '%s', '%s', '%s')",
             $db ->real_escape_string($name),
@@ -109,8 +110,8 @@ if (isset($_POST['submit'])) {
             $db->real_escape_string($licensePlate));
         $customerResult = mysqli_query($db, $customerQuery);
 
-        $reservationQuery = sprintf("INSERT INTO reservations (type_reservation, date, time) 
-                                     VALUES ('%s', '%s', '%s')",
+        $reservationQuery = sprintf("INSERT INTO reservations (customerid, type_reservation, date, time) 
+                                     VALUES (LAST_INSERT_ID(),  '%s', '%s', '%s')",
             $db->real_escape_string($typeReservation),
             $db ->real_escape_string($pickedDate),
             $db->real_escape_string($pickedTime));
