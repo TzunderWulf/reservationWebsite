@@ -1,0 +1,57 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
+}
+
+.container {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1200px auto;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100%;
+    grid-gap: 10px;
+    grid-template-areas:
+    ". header ."
+    ". main ."
+    "footer footer footer";
+}
+
+.item-a {
+    grid-area: header;
+}
+
+img {
+    display:block;
+    margin: auto;
+}
+
+.item-b {
+    grid-area: main;
+}
+
+.item-c {
+    grid-area: footer;
+    background-color: #151414;
+    color: white;
+    margin: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+}
+
+input[type=submit] {
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px solid black;
+    transition: all 0.4s ease-in-out 0.2ms;
+}
+
+input[type=submit]:hover {
+    background-color: #3399ef;
+}
+
+.error-message {
+    color: red;
+}
