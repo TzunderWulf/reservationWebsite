@@ -20,14 +20,14 @@ html, body {
     /*border: 2px solid green;*/
     margin: 0;
     width: 100%;
-    padding: 10px 0;
-    text-align: center;
     font-size: 1.5em;
+    align-content: center;
 }
 
 img {
     width: 800px;
     height: auto;
+    transform: translate(0, 40%);
 }
 .item-b {
     grid-area: main;
@@ -69,28 +69,113 @@ img {
 #user {
     grid-area: user;
     text-align: right;
-    width: 200px;
-    padding: 0 20px
+    padding: 0 20px;
 }
 .reservation {
     border: 2px solid black;
-    border-radius: 8px;
     margin: auto;
     width: 100px;
     height: 36px;
     color: black;
     text-decoration: none;
-    transition: all 0.4s ease-in-out 2ms;
+    transition: all 0.4s ease-in-out 0.2ms;
 }
 
 .reservation:hover {
-    border: 2px solid black;
     background-color: #3399ef;
-
-    border-radius: 8px;
     margin: auto;
     width: 100px;
     height: 36px;
     color: black;
     text-decoration: none;
+}
+
+/* buttons */
+.button {
+    margin: 10px 0;
+    padding: 0;
+    text-align: center;
+    border: 1px solid black;
+    transition: all 0.4s ease-in-out 0.2ms;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #3399ef;
+}
+
+.link-button {
+    color: black;
+    text-decoration: none;
+}
+
+.user-button {
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid black;
+    transition: all 0.4s ease-in-out 0.2ms;
+    cursor: pointer;
+}
+
+.user-button:hover {
+    background-color: #3399ef;
+}
+
+
+/* styling for detail page */
+#options, #reservation, #information {
+    margin: 10px 0;
+}
+
+#information, #reservation {
+    padding: 10px 20px;
+    border: 1px solid black;
+}
+
+@media (max-width: 1133px) {
+    .container {
+        margin: 0;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto 1fr 1fr auto;
+        min-height: 100%;
+        grid-gap: 10px;
+        grid-template-areas:
+    "header"
+    "user"
+    "main"
+    "sidebar"
+    "footer";
+    }
+    .item-a {
+        grid-area: header;
+        /*border: 2px solid green;*/
+        margin: 0;
+        width: 100%;
+        font-size: 1.5em;
+        align-content: center;
+    }
+
+    img {
+        width: 500px;
+        height: auto;
+        transform: translate(0, 40%);
+    }
+    .item-b {
+        display:none;
+    }
+    .item-c {
+        grid-area: main;
+        /*border: 2px solid blue;*/
+        padding: 20px;
+    }
+    .item-d {
+        grid-area: footer;
+        background-color: #151414;
+        color: white;
+        margin: 0;
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+    }
 }
