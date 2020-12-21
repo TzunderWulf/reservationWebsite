@@ -72,14 +72,17 @@ $monday = date("Y-m-d", strtotime('monday this week'));
 <div id="user">
     <h2>Welkom, <?=$_SESSION['username']?>!</h2>
     <h3><?=date('d-m-Y H:i')?></h3>
-    <?php if ($_SESSION['admin'] === 1) { ?>
-        <a href=".php">
-            <button>Gebruiker aanmaken</button>
-        </a>
-    <?php } ?>
-    <a href="logout.php">
-        <button>Uitloggen</button>
-    </a>
+    <div>
+        <?php if ($_SESSION['admin'] === 1) { ?>
+            <a href=".php">Gebruiker aanmaken</a>
+        <?php } ?>
+    </div>
+    <div>
+        <a href="help.php">Hulp</a>
+    </div>
+    <div>
+        <a href="logout.php">Uitloggen</a>
+    </div>
 </div>
 
 <div class="item-b">
