@@ -1,6 +1,6 @@
 <?php
 require_once('../includes/config.php'); // To connect to database
-require('../includes/validation_reservervation.php'); // To validate form
+require('../includes/validation-reservervation.php'); // To validate form
 
 $typeReservation = "Auto uitleen"; // Var for type reservation
 $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day

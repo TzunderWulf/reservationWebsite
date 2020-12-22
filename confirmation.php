@@ -26,7 +26,7 @@
             <section>
                 <h1 class="confirmation">Reservering geslaagd!</h1>
                 <h3 class="confirmation">U ontvangt ook een bevestigingsmail binnenkort.</h3>
-                <img class=confirmation src="images/confirmationmail.png" alt="bevestiging">
+                <img class=confirmation src="images/confirmation-mail.png" alt="bevestiging's mail">
             </section>
         </main>
 

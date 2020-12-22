@@ -3,7 +3,7 @@ session_start();
 
 // Checks if user is already logged in, if so send trough
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-    header('Location: index_employee.php');
+    header('Location: index.php');
     exit();
 }
 
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
                             $_SESSION["admin"] = $admin;
 
                             // Redirect user to welcome page
-                            header("location: index_employee.php");
+                            header("location: index.php");
                         } else {
                             // Display an error message if password is not valid
                             $passwordErr = "Dit veld is verkeerd ingevoerd.";
