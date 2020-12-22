@@ -66,7 +66,7 @@ $monday = date("Y-m-d", strtotime('monday this week'));
 
 <body class="container">
 <div class="item-a">
-    <img src="https://garagenieuwrijswijk.nl/wp-content/uploads/2014/01/cropped-header45.png" alt="header image">
+    <img src="../images/header.png" alt="header image">
 </div>
 
 <div id="user">

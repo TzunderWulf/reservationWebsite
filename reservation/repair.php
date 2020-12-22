@@ -81,6 +81,10 @@
         </head>
 
         <body>
+            <header>
+                <img id="header" src="../images/header.png" alt="Garage nieuw rijswijk">
+            </header>
+
         <!-- R: Button bij gedaan bij de terug knop--->
             <a href="../index.php"><button2>Terug</button2></a>
             <h1>Afspraak maken voor auto onderhoud?</h1>
