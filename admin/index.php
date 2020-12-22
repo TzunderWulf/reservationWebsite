@@ -2,7 +2,19 @@
 session_start();
 
 require_once('../includes/config.php');
-require_once('../includes/weekschedule.php');
+
+function timesArray(string $start, string $end, int $interval) {
+    $times = [];
+    $time = strtotime($start);
+    $timeToAdd = 30;
+
+    while($time <= strtotime($end)) {
+        $times[] = date('H:i', $time);
+        $time +=  60 * $timeToAdd;
+    }
+    return $times;
+}
+
 setlocale(LC_ALL, 'nld_nld'); // set local to dutch
 
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
@@ -16,12 +28,15 @@ $date = date ('Y-m-d');
 $currentDate = strftime("%A %e %B", mktime(0, 0, 0, date('m'), date('d'),
     date('y')));
 
+$monday = date("Y-m-d", strtotime('monday this week'));
+$friday = date("Y-m-d", strtotime('friday this week'));
+
 // getting the reservations for this week
 $weekQuery = "SELECT id,customerid,type_reservation,date,time,car,description
                 FROM reservations
                 WHERE date
-                BETWEEN CAST(timestampadd(SQL_TSI_DAY, -(dayofweek(curdate())-2), curdate()) AS date)
-                    and CAST(timestampadd(SQL_TSI_DAY, 5-(dayofweek(curdate())-1), curdate()) AS date)
+                BETWEEN '$monday'
+                    AND '$friday'
                     ORDER BY time ASC";
 $weekResult = mysqli_query($db, $weekQuery)
     or die('Error '.mysqli_error($db).' with query '. $weekQuery);
@@ -48,16 +63,14 @@ while($row = mysqli_fetch_assoc($dayResult)) {
     break;
 }
 
-$times = createArrayWithTimes('08:00', '17:30', 15);
-
-$monday = date("Y-m-d", strtotime('monday this week'));
+$times = timesArray('08:00', '17:30', 15);
 ?>
 
 <!doctype html>
 <html lang="nl">
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="../styles/stylesheet_employee.css">
+    <link rel="stylesheet" href="../styles/stylesheet-admin.css">
 
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -73,7 +86,7 @@ $monday = date("Y-m-d", strtotime('monday this week'));
     <h2>Welkom, <?=$_SESSION['username']?>!</h2>
     <h3><?=date('d-m-Y H:i')?></h3>
     <?php if ($_SESSION['admin'] === 1) { ?>
-        <a class="link-button" href=".php">
+        <a class="link-button" href="user-section/create-user.php">
             <div class="user-button">Gebruiker aanmaken</div>
         </a>
     <?php } ?>
@@ -86,7 +99,7 @@ $monday = date("Y-m-d", strtotime('monday this week'));
 </div>
 
 <div class="item-b">
-    <h2>Afspraken voor de huidige week <?=date('W')?></h2>
+    <h2>Afspraken voor de week <?=$week = date('W')?></h2>
     <div class="row">
         <?php for($d=-1;$d<5;$d++) { ?>
             <?php if ($d == -1) { ?>
