@@ -22,17 +22,18 @@ require_once("../includes/validation_login.php")
                 <h1>Welkom, log hieronder in.</h1>
 
                 <div class="form-field">
-                <label for="gebruikersnaam">Gebruikersnaam:</label>
-                <input type="text" id="gebruikersnaam" name="username" value="<?=$username?>">
-                <p class="error-message"><?=$usernameErr?></p>
+                    <label for="gebruikersnaam">Gebruikersnaam:</label>
+                    <input type="text" id="gebruikersnaam" name="username" value="<?=$username?>">
+                    <p class="error-message"><?=$usernameErr?></p>
                 </div>
 
                 <!-- adding capslock detection? -->
 
                 <div class="form-field">
-                <label for="wachtwoord">Wachtwoord:</label>
-                <input type="password" id="wachtwoord" name="password">
-                <p class="error-message"><?=$passwordErr?></p>
+                    <label for="wachtwoord">Wachtwoord:</label>
+                    <input type="password" id="wachtwoord" name="password">
+                    <p class="error-message"><?=$passwordErr?></p>
+                    <p id="warning-text">Let op, capslock is aan</p>
                 </div>
 
                 <div>
@@ -44,5 +45,7 @@ require_once("../includes/validation_login.php")
         <div class="item-c">
             <p>Aan dit systeem kunnen geen rechten worden voorgeleend. <br> Het systeem is op dit moment nog in de bouw.</p>
         </div>
+
+        <script src="../scripts/main.js"></script>
         </body>
     </html>

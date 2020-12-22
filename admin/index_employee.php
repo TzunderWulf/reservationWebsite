@@ -48,7 +48,7 @@ while($row = mysqli_fetch_assoc($dayResult)) {
     break;
 }
 
-$times = createArrayWithTimes('09:00', '16:30', 15);
+$times = createArrayWithTimes('08:00', '17:30', 15);
 
 $monday = date("Y-m-d", strtotime('monday this week'));
 ?>
