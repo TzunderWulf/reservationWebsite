@@ -41,7 +41,7 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
 <html lang="nl">
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="../styles/stylesheet_employee.css">
+    <link rel="stylesheet" href="../styles/stylesheet-admin.css">
 
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -57,7 +57,7 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
     <h2>Welkom, <?=$_SESSION['username']?>!</h2>
     <h3><?=date('d-m-Y H:i')?></h3>
     <?php if ($_SESSION['admin'] === 1) { ?>
-        <a class="link-button" href=".php">
+        <a class="link-button" href="user-section/create-user.php">
             <div class="user-button">Gebruiker aanmaken</div>
         </a>
     <?php } ?>
@@ -90,7 +90,7 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
                 </div>
             </a>
         <?php } ?>
-        <a class="link-button" href="index_employee.php">
+        <a class="link-button" href="index.php">
             <div class="button">
                 <h3>Terug</h3>
             </div>
