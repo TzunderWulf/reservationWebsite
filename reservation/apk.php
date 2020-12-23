@@ -20,7 +20,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
 
     <body>
         <header>
-            <img id="header" src="images/header.png"
+            <img id="header" src="../images/header.png"
             alt="Garage nieuw rijswijk">
         </header>
 
