@@ -2,7 +2,6 @@
 // variables for inputs and error messages
 $name = $phoneNumber = $email = $licensePlate = $description = $pickedCar = $pickedDate = $pickedTime = $typeReservation = '';
 $nameErr = $phoneErr = $emailErr = $licensePlateErr = $descriptionErr = $pickedCarErr = $pickedDateErr = $pickedTimeErr = '';
-var_dump($_POST);
 $currentDate = date('Y-m-d'); // Var for the current date + 1 day
 
 // PHP validation of forms
@@ -100,7 +99,7 @@ if (isset($_POST['submit'])) {
 
     // if the entire form is valid:
     if ($validForm) {
-        header('Location: ../confirmation.php');
+        require('send-mail.php');
         $customerQuery = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate) 
                                   VALUES ('%s', '%s', '%s', '%s')",
             $db ->real_escape_string($name),
