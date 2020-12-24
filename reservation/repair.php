@@ -95,19 +95,20 @@
                 <div>
                 <label for="name">Naam*: </label>
                 <input type="text" id="name" name="name" value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
-                <p class="error"><?=$nameErr;?></p><br>
+                <p class="error"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
                 </div>
                 <!-- input voor telefoon nummer !-->
                 <label for="phoneNumber">Telefoonnummer: </label>
                 <input type="text" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="06-12345678"
-                value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>"><br>
+                value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+                <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p><br>
 
                 <!-- input voor email address !-->
                 <div>
                 <label for="email">Emailadres*: </label>
                 <input type="text" id="email" name="email" placeholder="example@example.nl" value="<?=
                 htmlspecialchars($email, ENT_QUOTES);?>">
-                <p class="error"><?=$emailErr;?></p><br>
+                <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p><br>
                 </div>
 
                 <!-- input voor kenteken !-->
@@ -115,14 +116,14 @@
                 <label for="licensePlate">Kenteken*: </label>
                 <input type="text" id="licensePlate" name="licensePlate" maxlength="8" placeholder="AB-C3D-5" value="<?=
                 htmlspecialchars($licensePlate, ENT_QUOTES);?>">
-                <p class="error"><?=$licensePlateErr;?></p><br>
+                <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p><br>
                 </div>
 
                 <!-- input voor omschrijving reparatie of herstel !-->
                 <div>
                  <label for = "descRepairation">Omschrijving wat er gerepareerd of hersteld moet worden*: </label><br>
                  <textarea id="descRepairation" name="descRepair" rows="4" cols="50"></textarea>
-                 <p class="error"><?=$descRepairErr;?></p><br>
+                 <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p><br>
                 </div>
 
                 <!-- input datum !-->
@@ -131,7 +132,7 @@
                     <label for = "start">Kies hieronder een datum voor de resevering: </label><br>
                     <input type="date" id="start" name="tripStart" value="<?=
                     htmlspecialchars($date, ENT_QUOTES);?>">
-                    <p class="error"><?=$dateErr;?></p><br>
+                    <p class="error"><?= isset($errors['picked-date']) ? $errors['picked- date'] : "" ?></p><br>
                 </div>
 
                 <!-- Reset knop van Sara-->

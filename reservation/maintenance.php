@@ -85,29 +85,30 @@
                  <!-- input voor naam !-->
                 <label for="name">Naam*: </label>
                 <input type="text" id="name" name="name" value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
-                <p class="error"><?=$nameErr;?></p><br>
+                <p class="error"><?= isset($errors['name']) ? $errors['phone-number'] : "" ?></p><br>
 
                 <!-- input voor telefoon nummer !-->
                 <label for="phoneNumber">Telefoonnummer: </label>
                 <input type="text" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="06-12345678"
-                value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>"><br>
+                value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+                <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p><br>
 
                 <!-- input voor email address !-->
                 <label for="email">Emailadres*: </label>
-                <input type="text" id="email" name="email" placeholder="example@example.nl" value="<?=
+                <input type="text" id="email" name="email-address" placeholder="example@example.nl" value="<?=
                 htmlspecialchars($email, ENT_QUOTES);?>">
-                <p class="error"><?=$emailErr;?></p><br>
+                <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p><br>
 
                 <!-- input voor kenteken !-->
-                <label for="licensePlate">Kenteken*: </label>
-                <input type="text" id="licensePlate" name="licensePlate" maxlength="8" placeholder="AB-C3D-5" value="<?=
+                <label for="kenteken">Kenteken*: </label>
+                <input type="text" id="kenteken" name="license-plate" maxlength="8" placeholder="AB-C3D-5" value="<?=
                 htmlspecialchars($licensePlate, ENT_QUOTES); ?>">
-                <p class="error"><?=$licensePlateErr;?></p><br>
+                <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p><br>
 
                 <!-- input voor decription !-->
-                <label for = "descMaintenace" >Omschrijving wat voor type onderhoud*: </label><br>
-                <textarea id="descMaintenace" name="descMaintenace" rows="4" cols="50"></textarea><br>
-                <p class="error"><?=$descMaintenaceErr;?></p><br>
+                <label for = "omschrijving-werkzaamheden" >Omschrijving wat voor type onderhoud*: </label><br>
+                <textarea id="omschrijving-werkzaamheden" name="description" rows="4" cols="50"></textarea><br>
+                <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p><br>
 
                 <h3>Kies hieronder een datum voor de resevering.</h3>
 

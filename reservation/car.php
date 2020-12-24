@@ -72,10 +72,19 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                             }?>>Auto 2
                         <p class="error-message"><?=$pickedCarErr;?></p>
                     </div>
+                    <div>
+                        <label for="datum">Vanaf wanneer wilt u de auto lenen*: </label>
+                        <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>" value="<?=$pickedDate;?>">
+                        <p><?=$pickedDate?></p>
+                        <p class="error-message"><?=$pickedDateErr;?></p>
+                    </div>
 
-                    <h3>Selecteer hieronder de periode dat u de auto wilt lenen.</h3>
-
-                        <!-- agenda with possible times !-->
+                    <div>
+                        <label for="datum">Tot wanneer wilt u de auto lenen*: </label>
+                        <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>" value="<?=$pickedDateReturn;?>">
+                        <p><?=$pickedDate?></p>
+                        <p class="error-message"><?=$pickedDateReturnErr;?></p>
+                    </div>
 
                     <div>
                         <input type="hidden" name="type-reservation" value="car">
