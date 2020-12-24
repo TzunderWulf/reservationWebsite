@@ -28,8 +28,10 @@ $date = date ('Y-m-d');
 $currentDate = strftime("%A %e %B", mktime(0, 0, 0, date('m'), date('d'),
     date('y')));
 
-$monday = date("Y-m-d", strtotime('monday this week'));
-$friday = date("Y-m-d", strtotime('friday this week'));
+$week = 2;
+
+$monday = date("Y-m-d", strtotime("monday this week"));
+$friday = date("Y-m-d", strtotime($monday . "+ 4 days"));
 
 // getting the reservations for this week
 $weekQuery = "SELECT id,customerid,type_reservation,date,time,car,description
@@ -64,6 +66,7 @@ while($row = mysqli_fetch_assoc($dayResult)) {
 }
 
 $times = timesArray('08:00', '17:30', 15);
+
 ?>
 
 <!doctype html>
@@ -78,16 +81,16 @@ $times = timesArray('08:00', '17:30', 15);
 </head>
 
 <body class="container">
-<div class="item-a">
+<header class="item-a">
     <img src="../images/header.png" alt="header image">
-</div>
+</header>
 
-<div id="user">
+<div class="user">
     <h2>Welkom, <?=$_SESSION['username']?>!</h2>
     <h3><?=date('d-m-Y H:i')?></h3>
     <?php if ($_SESSION['admin'] === 1) { ?>
-        <a class="link-button" href="user-section/create-user.php">
-            <div class="user-button">Gebruiker aanmaken</div>
+        <a class="link-button" href="user-section/overview-user.php">
+            <div class="user-button">Gebruikers</div>
         </a>
     <?php } ?>
     <a class="link-button" href="">
@@ -98,8 +101,8 @@ $times = timesArray('08:00', '17:30', 15);
     </a>
 </div>
 
-<div class="item-b">
-    <h2>Afspraken voor de week <?=$week = date('W')?></h2>
+    <main class="item-b">
+    <h2>Reserveringen voor de week <?=$week = date('W')?></h2>
     <div class="row">
         <?php for($d=-1;$d<5;$d++) { ?>
             <?php if ($d == -1) { ?>
@@ -137,9 +140,9 @@ $times = timesArray('08:00', '17:30', 15);
             <?php } ?>
         </div>
     <?php } ?>
-</div>
+    </main>
     <div class="item-c">
-        <h2>Afspraken voor vandaag <?=$currentDate?></h2>
+        <h2>Reserveringen voor vandaag <?=$currentDate?></h2>
         <?php foreach ($dayResult as $todayReservation) { ?>
             <a class="link-button" href="detail.php?index=<?=$todayReservation['id']?>">
                 <div class="reservation-today">
@@ -156,8 +159,8 @@ $times = timesArray('08:00', '17:30', 15);
         <?php } ?>
     </div>
 
-<div class="item-d">
+<footer class="item-d">
     <p>Aan dit systeem kunnen geen rechten worden voorgeleend. <br> Het systeem is op dit moment nog in de bouw.</p>
-</div>
+</footer>
 </body>
 </html>

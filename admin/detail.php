@@ -49,11 +49,11 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
 </head>
 
 <body class="container">
-<div class="item-a">
+<header class="item-a">
     <img src="../images/header.png" alt="header image">
-</div>
+</header>
 
-<div id="user">
+<div class="user">
     <h2>Welkom, <?=$_SESSION['username']?>!</h2>
     <h3><?=date('d-m-Y H:i')?></h3>
     <?php if ($_SESSION['admin'] === 1) { ?>
@@ -69,7 +69,7 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
     </a>
 </div>
 
-<div class="item-c">
+<main class="item-c">
     <div id="reservation">
         <h1>Afspraak</h1>
         <h3><?php print_r($reservation['type_reservation']);?></h3>
@@ -96,7 +96,7 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
             </div>
         </a>
     </div>
-</div>
+</main>
 
 <div class="item-b">
     <div id="information">
@@ -127,8 +127,8 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
 
 </body>
 
-<div class="item-d">
+<footer class="item-d">
     <p>Aan dit systeem kunnen geen rechten worden voorgeleend. <br> Het systeem is op dit moment nog in de bouw.</p>
-</div>
+</footer>
 
 </html>
