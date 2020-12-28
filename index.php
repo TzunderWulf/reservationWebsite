@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="nl">
     <head>
-        <title></title>
+        <title>Reserveren</title>
         <link rel="stylesheet" href="styles/stylesheet.css">
 
         <!-- Google Font-->
