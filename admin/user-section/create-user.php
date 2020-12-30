@@ -86,7 +86,14 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="nl">
     <head>
+
         <title>Gebruiker aanmaken</title>
+        <link rel="stylesheet" href="../../styles/stylesheet-login.css">
+
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+
     </head>
 
     <body>

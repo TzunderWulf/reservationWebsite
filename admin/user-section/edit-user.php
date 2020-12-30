@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     header('Location: ../login.php');
     exit();
 } elseif ($_SESSION['admin'] != 1) {
@@ -40,34 +40,22 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="nl">
 <head>
+
     <title>Gebruiker verwijderen</title>
-    <link rel="stylesheet" href="../../styles/stylesheet-admin.css">
+    <link rel="stylesheet" href="../../styles/stylesheet-login.css">
 
     <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="container">
-<div class="item-a">
+<header>
     <img src="../../images/header.png" alt="header image">
-</div>
+</header>
 
-<div class="user">
-    <h2>Welkom, <?=$_SESSION['username']?>!</h2>
-    <h3><?=date('d-m-Y H:i')?></h3>
-    <?php if ($_SESSION['admin'] === 1) { ?>
-        <a class="link-button" href="overview-user.php">
-            <div class="user-button">Gebruikers</div>
-        </a>
-    <?php } ?>
-    <a class="link-button" href="">
-        <div class="user-button">Hulp</div>
-    </a>
-    <a class="link-button" href="../logout.php">
-        <div class="user-button">Uitloggen</div>
-    </a>
-</div>
-
-<div class="item-b">
+<main>
     <form id="delete" action="" method="post">
         <h1>Gebruiker: <?= $user['username'] ?></h1>
         <div class="field-input">
@@ -102,6 +90,6 @@ if (isset($_POST['submit'])) {
             </div>
         </a>
     </form>
-</div>
+</main>
 </body>
 </html>
