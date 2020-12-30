@@ -16,7 +16,7 @@ $dateDutch = strftime("%A %e %B", mktime(0, 0, 0, date('m'), date('d'),
     date('y')));
 
 $monday = date("Y-m-d", strtotime("monday this week"));
-$friday = date("Y-m-d", strtotime($monday . "+ 4 days"));
+$friday = date("Y-m-d", strtotime("friday this week"));
 
 // getting the reservations for this week
 $query = "SELECT id,customerid,type_reservation,date,time,car,description
