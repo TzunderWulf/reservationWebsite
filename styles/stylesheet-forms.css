@@ -40,6 +40,7 @@ footer {
     margin: auto;
 }
 
+/* style for general form */
 form {
     border: 2px solid black;
     padding: 0 100px 25px 100px;
@@ -52,28 +53,7 @@ h1 {
    text-align: center;
 }
 
-label {
-    font-size: 1.2em;
-    display: inline-block;
-    width: 120px;
-}
-
-input {
-    font-size: 1.1em;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-weight: bold;
-}
-
-input[type=submit] {
-    border: 2px solid #000000;
-    padding: 5px 10px;
-    transition: all 0.4s ease-in-out 0.2ms;
-}
-
-input[type=submit]:hover {
-    background-color: #3399ef;
-}
-
+/* style for error messages */
 .error-message, #warning-text {
     color: #FF0000;
 }
@@ -81,3 +61,27 @@ input[type=submit]:hover {
 #warning-text {
     display: none;
 }
+
+/* style for login form */
+.login-label {
+    font-size: 1.2em;
+    display: inline-block;
+    width: 120px;
+}
+
+.login-input {
+    font-size: 1.1em;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
+}
+
+.login-input[type=submit] {
+    border: 2px solid #000000;
+    padding: 5px 10px;
+    transition: all 0.4s ease-in-out 0.2ms;
+}
+
+.login-input[type=submit]:hover {
+    background-color: #3399ef;
+}
+

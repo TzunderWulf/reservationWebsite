@@ -6,7 +6,7 @@ require_once("../includes/validation-login.php")
     <html lang="nl">
         <head>
             <title>Inloggen</title>
-            <link rel="stylesheet" href="../styles/stylesheet-login.css">
+            <link rel="stylesheet" href="../styles/stylesheet-forms.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
             <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
@@ -22,22 +22,22 @@ require_once("../includes/validation-login.php")
                 <h1>Welkom, log hieronder in.</h1>
 
                 <div class="form-field">
-                    <label for="gebruikersnaam">Gebruikersnaam:</label>
-                    <input type="text" id="gebruikersnaam" name="username" value="<?=$username?>">
+                    <label class="login-label" for="gebruikersnaam">Gebruikersnaam:</label>
+                    <input class="login-input" type="text" id="gebruikersnaam" name="username" value="<?=$username?>">
                     <p class="error-message"><?=$usernameErr?></p>
                 </div>
 
                 <!-- adding capslock detection? -->
 
                 <div class="form-field">
-                    <label for="wachtwoord">Wachtwoord:</label>
-                    <input type="password" id="wachtwoord" name="password">
+                    <label class="login-label" for="wachtwoord">Wachtwoord:</label>
+                    <input class="login-input" type="password" id="wachtwoord" name="password">
                     <p class="error-message"><?=$passwordErr?></p>
                     <p id="warning-text">Let op, capslock is aan</p>
                 </div>
 
                 <div>
-                <input type="submit" name="submit" value="Inloggen">
+                <input class="login-input" type="submit" name="submit" value="Inloggen">
                 </div>
             </form>
         </main>
