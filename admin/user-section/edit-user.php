@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         or die ("Something went wrong. " . $query);
     mysqli_close($db); // close connection
 
-    header('Location: overview-user.php'); // redirect to user overview
+    header('Location: ../logout.php'); // user logs out
     exit();
 } elseif (isset($_GET['id'])) {
     $userId = $_GET['id'];
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 <head>
 
     <title>Gebruiker verwijderen</title>
-    <link rel="stylesheet" href="../../styles/stylesheet-login.css">
+    <link rel="stylesheet" href="../../styles/stylesheet-forms.css">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -51,45 +51,55 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body class="container">
-<header>
-    <img src="../../images/header.png" alt="header image">
-</header>
 
-<main>
-    <form id="delete" action="" method="post">
-        <h1>Gebruiker: <?= $user['username'] ?></h1>
-        <div class="field-input">
-            <label for="gebruikersnaam">Gebruikersnaam: </label>
-            <input type="text" id="gebruikersnaam" name="username" value="<?= $user['username'] ?>">
-        </div>
-        <div class="field-input">
-            <label>Is de gebruiker een admin? </label>
-            <input type="radio" id="yes-admin" name="admin" value="1"
-            <?php
-                if ($user['admin'] == 1) {
-                    echo " checked";
-                }
-            ?>>
-            <label for="yes-admin">Ja</label>
+    <header>
+        <img id="header-img" src="../../images/header.png" alt="header image">
+    </header>
 
-            <input type="radio" id="no-admin" name="admin" value="0"
-            <?php
-                if ($user['admin'] != 1) {
-                    echo " checked";
-                }
-            ?>>
-            <label for="no-admin">Nee</label>
-        </div>
-        <input type="hidden" name="id" value="<?= $user['id'] ?>"/>
-        <div>
-            <input type="submit" name="submit" value="Update">
-        </div>
-        <a class="link-button" href="overview-user.php">
-            <div class="button">
-                <h3>Terug</h3>
+    <main>
+        <form action="" method="post">
+            <h1>Gebruiker: <?= $user['username'] ?></h1>
+
+            <div>
+                <label class="user-label" for="gebruikersnaam">Gebruikersnaam*: </label>
+                <input class="user-field" id="gebruikersnaam" name="username" value="<?= $user['username'] ?>"
             </div>
-        </a>
-    </form>
-</main>
+
+            <div>
+                <h1 class="user-label">Admin?*</h1>
+                <input class="user-field" type="radio" id="yes-admin" name="admin" value="1"
+                    <?php
+                        if ($user['admin'] == 1) {
+                            echo " checked";
+                        }
+                    ?>
+                >
+                <label class="user-label radio-label" for="yes-admin">Ja</label>
+
+                <input class="user-field" type="radio" id="no-admin" name="admin" value="0"
+                    <?php
+                    if ($user['admin'] == 0) {
+                        echo " checked";
+                    }
+                    ?>
+                >
+                <label class="user-label radio-label" for="no-admin">Nee</label>
+            </div>
+
+            <input type="hidden" name="id" value="<?= $user['id'] ?>"/>
+            <input class="user-field" type="submit" name="submit" value="Wijzigingen toepassen">
+
+            <a class="link-button button" href="overview-user.php">Terug</a>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>
+            Aan dit systeem kunnen geen rechten worden voorgeleend. <br>
+            Het systeem is op dit moment nog in de bouw.
+        </p>
+    </footer>
+
 </body>
 </html>

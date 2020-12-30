@@ -104,7 +104,7 @@ img {
 }
 
 /* buttons */
-.button, [type=submit] {
+.button {
     margin: 10px 0;
     padding: 0;
     text-align: center;
@@ -113,16 +113,7 @@ img {
     cursor: pointer;
 }
 
-[type=submit] {
-    padding: 15px 40px;
-    background-color: white;
-    width: 100%;
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-weight: bold;
-    font-size: 1.17em;;
-}
-
-.button:hover, [type=submit]:hover {
+.button:hover {
     background-color: #3399ef;
 }
 
@@ -154,10 +145,6 @@ img {
     border: 2px solid black;
 }
 
-/* styling for detail page */
-#delete {
-    text-align: center;
-}
 /*
 @media (max-width: 1133px) {
     .container {
