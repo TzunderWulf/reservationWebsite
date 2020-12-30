@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 <head>
 
     <title>Gebruiker verwijderen</title>
-    <link rel="stylesheet" href="../../styles/stylesheet-login.css">
+    <link rel="stylesheet" href="../../styles/stylesheet-forms.css">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -51,18 +51,18 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body class="container">
-    <header>
+
+<header>
         <img src="../../images/header.png" alt="header image">
     </header>
 
     <main>
-        <form id="delete" action="" method="post">
+        <form action="" method="post">
             <h1>Wilt u <?= $user['username'] ?> verwijderen?</h1>
 
             <input type="hidden" name="id" value="<?= $user['id'] ?>"/>
-            <div>
+
             <input type="submit" name="submit" value="Verwijderen">
-            </div>
             <a class="link-button" href="overview-user.php">
                 <div class="button">
                     <h3>Terug</h3>
@@ -70,5 +70,13 @@ if (isset($_POST['submit'])) {
             </a>
         </form>
     </main>
+
+    <footer>
+        <p>
+            Aan dit systeem kunnen geen rechten worden voorgeleend. <br>
+            Het systeem is op dit moment nog in de bouw.
+        </p>
+    </footer>
+
 </body>
 </html>
