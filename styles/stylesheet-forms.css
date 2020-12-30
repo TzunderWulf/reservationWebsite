@@ -53,6 +53,7 @@ h1 {
    text-align: center;
 }
 
+
 /* style for error messages */
 .error-message, #warning-text {
     color: #FF0000;
@@ -61,6 +62,7 @@ h1 {
 #warning-text {
     display: none;
 }
+
 
 /* style for login form */
 .login-label {
@@ -84,6 +86,7 @@ h1 {
 .login-input[type=submit]:hover {
     background-color: #3399ef;
 }
+
 
 /* style for user forms (edit, delete, add) */
 .user-label {
