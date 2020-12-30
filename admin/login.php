@@ -21,15 +21,13 @@ require_once("../includes/validation-login.php")
             <form action="" method="post">
                 <h1>Welkom, log hieronder in.</h1>
 
-                <div class="form-field">
+                <div>
                     <label class="login-label" for="gebruikersnaam">Gebruikersnaam:</label>
                     <input class="login-input" type="text" id="gebruikersnaam" name="username" value="<?=$username?>">
                     <p class="error-message"><?=$usernameErr?></p>
                 </div>
 
-                <!-- adding capslock detection? -->
-
-                <div class="form-field">
+                <div>
                     <label class="login-label" for="wachtwoord">Wachtwoord:</label>
                     <input class="login-input" type="password" id="wachtwoord" name="password">
                     <p class="error-message"><?=$passwordErr?></p>
@@ -37,7 +35,7 @@ require_once("../includes/validation-login.php")
                 </div>
 
                 <div>
-                <input class="login-input" type="submit" name="submit" value="Inloggen">
+                    <input class="login-input" type="submit" name="submit" value="Inloggen">
                 </div>
             </form>
         </main>
