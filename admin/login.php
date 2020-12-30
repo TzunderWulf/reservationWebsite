@@ -13,11 +13,11 @@ require_once("../includes/validation-login.php")
         </head>
 
         <body class="container">
-        <div class="item-a">
-            <img src="../images/header.png" alt="header image">
-        </div>
+        <header>
+            <img id="header-img" src="../images/header.png" alt="header image">
+        </header>
 
-        <div class="item-b">
+        <main>
             <form action="" method="post">
                 <h1>Welkom, log hieronder in.</h1>
 
@@ -40,11 +40,11 @@ require_once("../includes/validation-login.php")
                 <input type="submit" name="submit" value="Inloggen">
                 </div>
             </form>
-        </div>
+        </main>
 
-        <div class="item-c">
+        <footer>
             <p>Aan dit systeem kunnen geen rechten worden voorgeleend. <br> Het systeem is op dit moment nog in de bouw.</p>
-        </div>
+        </footer>
 
         <script src="../scripts/main.js"></script>
         </body>

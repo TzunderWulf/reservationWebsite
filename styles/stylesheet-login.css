@@ -1,6 +1,7 @@
 html, body {
     width: 100%;
     height: 100%;
+    margin: 0;
     font-family: 'PT Sans Narrow', sans-serif;
     font-weight: bold;
 }
@@ -11,40 +12,61 @@ html, body {
     grid-template-columns: auto 1200px auto;
     grid-template-rows: auto 1fr auto;
     min-height: 100%;
-    grid-gap: 10px;
     grid-template-areas:
     ". header ."
     ". main ."
     "footer footer footer";
 }
 
-.item-a {
+header {
     grid-area: header;
 }
 
-img {
-    display:block;
-    margin: auto;
-}
-
-.item-b {
+main {
     grid-area: main;
 }
 
-.item-c {
+footer {
     grid-area: footer;
     background-color: #151414;
-    color: white;
-    margin: 0;
+    color: #FFFFFF;
     width: 100%;
     padding: 15px 0;
     text-align: center;
 }
 
+#header-img {
+    display:block;
+    margin: auto;
+}
+
+form {
+    border: 2px solid black;
+    padding: 0 100px 25px 100px;
+    width: fit-content;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1 {
+   text-align: center;
+}
+
+label {
+    font-size: 1.2em;
+    display: inline-block;
+    width: 120px;
+}
+
+input {
+    font-size: 1.1em;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
+}
+
 input[type=submit] {
+    border: 2px solid #000000;
     padding: 5px 10px;
-    background-color: white;
-    border: 1px solid black;
     transition: all 0.4s ease-in-out 0.2ms;
 }
 
@@ -53,7 +75,7 @@ input[type=submit]:hover {
 }
 
 .error-message, #warning-text {
-    color: red;
+    color: #FF0000;
 }
 
 #warning-text {
