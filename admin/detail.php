@@ -57,44 +57,26 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
     <h2>Welkom, <?=$_SESSION['username']?>!</h2>
     <h3><?=date('d-m-Y H:i')?></h3>
     <?php if ($_SESSION['admin'] === 1) { ?>
-        <a class="link-button" href="user-section/create-user.php">
-            <div class="user-button">Gebruiker aanmaken</div>
-        </a>
+        <a class="link-button" href="user-section/create-user.php">Gebruiker aanmaken</a>
     <?php } ?>
-    <a class="link-button" href="">
-        <div class="user-button">Hulp</div>
-    </a>
-    <a class="link-button" href="logout.php">
-        <div class="user-button">Uitloggen</div>
-    </a>
+    <a class="link-button" href="">Hulp</a>
+    <a class="link-button" href="logout.php">Uitloggen</a>
 </div>
 
 <main class="item-c">
     <div id="reservation">
         <h1>Afspraak</h1>
-        <h3><?php print_r($reservation['type_reservation']);?></h3>
-        <h3><?=date('j-m-Y', strtotime($reservation['date']));?></h3>
-        <h3><?=date('H:i', strtotime($reservation['time']));?></h3>
+        <h3>Type: <?= $reservation['type_reservation'] ?></h3>
+        <h3>Datum: <?= date('j-m-Y', strtotime($reservation['date'])) ?></h3>
+        <h3>Tijd: <?= date('H:i', strtotime($reservation['time'])) ?></h3>
     </div>
 
     <div id="options">
-        <a class="link-button" href="">
-            <div class="button">
-                <h3>Informeren</h3>
-            </div>
-        </a>
+        <a class="link-button" href="">Informeren</a>
         <?php if ($_SESSION['admin'] === 1) { ?>
-            <a class="link-button" href="">
-                <div class="button">
-                    <h3>Verwijderen</h3>
-                </div>
-            </a>
+            <a class="link-button" href="">Verwijderen</a>
         <?php } ?>
-        <a class="link-button" href="index.php">
-            <div class="button">
-                <h3>Terug</h3>
-            </div>
-        </a>
+        <a class="link-button" href="index.php">Terug</a>
     </div>
 </main>
 

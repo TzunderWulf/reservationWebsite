@@ -26,7 +26,7 @@ $query = "SELECT id,customerid,type_reservation,date,time,car,description
                     AND '$friday'
                     ORDER BY time ASC";
 $resultWeek = mysqli_query($db, $query)
-    or die('Error '.mysqli_error($db).' with query '. $query);
+or die('Error '.mysqli_error($db).' with query '. $query);
 
 $reservations = [];
 // loop trough week reservations with while
@@ -41,7 +41,7 @@ $query = "SELECT id,customerid,type_reservation,date,time,car, description
                                     WHERE date = '$currentDay'
                                     ORDER BY time ASC";
 $result = mysqli_query($db, $query)
-    or die('Error ' .mysqli_error($db).' with query '. $query);
+or die('Error ' .mysqli_error($db).' with query '. $query);
 
 $reservationsToday = [];
 // loop trough today's reservations with while
@@ -69,102 +69,96 @@ $times = timesArray('08:00', '17:30', 15);
 
 <body class="container">
 
-    <header class="item-a">
-        <img src="../images/header.png" alt="header image">
-    </header>
+<header class="item-a">
+    <img src="../images/header.png" alt="header image">
+</header>
 
-    <div class="user">
-        <h2>Welkom, <?= $_SESSION['username'] ?>!</h2>
-        <h3><?=date('d-m-Y H:i')?></h3>
+<div class="user">
+    <h2>Welkom, <?= $_SESSION['username'] ?>!</h2>
+    <h3><?=date('d-m-Y H:i')?></h3>
 
-        <!-- if user is an admin show button for user overview -->
-        <?php if ($_SESSION['admin'] === 1) { ?>
-            <a class="link-button" href="user-section/overview-user.php">
-                <div class="user-button">Gebruikers</div>
-            </a>
+    <!-- if user is an admin show button for user overview -->
+    <?php if ($_SESSION['admin'] === 1) { ?>
+        <a class="link-button" href="user-section/overview-user.php">Gebruikers</a>
+    <?php } ?>
+
+    <a class="link-button" href="">Hulp</a>
+
+    <a class="link-button" href="logout.php">Uitloggen</a>
+</div>
+
+<main class="item-b">
+    <h2>Reserveringen voor de week <?= date('W') ?></h2>
+
+    <!-- row for days of the week -->
+    <div class="row">
+        <?php for($d=-1;$d<5;$d++) { ?>
+            <?php if ($d == -1) { ?>
+                <div class="column time-column"></div>
+            <?php } else { ?>
+                <div class="column">
+                    <div><?= strftime('%A', strtotime($monday . " + $d days")) ?></div>
+                    <div><?= strftime('%e %B', strtotime($monday . " + $d days")) ?></div>
+                </div>
+            <?php } ?>
         <?php } ?>
-
-        <a class="link-button" href="">
-            <div class="user-button">Hulp</div>
-        </a>
-
-        <a class="link-button" href="logout.php">
-            <div class="user-button">Uitloggen</div>
-        </a>
     </div>
 
-    <main class="item-b">
-        <h2>Reserveringen voor de week <?= date('W') ?></h2>
-
-        <!-- row for days of the week -->
+    <!-- times column -->
+    <?php foreach ($times as $row => $time) { ?>
         <div class="row">
-            <?php for($d=-1;$d<5;$d++) { ?>
-                <?php if ($d == -1) { ?>
-                    <div class="column time-column"></div>
+            <?php for($i=-1;$i<5;$i++) { ?>
+                <?php if ($i == -1) { ?>
+                    <div class="column time-column"><?= $time ?></div>
                 <?php } else { ?>
                     <div class="column">
-                        <div><?= strftime('%A', strtotime($monday . " + $d days")) ?></div>
-                        <div><?= strftime('%e %B', strtotime($monday . " + $d days")) ?></div>
+                        <?php foreach ($resultWeek as $reservation) { ?>
+                            <?php if (date('N', strtotime($reservation['date']))-1 == $i
+                                && strtotime($time) == strtotime($reservation['time'])) { ?>
+                                <a class="reservation" href="detail.php?index=<?= $reservation['id'] ?>">
+                                    <div>
+                                        <?= $reservation['type_reservation'] ?> <br>
+                                        <?= date('H:i', strtotime($reservation['time'])) ?>
+                                    </div>
+                                </a>
+                            <?php } ?>
+                        <?php } ?>
                     </div>
                 <?php } ?>
             <?php } ?>
         </div>
+    <?php } ?>
+</main>
 
-        <!-- times column -->
-        <?php foreach ($times as $row => $time) { ?>
-            <div class="row">
-                <?php for($i=-1;$i<5;$i++) { ?>
-                    <?php if ($i == -1) { ?>
-                        <div class="column time-column"><?= $time ?></div>
-                    <?php } else { ?>
-                        <div class="column">
-                            <?php foreach ($resultWeek as $reservation) { ?>
-                                <?php if (date('N', strtotime($reservation['date']))-1 == $i
-                                      && strtotime($time) == strtotime($reservation['time'])) { ?>
-                                    <a class="reservation" href="detail.php?index=<?= $reservation['id'] ?>">
-                                        <div>
-                                            <?= $reservation['type_reservation'] ?> <br>
-                                            <?= date('H:i', strtotime($reservation['time'])) ?>
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            <?php } ?>
-                        </div>
+<!-- sidebar -->
+<div class="item-c">
+    <h2>Reserveringen voor vandaag <?= $dateDutch ?></h2>
+    <?php foreach ($result as $reservation) { ?>
+        <a class="link-button" href="detail.php?index=<?=$reservation['id']?>">
+            <div class="reservation-today">
+                <p><?= $reservation['type_reservation']?> </p>
+                <p><?= date('H:i',strtotime($reservation['time'])) ?></p>
+                <p>
+                    <?php if (isset($reservation['description'])) { ?>
+                        Opmerkingen: <?= $reservation['description'] ?>
                     <?php } ?>
-                <?php } ?>
+                </p>
+                <p>
+                    <?php if (isset($reservation['car'])) { ?>
+                        Autokeuze: <?= $reservation['car'] ?>
+                    <?php } ?>
+                </p>
             </div>
-        <?php } ?>
-    </main>
+        </a>
+    <?php } ?>
+</div>
 
-    <!-- sidebar -->
-    <div class="item-c">
-        <h2>Reserveringen voor vandaag <?= $dateDutch ?></h2>
-        <?php foreach ($result as $reservation) { ?>
-            <a class="link-button" href="detail.php?index=<?=$reservation['id']?>">
-                <div class="reservation-today">
-                    <p><?= $reservation['type_reservation']?> </p>
-                    <p><?= date('H:i',strtotime($reservation['time'])) ?></p>
-                    <p>
-                        <?php if (isset($reservation['description'])) { ?>
-                            Opmerkingen: <?= $reservation['description'] ?>
-                        <?php } ?>
-                    </p>
-                    <p>
-                        <?php if (isset($reservation['car'])) { ?>
-                            Autokeuze: <?= $reservation['car'] ?>
-                        <?php } ?>
-                    </p>
-                </div>
-            </a>
-        <?php } ?>
-    </div>
-
-    <footer class="item-d">
-        <p>
-            Aan dit systeem kunnen geen rechten worden voorgeleend. <br>
-            Het systeem is op dit moment nog in de bouw.
-        </p>
-    </footer>
+<footer class="item-d">
+    <p>
+        Aan dit systeem kunnen geen rechten worden voorgeleend. <br>
+        Het systeem is op dit moment nog in de bouw.
+    </p>
+</footer>
 
 </body>
 </html>
