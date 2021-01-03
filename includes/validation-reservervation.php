@@ -5,10 +5,12 @@ $name = $phoneNumber = $email = $licensePlate = $description = $pickedDate = $pi
 $errors = [];
 
 if ( isset($_POST['submit']) ) {
+    $validForm = true;
     // checks if name isn't empty and if there are no numbers in the field
-    if ( empty($_POST['name']) ) {
+    if (empty($_POST['name'])) {
+        $validForm = false;
         $errors['name'] = "Gelieve dit veld in te vullen.";
-    } elseif ( preg_match("/([0-9])/i",  $_POST['name']) ) {
+    } elseif (preg_match("/([0-9])/i", $_POST['name'])) {
         $errors['name'] = "Cijfers zijn niet toegestaan in dit veld.";
     } else {
         $name = htmlspecialchars($_POST['name']); // name is valid
@@ -74,27 +76,26 @@ if ( isset($_POST['submit']) ) {
         $pickedTime = htmlspecialchars($_POST['picked-time']); // time is valid
     }
     $typeReservation = $_POST['type-reservation']; // put the type of reservation in a variable
-}
 
-if (empty($errors)) {
-    require_once('send-mail.php'); // send a confirmation mail
+    if (empty($errors)) {
+        require_once('send-mail.php'); // send a confirmation mail
 
-    // first check if email is already in database
-    $query = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate)
+        $query = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate)
                              VALUES ('%s', '%s', '%s', '%s')",
-                             mysqli_escape_string($db, $name),
-                             mysqli_escape_string($db, $phoneNumber),
-                             mysqli_escape_string($db, $email),
-                             mysqli_escape_string($db, $licensePlate));
-    $result = mysqli_query($db, $query);
+            mysqli_escape_string($db, $name),
+            mysqli_escape_string($db, $phoneNumber),
+            mysqli_escape_string($db, $email),
+            mysqli_escape_string($db, $licensePlate));
+        $result = mysqli_query($db, $query);
 
-            // insert reservation data into reservation database
-    $query = sprintf("INSERT INTO reservations (customerid, type_reservation, date, time)
+        // insert reservation data into reservation database
+        $query = sprintf("INSERT INTO reservations (customerid, type_reservation, date, time)
                              VALUES (LAST_INSERT_ID(), '%s', '%s', '%s')",
-                             mysqli_escape_string($db, $typeReservation),
-                             mysqli_escape_string($db, $pickedDate),
-                             mysqli_escape_string($db, $pickedTime));
-    $result = mysqli_query($db, $query);
-    mysqli_close($db);
-    header('Location: ../confirmation.php');
+            mysqli_escape_string($db, $typeReservation),
+            mysqli_escape_string($db, $pickedDate),
+            mysqli_escape_string($db, $pickedTime));
+        $result = mysqli_query($db, $query);
+        mysqli_close($db);
+        header('Location: ../confirmation.php');
+    }
 }
