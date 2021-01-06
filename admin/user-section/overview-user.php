@@ -47,18 +47,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         <!-- if user is an admin show button for user overview -->
         <?php if ($_SESSION['admin'] === 1) { ?>
-            <a class="link-button" href="overview-user.php">
-                <div class="user-button">Gebruikers</div>
-            </a>
+            <a class="link-button" href="overview-user.php">Gebruikers</a>
         <?php } ?>
 
-        <a class="link-button" href="">
-            <div class="user-button">Hulp</div>
-        </a>
-
-        <a class="link-button" href="../logout.php">
-            <div class="user-button">Uitloggen</div>
-        </a>
+        <a class="link-button" href="">Hulp</a>
+        <a class="link-button" href="../logout.php">Uitloggen</a>
     </div>
 
     <main class="item-b">
@@ -104,16 +97,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     <!-- sidebar -->
     <div class="item-c">
         <div id="options">
-            <a class="link-button" href="create-user.php">
-                <div class="button">
-                    <h3>Gebruiker toevoegen</h3>
-                </div>
-            </a>
-            <a class="link-button" href="../index.php">
-                <div class="button">
-                    <h3>Terug</h3>
-                </div>
-            </a>
+            <a class="link-button" href="create-user.php">Gebruiker toevoegen</a>
+            <a class="link-button" href="../index.php">Terug</a>
         </div>
     </div>
 

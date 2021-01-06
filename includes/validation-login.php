@@ -52,11 +52,11 @@ if (isset($_POST['submit'])) {
                             header("location: index.php");
                         } else {
                             // Display an error message if password is not valid
-                            $passwordErr = "Dit veld is verkeerd ingevoerd.";
+                            $passwordErr = "Er is iets verkeerd gegaan. Probeer het later opnieuw.";
                         }
                     }
                 } else {
-                    $usernameErr = "Deze gebruikersnaam is niet gevonden.";
+                    $usernameErr = "Er is iets verkeerd gegaan. Probeer het later opnieuw.";
                 }
             } else {
                 echo "Er is iets verkeerd gegaan. Probeer het later opnieuw.";
