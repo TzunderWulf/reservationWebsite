@@ -53,14 +53,6 @@
                         <button>Maak een afspraak</button>
                     </a>
                 </div>
-
-                <div>
-                    <h3>Auto uitlenen</h3>
-                    <p>Tijdelijk een auto nodig, door reperatie of onderhoud? Maak gerust een afspraak en hij staat voor u klaar.</p>
-                    <a href="reservation/car.php">
-                        <button>Maak een afspraak</button>
-                    </a>
-                </div>
             </section>
         </main>
 
