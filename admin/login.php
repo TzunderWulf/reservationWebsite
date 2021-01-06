@@ -37,6 +37,8 @@ require_once("../includes/validation-login.php")
                 <div>
                     <input class="login-input" type="submit" name="submit" value="Inloggen">
                 </div>
+
+                <a class="link-button button" href="../index.php">Maak een reservering</a>
             </form>
         </main>
 
