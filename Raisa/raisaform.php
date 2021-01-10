@@ -121,22 +121,25 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
         </div>
 
         <!-- R: Radio button for type of meeting.--->
-        <div>
+        <div> <br>
+            <div>
+            <label for="checkboxes">Kies welke afspraak*</label>
+            </div>
             <input type="radio" name="Onderhoud"
                 <?php if (isset($keuze) && $keuze=="onderhoud") echo "checked";?>
-                   value="onderhoud">Onderhoud
+                   value="onderhoud">Onderhoud <br>
             <input type="radio" name="Reparatie"
                 <?php if (isset($keuze) && $keuze=="reparatie") echo "checked";?>
-                   value="reparatie">Reparatie
+                   value="reparatie">Reparatie <br>
             <input type="radio" name="APK"
                 <?php if (isset($keuze) && $keuze=="APK") echo "checked";?>
-                   value="APK">APK
+                   value="APK">APK <br>
             <input type="radio" name="Auto uitleen"
                 <?php if (isset($keuze) && $keuze=="Auto Uitleen") echo "checked";?>
-                   value="Auto uitleen">Auto Uitleen
+                   value="Auto uitleen">Auto Uitleen <br>
         </div>
         <!-- R: omschrijving van de klant--->
-        <div>
+        <div><br>
             <label for = "omschrijving" >Omschrijving*: </label><br>
             <textarea id="omschrijving" name="description" rows="4" cols="50"></textarea><br>
             <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p><br>
