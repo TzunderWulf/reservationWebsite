@@ -94,20 +94,21 @@
                 <!-- input voor naam !-->
                 <div>
                 <label for="name">Naam*: </label>
-                <input type="text" id="name" name="name" value="<?= htmlspecialchars($name, ENT_QUOTES) ?>">
+                <input type="text" id="name" name="name"
+                       value="<?= htmlspecialchars($_POST['name'], ENT_QUOTES) ?>">
                 <p class="error"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
                 </div>
                 <!-- input voor telefoon nummer !-->
-                <label for="phonenumber">Telefoonnummer: </label>
-                <input type="text" id="phonenumber" name="phonenumber" maxlength="11" placeholder="06-12345678"
-                value="<?= htmlspecialchars($phoneNumber, ENT_QUOTES) ?>">
+                <label for="phone-number">Telefoonnummer: </label>
+                <input type="text" id="phone-number" name="phone-number" maxlength="11" placeholder="06-12345678"
+                       value="<?= htmlspecialchars($_POST['phone-number'], ENT_QUOTES) ?>">
                 <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
 
                 <!-- input voor email address !-->
                 <div>
                 <label for="email-address">Emailadres*: </label>
                 <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
-                       value="<?= htmlspecialchars($email, ENT_QUOTES) ?>">
+                       value="<?= htmlspecialchars($_POST['email-address'], ENT_QUOTES) ?>">
                 <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
 
@@ -115,7 +116,7 @@
                 <div>
                 <label for="license-plate">Kenteken*: </label>
                 <input type="text" id="license-plate" name="license-plate" maxlength="8" placeholder="AB-C3D-5"
-                       value="<?= htmlspecialchars($licensePlate, ENT_QUOTES) ?>">
+                       value="<?= htmlspecialchars($_POST['license-plate'], ENT_QUOTES) ?>">
                 <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
                 </div>
 
