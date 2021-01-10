@@ -127,13 +127,13 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                    value="onderhoud">Onderhoud
             <input type="radio" name="Reparatie"
                 <?php if (isset($keuze) && $keuze=="reparatie") echo "checked";?>
-                   value="male">Male
-            <input type="radio" name="gender"
-                <?php if (isset($keuze) && $keuze=="other") echo "checked";?>
-                   value="other">Other
-            <input type="radio" name="gender"
-                <?php if (isset($keuze) && $keuze=="other") echo "checked";?>
-                   value="other">Other
+                   value="reparatie">Reparatie
+            <input type="radio" name="APK"
+                <?php if (isset($keuze) && $keuze=="APK") echo "checked";?>
+                   value="APK">APK
+            <input type="radio" name="Auto uitleen"
+                <?php if (isset($keuze) && $keuze=="Auto Uitleen") echo "checked";?>
+                   value="Auto uitleen">Auto Uitleen
         </div>
         <!-- R: omschrijving van de klant--->
         <div>
