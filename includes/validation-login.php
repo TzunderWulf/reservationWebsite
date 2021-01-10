@@ -15,12 +15,12 @@ $usernameErr = $passwordErr = "";
 
 if (isset($_POST['submit'])) {
     if (empty(trim($_POST['username']))) {
-        $usernameErr = "Dit veld kan niet leeg zijn.";
+        $usernameErr = "Gelieve dit veld in te vullen.";
     } else {
         $username = trim($_POST['username']);
     }
     if (empty(trim($_POST['password']))) {
-        $passwordErr = "Dit veld kan niet leeg zijn.";
+        $passwordErr = "Gelieve dit veld in te vullen.";
     } else {
         $password = trim($_POST['password']);
     }
