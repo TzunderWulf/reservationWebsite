@@ -86,45 +86,46 @@
             </header>
 
         <!-- R: Button bij gedaan bij de terug knop--->
-            <a href="../index.php"><button2>Terug</button2></a>
+            <a href="../index.php">Terug</a>
             <h1>Afspraak maken voor auto onderhoud?</h1>
             <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
 
             <form action="" method="post">
                 <!-- input voor naam !-->
                 <div>
-                <label for="name">Naam*: </label>
-                <input type="text" id="name" name="name"
-                       value="<?= htmlspecialchars($_POST['name'], ENT_QUOTES) ?>">
-                <p class="error"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
+                    <label for="name">Naam*: </label>
+                    <input type="text" id="name" name="name"
+                           value="<?= htmlspecialchars($_POST['name'], ENT_QUOTES) ?>">
+                    <p class="error"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
                 </div>
                 <!-- input voor telefoon nummer !-->
-                <label for="phone-number">Telefoonnummer: </label>
-                <input type="text" id="phone-number" name="phone-number" maxlength="11" placeholder="06-12345678"
-                       value="<?= htmlspecialchars($_POST['phone-number'], ENT_QUOTES) ?>">
-                <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
-
+                <div>
+                    <label for="phone-number">Telefoonnummer: </label>
+                    <input type="text" id="phone-number" name="phone-number" maxlength="11" placeholder="06-12345678"
+                           value="<?= htmlspecialchars($_POST['phone-number'], ENT_QUOTES) ?>">
+                    <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
+                </div>
                 <!-- input voor email address !-->
                 <div>
-                <label for="email-address">Emailadres*: </label>
-                <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
-                       value="<?= htmlspecialchars($_POST['email-address'], ENT_QUOTES) ?>">
-                <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
+                    <label for="email-address">Emailadres*: </label>
+                    <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
+                           value="<?= htmlspecialchars($_POST['email-address'], ENT_QUOTES) ?>">
+                    <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
 
                 <!-- input voor kenteken !-->
                 <div>
-                <label for="license-plate">Kenteken*: </label>
-                <input type="text" id="license-plate" name="license-plate" maxlength="8" placeholder="AB-C3D-5"
-                       value="<?= htmlspecialchars($_POST['license-plate'], ENT_QUOTES) ?>">
-                <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
+                    <label for="license-plate">Kenteken*: </label>
+                    <input type="text" id="license-plate" name="license-plate" maxlength="8" placeholder="AB-C3D-5"
+                           value="<?= htmlspecialchars($_POST['license-plate'], ENT_QUOTES) ?>">
+                    <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
                 </div>
 
                 <!-- input voor omschrijving reparatie of herstel !-->
                 <div>
-                 <label for = "description">Omschrijving wat er gerepareerd of hersteld moet worden*: </label>
-                 <textarea id="description" name="description" rows="4" cols="50"></textarea>
-                 <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
+                    <label for = "description">Omschrijving wat er gerepareerd of hersteld moet worden*: </label>
+                    <textarea id="description" name="description" rows="4" cols="50"></textarea>
+                    <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
                 </div>
 
                 <!-- input datum !-->
