@@ -79,51 +79,51 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
     <form action="" method="post">
         <div>
             <!-- R: Naam van de klant--->
-            <label for="naam">Naam*: </label>
-            <input type="text" id="naam" name="name"
-                   value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
+            <label for="name">Naam*: </label>
+            <input type="text" id="name" name="name"
+                   value="<?= htmlspecialchars($name, ENT_QUOTES) ?>">
             <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
         </div>
         <!-- R: Telefoonnummer van de klant--->
         <div>
-            <label for="telefoonnummer">Telefoonnummer: </label>
-            <input type="text" id="telefoonnummer" name="phone-number"
-                   value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+            <label for="phone-number">Telefoonnummer: </label>
+            <input type="text" id="phone-number" name="phone-number"
+                   value="<?= htmlspecialchars($phoneNumber, ENT_QUOTES) ?>">
             <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
         </div>
         <!-- R: Email van de klant--->
         <div>
-            <label for="email-adres">Email*: </label>
-            <input type="text" id="email-adres" name="email-address"
-                   value="<?=htmlspecialchars($email, ENT_QUOTES);?>">
+            <label for="email-address">Email*: </label>
+            <input type="text" id="email-address" name="email-address"
+                   value="<?= htmlspecialchars($email, ENT_QUOTES) ?>">
             <p class="error-message"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
         </div>
         <!-- R: Kenteken van de auto--->
         <div>
-            <label for="kenteken">Kenteken*: </label>
-            <input type="text" id="kenteken" name="license-plate"
-                   maxlength="8" value="<?=htmlspecialchars($licensePlate, ENT_QUOTES);?>">
+            <label for="license-plate">Kenteken*: </label>
+            <input type="text" id="license-plate" name="license-plate"
+                   maxlength="8" value="<?= htmlspecialchars($licensePlate, ENT_QUOTES) ?>">
             <p class="error-message"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
         </div>
         <!-- R: Datum mini calender--->
         <div>
-            <label for="datum">Datum*: </label>
-            <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>" value="<?=$pickedDate;?>">
+            <label for="picked-date">Datum*: </label>
+            <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>" value="<?= $pickedDate ?>">
             <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
         </div>
 
         <!-- R: Tijd (08:00 tot 18:00) --->
         <div>
-            <label for="tijd">Tijd*: </label>
-            <input type="time" id="tijd" name="picked-time" min="08:00" max="18:00" step="1800"
-                   value="<?=$pickedTime;?>">
+            <label for="picked-time">Tijd*: </label>
+            <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
+                   value="<?= $pickedTime ?>">
             <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
         </div>
 
         <!-- R: Radio button for type of meeting.--->
         <div> <br>
             <div>
-            <label for="checkboxes">Kies welke afspraak*</label>
+                <label for="checkboxes">Kies welke afspraak*</label>
             </div>
             <input type="radio" name="Onderhoud"
                 <?php if (isset($keuze) && $keuze=="onderhoud") echo "checked";?>

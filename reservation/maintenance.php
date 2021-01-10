@@ -84,31 +84,31 @@
             <form action="" method="post">
                  <!-- input voor naam !-->
                 <label for="name">Naam*: </label>
-                <input type="text" id="name" name="name" value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
-                <p class="error"><?= isset($errors['name']) ? $errors['phone-number'] : "" ?></p><br>
+                <input type="text" id="name" name="name" value="<?= htmlspecialchars($name, ENT_QUOTES) ?>">
+                <p class="error"><?= isset($errors['name']) ? $errors['phone-number'] : "" ?></p>
 
                 <!-- input voor telefoon nummer !-->
-                <label for="phoneNumber">Telefoonnummer: </label>
-                <input type="text" id="phoneNumber" name="phoneNumber" maxlength="11" placeholder="06-12345678"
-                value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
-                <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p><br>
+                <label for="phone-number">Telefoonnummer: </label>
+                <input type="text" id="phone-number" name="phone-number" maxlength="11" placeholder="06-12345678"
+                       value="<?= htmlspecialchars($phoneNumber, ENT_QUOTES) ?>">
+                <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
 
                 <!-- input voor email address !-->
-                <label for="email">Emailadres*: </label>
-                <input type="text" id="email" name="email-address" placeholder="example@example.nl" value="<?=
-                htmlspecialchars($email, ENT_QUOTES);?>">
-                <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p><br>
+                <label for="email-address">Emailadres*: </label>
+                <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
+                       value="<?= htmlspecialchars($email, ENT_QUOTES) ?>">
+                <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
 
                 <!-- input voor kenteken !-->
-                <label for="kenteken">Kenteken*: </label>
-                <input type="text" id="kenteken" name="license-plate" maxlength="8" placeholder="AB-C3D-5" value="<?=
-                htmlspecialchars($licensePlate, ENT_QUOTES); ?>">
-                <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p><br>
+                <label for="license-plate">Kenteken*: </label>
+                <input type="text" id="license-plate" name="license-plate" maxlength="8" placeholder="AB-C3D-5"
+                       value="<?= htmlspecialchars($licensePlate, ENT_QUOTES) ?>">
+                <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
 
                 <!-- input voor decription !-->
-                <label for = "omschrijving-werkzaamheden" >Omschrijving wat voor type onderhoud*: </label><br>
-                <textarea id="omschrijving-werkzaamheden" name="description" rows="4" cols="50"></textarea><br>
-                <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p><br>
+                <label for = "description" >Omschrijving wat voor type onderhoud*: </label><br>
+                <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
+                <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
 
                 <h3>Kies hieronder een datum voor de resevering.</h3>
 

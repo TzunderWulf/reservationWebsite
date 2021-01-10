@@ -38,49 +38,49 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <!-- Inputs for user data that is needed for reservation -->
                 <!-- Input for name, required -->
                 <div>
-                    <label for="naam">Naam*: </label>
-                    <input type="text" id="naam" name="name"
-                           value="<?=htmlspecialchars($name, ENT_QUOTES);?>">
+                    <label for="name">Naam*: </label>
+                    <input type="text" id="name" name="name"
+                           value="<?= htmlspecialchars($name, ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
                 </div>
 
                 <!-- Input for phone number -->
                 <div>
-                    <label for="telefoonnummer">Telefoonnummer: </label>
-                    <input type="text" id="telefoonnummer" name="phone-number"
-                           value="<?=htmlspecialchars($phoneNumber, ENT_QUOTES);?>">
+                    <label for="phone-number">Telefoonnummer: </label>
+                    <input type="text" id="phone-number" name="phone-number"
+                           value="<?= htmlspecialchars($phoneNumber, ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
                 </div>
 
                     <!-- Input for email address, required -->
                 <div>
-                    <label for="email-adres">Email*: </label>
-                    <input type="text" id="email-adres" name="email-address"
-                           value="<?=htmlspecialchars($email, ENT_QUOTES);?>">
+                    <label for="email-address">Email*: </label>
+                    <input type="text" id="email-address" name="email-address"
+                           value="<?= htmlspecialchars($email, ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
 
                     <!-- Input for license plate, required -->
                 <div>
-                    <label for="kenteken">Kenteken*: </label>
-                    <input type="text" id="kenteken" name="license-plate"
-                           maxlength="8" value="<?=htmlspecialchars($licensePlate, ENT_QUOTES);?>">
+                    <label for="license-plate">Kenteken*: </label>
+                    <input type="text" id="license-plate" name="license-plate"
+                           maxlength="8" value="<?= htmlspecialchars($licensePlate, ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
                 </div>
 
                     <!-- Inputs for choosing a date and time for the reservation -->
                     <!-- Input for choosing a date, required -->
                 <div>
-                    <label for="datum">Datum*: </label>
-                    <input type="date" id="datum" name="picked-date" min="<?=$currentDate;?>" value="<?=$pickedDate;?>">
+                    <label for="picked-date">Datum*: </label>
+                    <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>" value="<?= $pickedDate ?>">
                     <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
                 </div>
 
                     <!-- Input for choosing a time, required -->
                 <div>
-                    <label for="tijd">Tijd*: </label>
-                    <input type="time" id="tijd" name="picked-time" min="08:00" max="18:00" step="1800"
-                           value="<?=$pickedTime;?>">
+                    <label for="picked-time">Tijd*: </label>
+                    <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
+                           value="<?= $pickedTime ?>">
                     <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
                 </div>
 
