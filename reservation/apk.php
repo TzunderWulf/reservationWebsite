@@ -40,7 +40,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="name">Naam*: </label>
                     <input type="text" id="name" name="name"
-                           value="<?= htmlspecialchars($name, ENT_QUOTES) ?>">
+                           value="<?= htmlspecialchars($_POST['name'], ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
                 </div>
 
@@ -48,7 +48,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="phone-number">Telefoonnummer: </label>
                     <input type="text" id="phone-number" name="phone-number"
-                           value="<?= htmlspecialchars($phoneNumber, ENT_QUOTES) ?>">
+                           value="<?= htmlspecialchars($_POST['phone-number'], ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
                 </div>
 
@@ -56,7 +56,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="email-address">Email*: </label>
                     <input type="text" id="email-address" name="email-address"
-                           value="<?= htmlspecialchars($email, ENT_QUOTES) ?>">
+                           value="<?= htmlspecialchars($_POST['email-address'], ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
 
@@ -64,7 +64,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="license-plate">Kenteken*: </label>
                     <input type="text" id="license-plate" name="license-plate"
-                           maxlength="8" value="<?= htmlspecialchars($licensePlate, ENT_QUOTES) ?>">
+                           maxlength="8" value="<?= htmlspecialchars($_POST['license-plate'], ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
                 </div>
 
@@ -72,7 +72,8 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                     <!-- Input for choosing a date, required -->
                 <div>
                     <label for="picked-date">Datum*: </label>
-                    <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>" value="<?= $pickedDate ?>">
+                    <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>"
+                           value="<?= htmlspecialchars($_POST['picked-date']) ?>">
                     <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
                 </div>
 
@@ -80,7 +81,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="picked-time">Tijd*: </label>
                     <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
-                           value="<?= $pickedTime ?>">
+                           value="<?= htmlspecialchars($_POST['picked-time']) ?>">
                     <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
                 </div>
 

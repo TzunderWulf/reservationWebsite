@@ -1,11 +1,11 @@
 <?php
+
 require 'config.php'; // to connect to database (database settings)
 
 $name = $phoneNumber = $email = $licensePlate = $description = $pickedDate = $pickedTime = $typeReservation = "";
 $errors = [];
 
 if ( isset($_POST['submit']) ) {
-    $validForm = true;
     // checks if name isn't empty and if there are no numbers in the field
     if (empty($_POST['name'])) {
         $validForm = false;
@@ -13,16 +13,20 @@ if ( isset($_POST['submit']) ) {
     } elseif (preg_match("/([0-9])/i", $_POST['name'])) {
         $errors['name'] = "Cijfers zijn niet toegestaan in dit veld.";
     } else {
-        $name = htmlspecialchars($_POST['name']); // name is valid
+        $name = $_POST['name']; // name is valid
     }
 
     if ($_POST['phone-number']) {
-        // check if phone-number is formed correctly
-        if (!preg_match("/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/",
-            $_POST['phone-number'])) {
+        /* 
+           set variable for pattern of Dutch phone number (every valid option of forming a mobile and landine phone
+           number)
+           then check if phone-number is formed correctly
+        */
+        $phonePattern = "/^((\+|00(\s|\s?\-\s?)?)31(\s|\s?\-\s?)?(\(0\)[\-\s]?)?|0)[1-9]((\s|\s?\-\s?)?[0-9])((\s|\s?-\s?)?[0-9])((\s|\s?-\s?)?[0-9])\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]\s?[0-9]$/";
+        if (!preg_match($phonePattern, $_POST['phone-number'])) {
             $errors['phone-number'] = "Dit veld is verkeerd ingevuld.";
         } else {
-            $phoneNumber = htmlspecialchars($_POST['phone-number']); // phone number is valid
+            $phoneNumber = $_POST['phone-number']; // phone number is valid
         }
     }
 
@@ -32,7 +36,7 @@ if ( isset($_POST['submit']) ) {
     } elseif (!filter_var($_POST['email-address'], FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = "Dit veld is verkeerd ingevuld.";
     } else {
-        $email = htmlspecialchars($_POST['email-address']); // email address is valid
+        $email = $_POST['email-address']; // email address is valid
     }
 
     // first make sure the field is in the form
@@ -42,7 +46,7 @@ if ( isset($_POST['submit']) ) {
         if (empty($_POST['license-plate'])) {
             $errors['license-plate'] = "Gelieve dit veld in te vullen.";
         } elseif ($licenseplate->isValid()) {
-            $licensePlate = htmlspecialchars(strtoupper($_POST['license-plate'])); // license plate is valid
+            $licensePlate = strtoupper($_POST['license-plate']); // license plate is valid
         } else {
             $errors['license-plate'] = "Dit veld is verkeerd ingevuld.";
         }
@@ -54,7 +58,7 @@ if ( isset($_POST['submit']) ) {
         if (empty($_POST['description'])) {
             $errors['description'] = "Gelieve dit veld in te vullen.";
         } else {
-            $description = htmlspecialchars($_POST['description']); // description valid
+            $description = $_POST['description']; // description valid
         }
     }
 
@@ -64,7 +68,7 @@ if ( isset($_POST['submit']) ) {
     } elseif ($_POST['picked-date'] <= date('Y-m-d')) {
         $errors['picked-date'] = "Gelieve een datum te kiezen na " . date('d-m-Y');
     } else {
-        $pickedDate = htmlspecialchars($_POST['picked-date']); // date is valid
+        $pickedDate = $_POST['picked-date']; // date is valid
     }
 
     // checks if empty and if it time isn't before 08:00 or after 18:00
@@ -73,29 +77,34 @@ if ( isset($_POST['submit']) ) {
     } elseif (date('G', strtotime($_POST['picked-time'])) < 8 || date('G', strtotime($_POST['picked-time'])) >= 18) {
         $errors['picked-time'] = "Gelieve een tijd te kiezen tussen 08:00 en 18:00.";
     } else {
-        $pickedTime = htmlspecialchars($_POST['picked-time']); // time is valid
+        $pickedTime = $_POST['picked-time']; // time is valid
     }
     $typeReservation = $_POST['type-reservation']; // put the type of reservation in a variable
 
     if (empty($errors)) {
         require_once('send-mail.php'); // send a confirmation mail
 
-        $query = sprintf("INSERT INTO customers (name, phonenumber, email, license_plate)
-                             VALUES ('%s', '%s', '%s', '%s')",
-            mysqli_escape_string($db, $name),
-            mysqli_escape_string($db, $phoneNumber),
-            mysqli_escape_string($db, $email),
-            mysqli_escape_string($db, $licensePlate));
+        // set variables to insert to database
+        $name           = mysqli_escape_string($db, htmlspecialchars($name));
+        $phoneNumber    = mysqli_escape_string($db, htmlspecialchars($phoneNumber));
+        $email          = mysqli_escape_string($db, htmlspecialchars($email));
+        $licensePlate   = mysqli_escape_string($db, htmlspecialchars($licensePlate));
+        $description    = mysqli_escape_string($db, htmlspecialchars($description));
+        $pickedDate     = mysqli_escape_string($db, htmlspecialchars($pickedDate));
+        $pickedTime     = mysqli_escape_string($db, htmlspecialchars($pickedTime));
+
+        // add customer data into the database
+        $query = "INSERT INTO customers (name, phonenumber, email, license_plate)
+                  VALUES ('$name', '$phoneNumber', '$email', '$licensePlate')";
         $result = mysqli_query($db, $query);
 
-        // insert reservation data into reservation database
-        $query = sprintf("INSERT INTO reservations (customerid, type_reservation, date, time)
-                             VALUES (LAST_INSERT_ID(), '%s', '%s', '%s')",
-            mysqli_escape_string($db, $typeReservation),
-            mysqli_escape_string($db, $pickedDate),
-            mysqli_escape_string($db, $pickedTime));
+        // add rerservation data into the database
+        $query = "INSERT INTO reservations (customerid, type_reservation, date, time, description)
+                  VALUES (LAST_INSERT_ID(), '$typeReservation', '$pickedDate', '$pickedTime', '$description')";
         $result = mysqli_query($db, $query);
-        mysqli_close($db);
-        header('Location: ../confirmation.php');
+
+        mysqli_close($db); // close connection
+
+        header('Location: ../confirmation.php'); // send user to confirmation screen
     }
 }
