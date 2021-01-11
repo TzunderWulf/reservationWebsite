@@ -19,7 +19,7 @@ $monday = date("Y-m-d", strtotime("monday this week"));
 $friday = date("Y-m-d", strtotime("friday this week"));
 
 // getting the reservations for this week
-$query = "SELECT id,customerid,type_reservation,date,time,car,description
+$query = "SELECT id,customerid,type_reservation,date,time,description
                 FROM reservations
                 WHERE date
                 BETWEEN '$monday'
@@ -36,7 +36,7 @@ while($row = mysqli_fetch_assoc($resultWeek)) {
 }
 
 $currentDay = date('Y-m-d');
-$query = "SELECT id,customerid,type_reservation,date,time,car, description
+$query = "SELECT id,customerid,type_reservation,date,time,description
                                 FROM reservations
                                     WHERE date = '$currentDay'
                                     ORDER BY time ASC";
@@ -134,12 +134,12 @@ $times = timesArray('08:00', '17:30', 15);
 <div class="item-c">
     <h2>Reserveringen voor vandaag <?= $dateDutch ?></h2>
     <?php foreach ($result as $reservation) { ?>
-        <a class="link-button" href="detail.php?index=<?=$reservation['id']?>">
+        <a class="link-button" href="detail.php?index=<?= $reservation['id'] ?>">
             <div class="reservation-today">
-                <p><?= $reservation['type_reservation']?> </p>
+                <p><?= $reservation['type_reservation'] ?> </p>
                 <p><?= date('H:i',strtotime($reservation['time'])) ?></p>
                 <p>
-                    <?php if (isset($reservation['description'])) { ?>
+                    <?php if ($reservation['description'] != "") { ?>
                         Opmerkingen: <?= $reservation['description'] ?>
                     <?php } ?>
                 </p>
