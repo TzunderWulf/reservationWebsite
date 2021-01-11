@@ -79,11 +79,11 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                     <p class="error-message"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
                 </div>
 
-                <!-- agenda!-->
+                <input type="hidden" name="type-reservation" value="maintenance">
 
-                <!-- Reset knop van Sara-->
                 <!-- Form validatie. Fout? Wordt gegeven-->
                 <input type="reset" name="reset" value="Reset">
+
                 <input type="submit" name="submit" value="Bevestigen">
             </form>
         </body>

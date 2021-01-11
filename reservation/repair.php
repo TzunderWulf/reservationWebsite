@@ -6,7 +6,6 @@ require('../includes/validation-reservervation.php'); // To validate form
 $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day
 ?>
 
-
 <!doctype html>
     <html lang="nl">
         <head>
@@ -67,11 +66,20 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <!-- input datum !-->
                 <!-- R: Testen van Datum functie !-->
                 <div>
-                    <label for="picked-date">Kies hieronder een datum voor de resevering: </label>
+                    <label for="picked-date">Datum*: </label>
                     <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>"
-                               value="<?= htmlspecialchars($_POST['picked-date']) ?>">
-                     <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
+                           value="<?= htmlspecialchars($_POST['picked-date']) ?>">
+                    <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
                 </div>
+
+                <div>
+                    <label for="picked-time">Tijd*: </label>
+                    <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
+                           value="<?= htmlspecialchars($_POST['picked-time']) ?>">
+                    <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
+                </div>
+
+                <input type="hidden" name="type-reservation" value="repair">
 
                 <!-- Reset knop van Sara-->
                 <input type="reset" name="reset" value="Reset">
