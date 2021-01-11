@@ -25,28 +25,13 @@ $query = "SELECT id,customerid,type_reservation,date,time,description
                 BETWEEN '$monday'
                     AND '$friday'
                     ORDER BY time ASC";
-$resultWeek = mysqli_query($db, $query)
+$result = mysqli_query($db, $query)
 or die('Error '.mysqli_error($db).' with query '. $query);
 
 $reservations = [];
 // loop trough week reservations with while
-while($row = mysqli_fetch_assoc($resultWeek)) {
-    $reservations[] = $row;
-    break;
-}
-
-$currentDay = date('Y-m-d');
-$query = "SELECT id,customerid,type_reservation,date,time,description
-                                FROM reservations
-                                    WHERE date = '$currentDay'
-                                    ORDER BY time ASC";
-$result = mysqli_query($db, $query)
-or die('Error ' .mysqli_error($db).' with query '. $query);
-
-$reservationsToday = [];
-// loop trough today's reservations with while
 while($row = mysqli_fetch_assoc($result)) {
-    $reservationsToday[] = $row;
+    $reservations[] = $row;
     break;
 }
 
@@ -112,7 +97,7 @@ $times = timesArray('08:00', '17:30', 15);
                     <div class="column time-column"><?= $time ?></div>
                 <?php } else { ?>
                     <div class="column">
-                        <?php foreach ($resultWeek as $reservation) { ?>
+                        <?php foreach ($result as $reservation) { ?>
                             <?php if (date('N', strtotime($reservation['date']))-1 == $i
                                 && strtotime($time) == strtotime($reservation['time'])) { ?>
                                 <a class="reservation" href="detail.php?index=<?= $reservation['id'] ?>">
@@ -134,22 +119,19 @@ $times = timesArray('08:00', '17:30', 15);
 <div class="item-c">
     <h2>Reserveringen voor vandaag <?= $dateDutch ?></h2>
     <?php foreach ($result as $reservation) { ?>
-        <a class="link-button" href="detail.php?index=<?= $reservation['id'] ?>">
-            <div class="reservation-today">
-                <p><?= $reservation['type_reservation'] ?> </p>
-                <p><?= date('H:i',strtotime($reservation['time'])) ?></p>
-                <p>
-                    <?php if ($reservation['description'] != "") { ?>
-                        Opmerkingen: <?= $reservation['description'] ?>
-                    <?php } ?>
-                </p>
-                <p>
-                    <?php if (isset($reservation['car'])) { ?>
-                        Autokeuze: <?= $reservation['car'] ?>
-                    <?php } ?>
-                </p>
-            </div>
-        </a>
+        <?php if ($reservation['date'] ==  date('Y-m-d')) { ?>
+            <a class="link-button" href="detail.php?index=<?= $reservation['id'] ?>">
+                <div class="reservation-today">
+                    <p><?= $reservation['type_reservation'] ?> </p>
+                    <p><?= date('H:i',strtotime($reservation['time'])) ?></p>
+                    <p>
+                        <?php if ($reservation['description'] != "") { ?>
+                            Opmerkingen: <?= $reservation['description'] ?>
+                        <?php } ?>
+                    </p>
+                </div>
+            </a>
+        <?php } ?>
     <?php } ?>
 </div>
 
