@@ -121,6 +121,10 @@ h1 {
     background-color: #3399ef;
 }
 
+#admin-rights {
+    display: inline-block;
+}
+
 .button {
     font-size: 1.15em;
     margin: 10px 0;
