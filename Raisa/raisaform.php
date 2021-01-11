@@ -65,6 +65,7 @@ if (isset($_POST['submit'])){
 }
 $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day
 ?>
+<!-- Update! R: alle <br> zij verwijderd--->
 <!doctype html>
 <html lang="nl">
 <head>
@@ -121,28 +122,29 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
         </div>
 
         <!-- R: Radio button for type of meeting.--->
-        <div> <br>
+        <!-- Update! R: Checkbox staat nu in header 3 en radioboxes zijn ge-updated via feedback info--->
+        <div>
+            <h3>Checkboxes</h3>
             <div>
-                <label for="checkboxes">Kies welke afspraak*</label>
+            <label for="maintenance">Onderhoud</label>
+            <input type="radio" id="maintenance" name="type-reservation" value="onderhoud">
+                <?php if (isset($keuze) && $keuze=="onderhoud") {echo "checked";}?>
+
+            <label for="repair">reparatie</label>
+            <input type="radio" id="repair" name="type-reservation" value="reperatie">
+                <?php if (isset($keuze) && $keuze=="reparatie"){echo "checked";}?>
+
+            <label for="apk">APK</label>
+            <input type="radio" id="apk" name="type-reservation" value="apk">
+                <?php if (isset($keuze) && $keuze=="APK") {echo "checked";}?>
             </div>
-            <input type="radio" name="Onderhoud"
-                <?php if (isset($keuze) && $keuze=="onderhoud") echo "checked";?>
-                   value="onderhoud">Onderhoud <br>
-            <input type="radio" name="Reparatie"
-                <?php if (isset($keuze) && $keuze=="reparatie") echo "checked";?>
-                   value="reparatie">Reparatie <br>
-            <input type="radio" name="APK"
-                <?php if (isset($keuze) && $keuze=="APK") echo "checked";?>
-                   value="APK">APK <br>
-            <input type="radio" name="Auto uitleen"
-                <?php if (isset($keuze) && $keuze=="Auto Uitleen") echo "checked";?>
-                   value="Auto uitleen">Auto Uitleen <br>
         </div>
+
         <!-- R: omschrijving van de klant--->
-        <div><br>
+        <div>
             <label for = "omschrijving" >Omschrijving*: </label><br>
             <textarea id="omschrijving" name="description" rows="4" cols="50"></textarea><br>
-            <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p><br>
+            <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
         </div>
         <!-- R: bevestiging knop--->
         <div>
