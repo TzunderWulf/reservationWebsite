@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
 
     // validating the username
     if (empty($_POST['username'])) {
-        $errors['username'] = "Dit veld mag niet leeg zijn.";
+        $errors['username'] = "Gelieve dit veld in te vullen.";
     } else {
         $usernameCheck = "SELECT id 
                           FROM users 
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
                     $username = htmlspecialchars($_POST['username']);
                 }
             } else {
-                $errors['database'] = "Er is iets misgegaan, probeer het later opnieuw.";
+                $errors['general'] = "Er is iets misgegaan, probeer het later opnieuw.";
             }
             mysqli_stmt_close($stmt); // close statement
         }
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 
     // validating the password and confirm password
     if (empty($_POST['password'])) {
-        $errors['password'] = "Dit veld mag niet leeg zijn.";
+        $errors['password'] = "Gelieve dit veld in te vullen.";
     } elseif (strlen($_POST['password']) < 10) {
         $errors['password'] = "Wachtwoord moet minimaal langer zijn dan 10 karakters";
     } else {
@@ -52,9 +52,13 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($_POST['confirm-password'])) {
-        $errors['confirm-password'] = "Dit veld mag niet leeg zijn.";
+        $errors['confirm-password'] = "Gelieve dit veld in te vullen.";
     } elseif (empty($errors['password']) && $_POST['confirm-password'] === $_POST['password']) {
-        $errors['confirm-password'] = "Wachtwoorden komen niet overeen.";
+        $errors['general'] = "Er is iets misgegaan.";
+    }
+
+    if (empty($_POST['admin'])) {
+        $errors['admin'] = "Gelieve een optie te kiezen.";
     }
 
     if (empty($errors)) {
@@ -74,7 +78,7 @@ if (isset($_POST['submit'])) {
                 header('Location: index.php');
                 // exit();
             } else {
-                $errors['database'] = "Er is iets misgegaan, probeer het later opnieuw.";
+                $errors['general'] = "Er is iets misgegaan, probeer het later opnieuw.";
             }
             mysqli_stmt_close($stmt); // close connection
         }
@@ -98,25 +102,35 @@ if (isset($_POST['submit'])) {
 
     <body>
         <h1>Gebruiker aanmaken</h1>
-        <p class="error-message"><?php isset($errors['database']) ? print_r($errors['database']): ""?></p>
+        <p class="error-message"><?php isset($errors['general']) ? print_r($errors['general']): "" ?></p>
 
         <form action="" method="post">
             <div>
                 <label for="gebruikersnaam">Gebruikersnaam: </label>
                 <input type="text" id="gebruikersnaam" name="username">
-                <p class="error-message"><?php isset($errors['username']) ? print_r($errors['username']) : ""?></p>
+                <p class="error-message"><?php isset($errors['username']) ? print_r($errors['username']) : "" ?></p>
             </div>
 
             <div>
                 <label for="wachtwoord">Wachtwoord: </label>
                 <input type="password" id="wachtwoord" name="password">
-                <p class="error-message"><?php isset($errors['password']) ? print_r($errors['password']) : ""?></p>
+                <p class="error-message"><?php isset($errors['password']) ? print_r($errors['password']) : "" ?></p>
             </div>
 
             <div>
                 <label for="wachtwoord-bevestigen">Wachtwoord bevestigen: </label>
                 <input type="password" id="wachtwoord-bevestigen" name="password-comfirm">
                 <p class="error-message"><?php isset($errors['confirm-password']) ? print_r($errors['confirm-password']) : "" ?></p>
+            </div>
+
+            <div>
+                <h4 id="admin-rights">Adminrechten: </h4>
+                <input type="radio" id="yes-admin" name="admin" value="1">
+                <label for="yes-admin">Ja</label>
+
+                <input type="radio" id="no-admin" name="admin" value="0">
+                <label for="no-admin">Nee</label>
+                <p class="error-message"><?php isset($errors['admin']) ? print_r($errors['admin']) : "" ?></p>
             </div>
 
             <input type="submit" name="submit" value="Aanmaken">
