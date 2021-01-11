@@ -23,18 +23,6 @@ while ($customer = mysqli_fetch_assoc($customerResult)) {
     $customers[] = $customer;
     break;
 }
-
-$allReservations = "SELECT * 
-                 FROM reservations
-                 WHERE id = $indexNumber";
-$reservationsResult = mysqli_query($db, $allReservations)
-    or die('Error '.mysqli_error($db).' with query '. $allReservations);
-
-$reservations = [];
-while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
-    $reservations[] = $reservation;
-    break;
-}
 ?>
 
 <!doctype html>
@@ -66,9 +54,9 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
 <main class="item-c">
     <div id="reservation">
         <h1>Afspraak</h1>
-        <h3>Type: <?= $reservation['type_reservation'] ?></h3>
-        <h3>Datum: <?= date('j-m-Y', strtotime($reservation['date'])) ?></h3>
-        <h3>Tijd: <?= date('H:i', strtotime($reservation['time'])) ?></h3>
+        <h3>Type: <?= $customer['type_reservation'] ?></h3>
+        <h3>Datum: <?= date('j-m-Y', strtotime($customer['date'])) ?></h3>
+        <h3>Tijd: <?= date('H:i', strtotime($customer['time'])) ?></h3>
     </div>
 
     <div id="options">
@@ -97,12 +85,12 @@ while ($reservation = mysqli_fetch_assoc($reservationsResult)) {
 
             <!-- description (if it is exists) -->
         <?php if (isset($reservation['description'])) { ?>
-            <h3>Omschrijving: <?php print_r($reservation['description']);?></h3>
+            <h3>Omschrijving: <?php print_r($customer['description']);?></h3>
         <?php } ?>
 
         <!-- car choice (if it is exists) -->
         <?php if (isset($reservation['car'])) { ?>
-            <h3>Keuze auto: <?php print_r($reservation['car']);?></h3>
+            <h3>Keuze auto: <?php print_r($customer['car']);?></h3>
         <?php } ?>
     </div>
 </div>
