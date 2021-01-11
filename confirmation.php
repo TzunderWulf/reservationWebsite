@@ -23,12 +23,15 @@
             <a href="https://garagenieuwrijswijk.nl">
                 <button>Terug naar de website</button>
             </a>
-            <section>
-                <h1 class="confirmation">Reservering geslaagd!</h1>
-                <h3 class="confirmation">U ontvangt ook een bevestigingsmail binnenkort.</h3>
-                <img class=confirmation src="images/confirmation-mail.png" alt="bevestiging's mail">
-            </section>
+
+            <div class="confirmation">
+                <h1>Bedankt voor uw reservering!</h1>
+                <h3>U ontvangt een bevestigingsmail binnenkort.</h3>
+            </div>
         </main>
+        <div class="base-letter">
+            <div class="inner-letter"></div>
+        </div>
 
         <footer>
 
