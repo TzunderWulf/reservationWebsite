@@ -109,7 +109,7 @@
                 <div>
                     <label for="email-address">Emailadres*: </label>
                     <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
-                           value="<?= htmlspecialchars($_POST['email-address'], ENT_QUOTES) ?>">
+                           value="<?= htmlspecialchars($_POST['email'], ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
 

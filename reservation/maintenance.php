@@ -61,6 +61,7 @@
             header('Location: ../confirmation.php');
         }
     }
+$currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day
 ?>
 
 
@@ -102,9 +103,10 @@
                 <div>
                     <label for="email-address">Emailadres*: </label>
                     <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
-                           value="<?= htmlspecialchars($_POST['email-address'], ENT_QUOTES) ?>">
+                           value="<?= htmlspecialchars($_POST['email'], ENT_QUOTES) ?>">
                     <p class="error-message"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
+
                 <!-- input voor kenteken !-->
                 <div>
                     <label for="license-plate">Kenteken*: </label>
@@ -113,13 +115,26 @@
                     <p class="error-message"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
                 </div>
 
+                <div>
+                    <label for="picked-date">Datum*: </label>
+                    <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>"
+                           value="<?= htmlspecialchars($_POST['picked-date']) ?>">
+                    <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
+                </div>
+
+                <div>
+                    <label for="picked-time">Tijd*: </label>
+                    <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
+                           value="<?= htmlspecialchars($_POST['picked-time']) ?>">
+                    <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
+                </div>
+
                 <!-- input voor decription !-->
                 <div>
                     <label for = "description" >Omschrijving wat voor type onderhoud*: </label><br>
                     <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
                     <p class="error-message"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
                 </div>
-                <h3>Kies hieronder een datum voor de resevering.</h3>
 
                 <!-- agenda!-->
 
