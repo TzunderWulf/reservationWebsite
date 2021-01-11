@@ -1,76 +1,11 @@
 <?php
-    require_once('../includes/config.php'); // To connect to database
-    require_once('../vendor/autoload.php');
-    // variables for inputs
-    $name = '';
-    $phoneNumber = '';
-    $email = '';
-    $licensePlate= '';
-    $descRepair = '';
-    $date='';
+require_once('../includes/config.php'); // To connect to database
+require_once('../vendor/autoload.php'); // To load license plate validation
+require('../includes/validation-reservervation.php'); // To validate form
 
-    // error variables
-    $nameErr = '';
-    $emailErr = '';
-    $licensePlateErr = '';
-    $descRepairErr  = '';
-    $dateErr = '';
-
-    // php validation of form
-    if (isset($_POST['submit'])) {
-        $validForm = true; // boolean to check if form is valid, changes based on if field is empty
-
-        // validation for the name input
-        if (!isset($_POST['name']) || $_POST['name'] === '') {
-            $validForm = false;
-            $nameErr = 'Dit veld is verplicht.';
-        } else {
-            $name = htmlspecialchars($_POST['name']);
-        }
-
-        // validation for the email input
-        if (!isset($_POST['email']) || $_POST['email'] === '') {
-            $validForm = false;
-            $emailErr = 'Dit veld is verplicht.';
-        } else {
-            $email = htmlspecialchars($_POST['email']);
-            // validation for the valid email
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $validForm = false;
-                $emailErr = 'Vekeerde email.';
-            }
-            $email = htmlspecialchars($_POST['email']);
-        }
-
-        // validation for the license plate input
-        if (!isset($_POST['licensePlate']) || $_POST['licensePlate'] === '') {
-            $validForm = false;
-            $licensePlateErr = 'Dit veld is verplicht.'; // S: was $kenteken, moest $kentekenErr
-        } else {
-            $licensePlate = htmlspecialchars($_POST['licensePlate']);
-        }
-
-        // validation for description input
-        if (!isset($_POST['descRepair']) || $_POST['descRepair'] === '') {
-            $validForm = false;
-            $descRepairErr = 'Dit veld is verplicht.';
-        } else {
-            $descRepair = htmlspecialchars($_POST['descRepair']);
-        }
-        if (!isset($_POST['date']) || $_POST['date'] === '') {
-            $validForm = false;
-            $dateErr= 'Dit veld is verplicht.'; // Date error
-        } else {
-            $date = htmlspecialchars($_POST['licensePlate']);
-        }
-        $phoneNumber = $_POST['phoneNumber']; // phonenumber
-
-        // if the entire form is valid sent user to confirmation page
-        if ($validForm) {
-            header('Location: ../confirmation.php');
-        }
-    }
+$currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date + 1 day
 ?>
+
 
 <!doctype html>
     <html lang="nl">
@@ -132,8 +67,9 @@
                 <!-- R: Testen van Datum functie !-->
                 <div>
                     <label for="picked-date">Kies hieronder een datum voor de resevering: </label>
-                    <input type="date" id="picked-date" name="picked-date" value="<?= htmlspecialchars($date, ENT_QUOTES) ?>">
-                    <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked- date'] : "" ?></p>
+                    <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>"
+                               value="<?= htmlspecialchars($_POST['picked-date']) ?>">
+                     <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
                 </div>
 
                 <!-- Reset knop van Sara-->
