@@ -13,7 +13,7 @@ if ( isset($_POST['submit']) ) {
     } elseif (preg_match("/([0-9])/i", $_POST['name'])) {
         $errors['name'] = "Cijfers zijn niet toegestaan in dit veld.";
     } else {
-        $name = $_POST['name']; // name is valid
+        $name = htmlspecialchars($_POST['name']); // name is valid
     }
 
     if ($_POST['phone-number']) {
@@ -26,7 +26,7 @@ if ( isset($_POST['submit']) ) {
         if (!preg_match($phonePattern, $_POST['phone-number'])) {
             $errors['phone-number'] = "Dit veld is verkeerd ingevuld.";
         } else {
-            $phoneNumber = $_POST['phone-number']; // phone number is valid
+            $phoneNumber = htmlspecialchars($_POST['phone-number']); // phone number is valid
         }
     }
 
@@ -36,7 +36,7 @@ if ( isset($_POST['submit']) ) {
     } elseif (!filter_var($_POST['email-address'], FILTER_VALIDATE_EMAIL)) {
         $errors['email'] = "Dit veld is verkeerd ingevuld.";
     } else {
-        $email = $_POST['email-address']; // email address is valid
+        $email = htmlspecialchars($_POST['email-address']); // email address is valid
     }
 
     // first make sure the field is in the form
@@ -46,7 +46,7 @@ if ( isset($_POST['submit']) ) {
         if (empty($_POST['license-plate'])) {
             $errors['license-plate'] = "Gelieve dit veld in te vullen.";
         } elseif ($licenseplate->isValid()) {
-            $licensePlate = strtoupper($_POST['license-plate']); // license plate is valid
+            $licensePlate = htmlspecialchars(strtoupper($_POST['license-plate'])); // license plate is valid
         } else {
             $errors['license-plate'] = "Dit veld is verkeerd ingevuld.";
         }
@@ -58,7 +58,7 @@ if ( isset($_POST['submit']) ) {
         if (empty($_POST['description'])) {
             $errors['description'] = "Gelieve dit veld in te vullen.";
         } else {
-            $description = $_POST['description']; // description valid
+            $description = htmlspecialchars($_POST['description']); // description valid
         }
     }
 
@@ -68,7 +68,7 @@ if ( isset($_POST['submit']) ) {
     } elseif ($_POST['picked-date'] <= date('Y-m-d')) {
         $errors['picked-date'] = "Gelieve een datum te kiezen na " . date('d-m-Y');
     } else {
-        $pickedDate = $_POST['picked-date']; // date is valid
+        $pickedDate = htmlspecialchars($_POST['picked-date']); // date is valid
     }
 
     // checks if empty and if it time isn't before 08:00 or after 18:00
@@ -77,27 +77,27 @@ if ( isset($_POST['submit']) ) {
     } elseif (date('G', strtotime($_POST['picked-time'])) < 8 || date('G', strtotime($_POST['picked-time'])) >= 18) {
         $errors['picked-time'] = "Gelieve een tijd te kiezen tussen 08:00 en 18:00.";
     } else {
-        $pickedTime = $_POST['picked-time']; // time is valid
+        $pickedTime = htmlspecialchars($_POST['picked-time']); // time is valid
     }
 
-    if (isset($_POST['type-reservation']) || empty($_POST['type-reservation'])) {
+    if (!$_POST['type-reservation'] || empty($_POST['type-reservation'])) {
         $errors['type-reservation'] = "Het lijkt erop dat er iets is misgegaan.";
     } else {
-        $typeReservation = $_POST['type-reservation']; // put the type of reservation in a variable
+        $typeReservation = htmlspecialchars($_POST['type-reservation']); // put the type of reservation in a variable
     }
 
     if (empty($errors)) {
-        require_once 'send-mail.php'; // send a confirmation mail
+        // require_once 'send-mail.php'; // send a confirmation mail
 
         // set variables to insert to database
-        $name               = mysqli_escape_string($db, htmlspecialchars($name));
-        $phoneNumber        = mysqli_escape_string($db, htmlspecialchars($phoneNumber));
-        $email              = mysqli_escape_string($db, htmlspecialchars($email));
-        $licensePlate       = mysqli_escape_string($db, htmlspecialchars($licensePlate));
-        $description        = mysqli_escape_string($db, htmlspecialchars($description));
-        $pickedDate         = mysqli_escape_string($db, htmlspecialchars($pickedDate));
-        $pickedTime         = mysqli_escape_string($db, htmlspecialchars($pickedTime));
-        $typeReservation    = mysqli_escape_string($db, htmlspecialchars($typeReservation));
+        $name               = mysqli_escape_string($db, $name);
+        $phoneNumber        = mysqli_escape_string($db, $phoneNumber);
+        $email              = mysqli_escape_string($db, $email);
+        $licensePlate       = mysqli_escape_string($db, $licensePlate);
+        $description        = mysqli_escape_string($db, $description);
+        $pickedDate         = mysqli_escape_string($db, $pickedDate);
+        $pickedTime         = mysqli_escape_string($db, $pickedTime);
+        $typeReservation    = mysqli_escape_string($db, $typeReservation);
 
         $query = "SELECT * FROM customers WHERE email = '$email'";
         $result = mysqli_query($db, $query);
