@@ -96,7 +96,7 @@
                     <label for="name">Naam*: </label>
                     <input type="text" id="name" name="name"
                            value="<?= htmlspecialchars($_POST['name'], ENT_QUOTES) ?>">
-                    <p class="error"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
+                    <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
                 </div>
                 <!-- input voor telefoon nummer !-->
                 <div>
@@ -110,7 +110,7 @@
                     <label for="email-address">Emailadres*: </label>
                     <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
                            value="<?= htmlspecialchars($_POST['email-address'], ENT_QUOTES) ?>">
-                    <p class="error"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
+                    <p class="error-message"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
 
                 <!-- input voor kenteken !-->
@@ -118,14 +118,14 @@
                     <label for="license-plate">Kenteken*: </label>
                     <input type="text" id="license-plate" name="license-plate" maxlength="8" placeholder="AB-C3D-5"
                            value="<?= htmlspecialchars($_POST['license-plate'], ENT_QUOTES) ?>">
-                    <p class="error"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
+                    <p class="error-message"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
                 </div>
 
                 <!-- input voor omschrijving reparatie of herstel !-->
                 <div>
                     <label for = "description">Omschrijving wat er gerepareerd of hersteld moet worden*: </label>
                     <textarea id="description" name="description" rows="4" cols="50"></textarea>
-                    <p class="error"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
+                    <p class="error-message"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
                 </div>
 
                 <!-- input datum !-->
@@ -133,7 +133,7 @@
                 <div>
                     <label for="picked-date">Kies hieronder een datum voor de resevering: </label>
                     <input type="date" id="picked-date" name="picked-date" value="<?= htmlspecialchars($date, ENT_QUOTES) ?>">
-                    <p class="error"><?= isset($errors['picked-date']) ? $errors['picked- date'] : "" ?></p>
+                    <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked- date'] : "" ?></p>
                 </div>
 
                 <!-- Reset knop van Sara-->
