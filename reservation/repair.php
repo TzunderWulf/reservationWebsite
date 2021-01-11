@@ -89,6 +89,7 @@
             <a href="../index.php">Terug</a>
             <h1>Afspraak maken voor auto onderhoud?</h1>
             <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
+            <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
 
             <form action="" method="post">
                 <!-- input voor naam !-->

@@ -79,19 +79,25 @@ if ( isset($_POST['submit']) ) {
     } else {
         $pickedTime = $_POST['picked-time']; // time is valid
     }
-    $typeReservation = $_POST['type-reservation']; // put the type of reservation in a variable
+
+    if (isset($_POST['type-reservation']) || empty($_POST['type-reservation'])) {
+        $errors['type-reservation'] = "Het lijkt erop dat er iets is misgegaan.";
+    } else {
+        $typeReservation = $_POST['type-reservation']; // put the type of reservation in a variable
+    }
 
     if (empty($errors)) {
         require_once 'send-mail.php'; // send a confirmation mail
 
         // set variables to insert to database
-        $name           = mysqli_escape_string($db, htmlspecialchars($name));
-        $phoneNumber    = mysqli_escape_string($db, htmlspecialchars($phoneNumber));
-        $email          = mysqli_escape_string($db, htmlspecialchars($email));
-        $licensePlate   = mysqli_escape_string($db, htmlspecialchars($licensePlate));
-        $description    = mysqli_escape_string($db, htmlspecialchars($description));
-        $pickedDate     = mysqli_escape_string($db, htmlspecialchars($pickedDate));
-        $pickedTime     = mysqli_escape_string($db, htmlspecialchars($pickedTime));
+        $name               = mysqli_escape_string($db, htmlspecialchars($name));
+        $phoneNumber        = mysqli_escape_string($db, htmlspecialchars($phoneNumber));
+        $email              = mysqli_escape_string($db, htmlspecialchars($email));
+        $licensePlate       = mysqli_escape_string($db, htmlspecialchars($licensePlate));
+        $description        = mysqli_escape_string($db, htmlspecialchars($description));
+        $pickedDate         = mysqli_escape_string($db, htmlspecialchars($pickedDate));
+        $pickedTime         = mysqli_escape_string($db, htmlspecialchars($pickedTime));
+        $typeReservation    = mysqli_escape_string($db, htmlspecialchars($typeReservation));
 
         $query = "SELECT * FROM customers WHERE email = '$email'";
         $result = mysqli_query($db, $query);

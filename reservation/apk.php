@@ -32,6 +32,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
             <div>
                 <h1>Reservering voor APK keuring</h1>
                 <h3>Vul hieronder uw gegevens in, de gegevens met * zijn verplicht.</h3>
+                <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
             </div>
 
             <form action="" method="post">
