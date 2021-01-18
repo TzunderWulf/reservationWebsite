@@ -64,7 +64,7 @@ $times = timesArray('08:00', '17:30', 15);
 
     <!-- if user is an admin show button for user overview -->
     <?php if ($_SESSION['admin'] === 1) { ?>
-        <a class="link-button" href="user-section/overview-user.php">Gebruikers</a>
+        <a class="link-button" href="section-user/overview-user.php">Gebruikers</a>
     <?php } ?>
 
     <a class="link-button" href="">Hulp</a>
@@ -100,7 +100,7 @@ $times = timesArray('08:00', '17:30', 15);
                         <?php foreach ($result as $reservation) { ?>
                             <?php if (date('N', strtotime($reservation['date']))-1 == $i
                                 && strtotime($time) == strtotime($reservation['time'])) { ?>
-                                <a class="reservation" href="detail.php?index=<?= $reservation['id'] ?>">
+                                <a class="reservation" href="detail.php?id=<?= $reservation['id'] ?>">
                                     <div>
                                         <?= $reservation['type_reservation'] ?> <br>
                                         <?= date('H:i', strtotime($reservation['time'])) ?>
@@ -120,7 +120,7 @@ $times = timesArray('08:00', '17:30', 15);
     <h2>Reserveringen voor vandaag <?= $dateDutch ?></h2>
     <?php foreach ($result as $reservation) { ?>
         <?php if ($reservation['date'] ==  date('Y-m-d')) { ?>
-            <a class="link-button" href="detail.php?index=<?= $reservation['id'] ?>">
+            <a class="link-button" href="detail.php?id=<?= $reservation['id'] ?>">
                 <div class="reservation-today">
                     <p><?= $reservation['type_reservation'] ?> </p>
                     <p><?= date('H:i',strtotime($reservation['time'])) ?></p>
