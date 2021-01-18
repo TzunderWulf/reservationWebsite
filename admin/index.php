@@ -18,7 +18,7 @@ $dateDutch = strftime("%A %e %B", mktime(0, 0, 0, date('m'), date('d'),
 $monday = date("Y-m-d", strtotime("monday this week"));
 $friday = date("Y-m-d", strtotime("friday this week"));
 
-// getting the reservations for this week
+// getting the reservations
 $query = "SELECT id,customerid,type_reservation,date,time,description
                 FROM reservations
                 WHERE date
@@ -26,7 +26,7 @@ $query = "SELECT id,customerid,type_reservation,date,time,description
                     AND '$friday'
                     ORDER BY time ASC";
 $result = mysqli_query($db, $query)
-or die('Error '.mysqli_error($db).' with query '. $query);
+    or die('Error '.mysqli_error($db).' with query '. $query);
 
 $reservations = [];
 // loop trough week reservations with while
