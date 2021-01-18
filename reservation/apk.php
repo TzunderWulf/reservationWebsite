@@ -17,7 +17,6 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
         <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     </head>
 
-
     <body>
         <header>
             <img id="header" src="../images/header.png"
@@ -25,7 +24,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
         </header>
 
         <main>
-            <a href="../index.php">
+            <a href="../index.php" class="button2">
                 <button>Terug</button>
             </a>
 
@@ -39,7 +38,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <!-- Inputs for user data that is needed for reservation -->
                 <!-- Input for name, required -->
                 <div>
-                    <label for="name">Naam*: </label>
+                    <label for="name">Naam (voor- en achternaam)*: </label>
                     <input type="text" id="name" name="name"
                            value="<?= $name?>">
                     <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
@@ -80,7 +79,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
 
                     <!-- Input for choosing a time, required -->
                 <div>
-                    <label for="picked-time">Tijd*: </label>
+                    <label for="picked-time">Tijd (Tussen 8:00 - 18:00)*: </label>
                     <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
                            value="<?= $pickedTime ?>">
                     <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
