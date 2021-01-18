@@ -7,10 +7,15 @@ body {
     background-color: white;
     width: 1050px;
     margin: auto;
-    padding: 30px;
+    padding: 20px;
     min-height: 950px;
-    font-family: Georgia, serif;
+    font-family: sans-serif, serif;
 }
+
+div.a {
+    text-align: center;
+}
+
 
 #header {
     margin-bottom: 15px;
@@ -18,8 +23,9 @@ body {
     height: 131px;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Tajawal', sans-serif;
 }
 button {
     background-color: #3399ef;

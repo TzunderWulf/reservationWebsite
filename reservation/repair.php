@@ -20,7 +20,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
             </header>
 
         <!-- R: Button bij gedaan bij de terug knop--->
-            <a href="../index.php">Terug</a>
+            <a href="../index.php" class="button2">Terug</a>
             <h1>Afspraak maken voor auto onderhoud?</h1>
             <h3>Vul hieronder de gegevens in het formulier, de gegevens met * zijn verplicht.</h3>
             <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
@@ -28,7 +28,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
             <form action="" method="post">
                 <!-- input voor naam !-->
                 <div>
-                    <label for="name">Naam*: </label>
+                    <label for="name">Naam(voor- en achternaam)*: </label>
                     <input type="text" id="name" name="name"
                            value="<?= $name?>">
                     <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
@@ -73,7 +73,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 </div>
 
                 <div>
-                    <label for="picked-time">Tijd*: </label>
+                    <label for="picked-time">Tijd (Tussen 8:00 - 18:00)*: </label>
                     <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
                            value="<?= $pickedTime ?>">
                     <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
