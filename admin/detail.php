@@ -38,7 +38,7 @@ while ($customer = mysqli_fetch_assoc($customerResult)) {
 
 <body class="container">
 <header class="item-a">
-    <img src="../images/header.png" alt="header image">
+    <img id="header-img" src="../images/header.png" alt="Garage Nieuw Rijswijk">
 </header>
 
 <div class="user">

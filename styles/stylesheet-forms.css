@@ -1,52 +1,173 @@
 html, body {
     width: 100%;
     height: 100%;
+
     margin: 0;
+
     font-family: 'PT Sans Narrow', sans-serif;
     font-weight: bold;
 }
 
+/* body container */
 .container {
-    margin: 0;
+    min-height: 100%;
+
     display: grid;
+
     grid-template-columns: auto 1200px auto;
     grid-template-rows: auto 1fr auto;
-    min-height: 100%;
     grid-template-areas:
     ". header ."
     ". main ."
     "footer footer footer";
 }
 
+/* header area*/
 header {
     grid-area: header;
 }
 
+#header-img {
+    display: block;
+
+    margin: auto;
+}
+
+/* main area */
 main {
     grid-area: main;
 }
 
-footer {
-    grid-area: footer;
-    background-color: #151414;
-    color: #FFFFFF;
-    width: 100%;
-    padding: 15px 0;
+/* basic form and form-elements styling */
+.basic-form {
+    width: max-content;
+
+    margin: 50px auto;
+    padding: 0 100px 25px 100px;
+
+    border: 2px solid #151414;
+    box-shadow: 0 4px 8px 0 rgba(10, 10, 10, 0.2), 0 6px 20px 0 rgba(10, 10, 10, 0.19);
+}
+
+.title-form {
     text-align: center;
 }
 
-#header-img {
-    display:block;
-    margin: auto;
+.form-field {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: baseline;
+
+    font-size: 1.1em;
+
 }
+
+.basic-label {
+    align-content: center;
+
+    width: 200px;
+    height: 1.7em;
+
+    padding: 10px 0;
+
+    font-size: 1.1em;
+
+    flex-grow: 1;
+}
+
+.basic-input {
+    align-content: center;
+
+    width: 300px;
+    height: 1.7em;
+
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+
+    flex-grow: 2;
+}
+
+.basic-radio-input {
+    width: 20px;
+    height: 20px;
+}
+
+.error-message, #warning-text {
+    display: inline;
+
+    width: 200px;
+    height: 1.7em;
+
+    padding: 0 10px;
+
+    color: #FF0000;
+
+    font-size: 1em;
+
+    flex-grow: 1;
+}
+
+#warning-text {
+    display: none;
+
+    font-size: 1em;
+}
+
+.basic-submit {
+    width: 100%;
+    height: 2em;
+
+    margin: 10px 0;
+    padding: 10px 10px;
+    border: 2px solid #151414;
+
+    background-color: #FFFFFF;
+
+    transition: all 0.4s ease-in 0ms;
+
+    cursor: pointer;
+}
+
+.basic-submit:hover {
+    background-color: #3399ef;
+}
+
+/* special element (those that require own styling */
+
+
+/* footer area */
+footer {
+    width: 100%;
+    line-height: 0.5em;
+
+    padding: 15px 0;
+    text-align: center;
+
+    color: #FFFFFF;
+    background-color: #151414;
+
+    grid-area: footer;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* style for general form */
 form {
-    border: 2px solid black;
+    border: 2px solid #151414;
     padding: 0 100px 25px 100px;
     width: fit-content;
     margin: 50px auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(10, 10, 10, 0.2), 0 6px 20px 0 rgba(10, 10, 10, 0.19);
 }
 
 h1 {
@@ -54,30 +175,20 @@ h1 {
 }
 
 
-/* style for error messages */
-.error-message, #warning-text {
-    color: #FF0000;
-}
-
-#warning-text {
-    display: none;
-}
-
-
 /* style for login form */
-.login-label {
+.form-label {
     font-size: 1.1em;
     display: inline-block;
     width: 120px;
 }
 
-.login-input {
+.input-field {
     font-size: 1.1em;
     font-family: 'PT Sans Narrow', sans-serif;
     font-weight: bold;
 }
 
-.login-input[type=submit] {
+input[type=submit]{
     width: 100%;
     border: 2px solid #000000;
     padding: 5px 10px;
@@ -86,7 +197,7 @@ h1 {
     background-color: #FFFFFF;
 }
 
-.login-input[type=submit]:hover {
+input[type=submit]:hover {
     background-color: #3399ef;
 }
 
@@ -109,9 +220,9 @@ h1 {
 }
 
 .user-field[type=submit] {
-    border: 2px solid #000000;
     width: 100%;
-    padding: 5px 0;
+    border: 2px solid #000000;
+    padding: 5px 10px;
     cursor: pointer;
     transition: all 0.4s ease-in-out 0.2ms;
     background-color: #FFFFFF;
@@ -125,8 +236,20 @@ h1 {
     display: inline-block;
 }
 
+
+/*!* style for error messages *!
+.error-message, #warning-text {
+    color: #FF0000;
+}*/
+
+#warning-text {
+    display: none;
+}
+
+
+/* buttons */
 .button {
-    font-size: 1.15em;
+    font-size: 1.1em;
     margin: 10px 0;
     padding: 5px 10px;
     display: block;

@@ -91,31 +91,33 @@ if (isset($_POST['submit'])) {
 
 <body class="container">
 <header>
-    <img id="header-img" src="../../images/header.png" alt="header image">
+    <img id="header-img" src="../../images/header.png" alt="Garage Nieuw Rijswijk">
 </header>
 <main>
-    <form action="" method="post">
+    <form class="basic-form" action="" method="post">
         <h1>Gebruiker: <?= $user['username'] ?></h1>
         <p class="error-message"><?= isset($errors['database']) ? $errors['database'] : "" ?></p>
         <div class="form-field">
-            <label for="username">Gebruikersnaam: </label>
-            <input type="text" id="username" name="username" value="<?= $user['username'] ?>">
+            <label class="basic-label" for="username">Gebruikersnaam: </label>
+            <input class="basic-input" type="text" id="username" name="username" value="<?= $user['username'] ?>">
             <p class="error-message"><?= isset($errors['username']) ? $errors['username'] : ""?></p>
         </div>
         <div class="form-field">
-            <h1 class="user-label">Admin?*</h1>
-            <input type="radio" id="admin-value-true" name="admin-value" value="1"
-                <?= $user['admin'] == 1 ? " checked" : "" ?>
-            >
-            <label for="admin-value-true">Ja</label>
-            <input type="radio" id="admin-value-false" name="admin-value" value="0"
+            <h1 class="basic-label" >Admin?*</h1>
+            <div class="basic-input">
+                <input class="basic-radio-input" type="radio" id="admin-value-true" name="admin-value" value="1"
+                    <?= $user['admin'] == 1 ? " checked" : "" ?>
+                >
+                <label class="basic-label" for="admin-value-true">Ja</label>
+                <input class="basic-radio-input" type="radio" id="admin-value-false" name="admin-value" value="0"
                 <?= $user['admin'] == 0 ? " checked" : "" ?>
-            >
-            <label for="admin-value-false">Nee</label>
-            <p class="error-message"><?= isset($errors['admin']) ? $errors['admin'] : ""?></p>
+                >
+                <label class="basic-label"  for="admin-value-false">Nee</label>
+                <p class="error-message"><?= isset($errors['admin']) ? $errors['admin'] : ""?></p>
+            </div>
         </div>
         <input type="hidden" name="id" value="<?= $user['id'] ?>">
-        <input class="" type="submit" name="submit" value="Wijzigingen toepassen">
+        <input class="basic-input basic-submit" type="submit" name="submit" value="Wijzigingen toepassen">
         <a class="link-button button" href="overview-user.php">Terug</a>
     </form>
 </main>

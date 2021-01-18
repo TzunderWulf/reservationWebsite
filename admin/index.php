@@ -55,7 +55,7 @@ $times = timesArray('08:00', '17:30', 15);
 <body class="container">
 
 <header class="item-a">
-    <img src="../images/header.png" alt="header image">
+    <img id="header-img" src="../images/header.png" alt="Garage Nieuw Rijswijk">
 </header>
 
 <div class="user">
