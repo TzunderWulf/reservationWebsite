@@ -99,35 +99,15 @@ if ( isset($_POST['submit']) ) {
         $pickedTime         = mysqli_escape_string($db, $pickedTime);
         $typeReservation    = mysqli_escape_string($db, $typeReservation);
 
-        $query = "SELECT * FROM customers WHERE email = '$email'";
+        // add customer data into the database
+        $query = "INSERT INTO customers (name, phonenumber, email, license_plate)
+                  VALUES ('$name', '$phoneNumber', '$email', '$licensePlate')";
         $result = mysqli_query($db, $query);
 
-        while($row = mysqli_fetch_assoc($result)) {
-            $customer[] = $row;
-            break;
-        }
-
-        if (mysqli_num_rows($result) == 1) {
-            $customerid = mysqli_escape_string($db, htmlspecialchars($row['id']));
-            $query = "UPDATE customers 
-                      SET name = '$name', phonenumber = '$phoneNumber', license_plate = '$licensePlate'
-                      WHERE email = '$email'";
-            $result = mysqli_query($db, $query);
-
-            $query = "INSERT INTO reservations (customerid, type_reservation, date, time, description)
-                      VALUES ('$customerid', '$typeReservation', '$pickedDate', '$pickedTime', '$description')";
-            $result = mysqli_query($db, $query);
-        } else {
-            // add customer data into the database
-            $query = "INSERT INTO customers (name, phonenumber, email, license_plate)
-                  VALUES ('$name', '$phoneNumber', '$email', '$licensePlate')";
-            $result = mysqli_query($db, $query);
-
-            // add rerservation data into the database
-            $query = "INSERT INTO reservations (customerid, type_reservation, date, time, description)
+        // add rerservation data into the database
+        $query = "INSERT INTO reservations (customerid, type_reservation, date, time, description)
                   VALUES (LAST_INSERT_ID(), '$typeReservation', '$pickedDate', '$pickedTime', '$description')";
-            $result = mysqli_query($db, $query);
-        }
+        $result = mysqli_query($db, $query);
         mysqli_close($db); // close connection
 
         header('Location: ../confirmation.php'); // send user to confirmation screen
