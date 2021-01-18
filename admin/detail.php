@@ -8,13 +8,13 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
-$indexNumber = $_GET['index'];
+$id = $_GET['id'];
 
 $sql = "SELECT *
         FROM customers
         LEFT JOIN reservations
         ON reservations.customerid = customers.id
-            WHERE reservations.id = $indexNumber";
+            WHERE reservations.id = '$id'";
 $customerResult = mysqli_query($db, $sql)
     or die('Error '.mysqli_error($db).' with query '. $sql);
 
@@ -45,7 +45,7 @@ while ($customer = mysqli_fetch_assoc($customerResult)) {
     <h2>Welkom, <?=$_SESSION['username']?>!</h2>
     <h3><?=date('d-m-Y H:i')?></h3>
     <?php if ($_SESSION['admin'] === 1) { ?>
-        <a class="link-button" href="user-section/create-user.php">Gebruiker aanmaken</a>
+        <a class="link-button" href="section-user/overview-user.php">Gebruikers</a>
     <?php } ?>
     <a class="link-button" href="">Hulp</a>
     <a class="link-button" href="logout.php">Uitloggen</a>
@@ -60,7 +60,7 @@ while ($customer = mysqli_fetch_assoc($customerResult)) {
     </div>
 
     <div id="options">
-        <a class="link-button" href="">Informeren</a>
+        <a class="link-button" href="">Aanpassen</a>
         <?php if ($_SESSION['admin'] === 1) { ?>
             <a class="link-button" href="">Verwijderen</a>
         <?php } ?>
