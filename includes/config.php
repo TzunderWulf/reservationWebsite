@@ -1,8 +1,8 @@
 <?php
 
-$host     = "";
-$user     = "";
+$host     = "localhost";
+$user     = "root";
 $password = "";
-$database = "";
+$database = "reservations";
 
 $db = mysqli_connect($host, $user, $password, $database) or die("Error: " . mysqli_connect_error());
