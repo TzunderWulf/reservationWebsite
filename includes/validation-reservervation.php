@@ -87,7 +87,7 @@ if ( isset($_POST['submit']) ) {
     }
 
     if (empty($errors)) {
-        // require_once 'send-mail.php'; // send a confirmation mail
+        require_once 'send-mail.php'; // send a confirmation mail
 
         // set variables to insert to database
         $name               = mysqli_escape_string($db, $name);

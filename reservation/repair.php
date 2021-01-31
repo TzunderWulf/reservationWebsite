@@ -30,21 +30,21 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="name">Naam(voor- en achternaam)*: </label>
                     <input type="text" id="name" name="name"
-                           value="<?= $name?>">
+                           value="<?= htmlspecialchars($name) ?>">
                     <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p><br>
                 </div>
                 <!-- input voor telefoon nummer !-->
                 <div>
                     <label for="phone-number">Telefoonnummer: </label>
                     <input type="text" id="phone-number" name="phone-number" maxlength="11" placeholder="06-12345678"
-                           value="<?= $phoneNumber ?>">
+                           value="<?= htmlspecialchars($phoneNumber) ?>">
                     <p class="error-message"><?= isset($errors['phone-number']) ? $errors['phone-number'] : "" ?></p>
                 </div>
                 <!-- input voor email address !-->
                 <div>
                     <label for="email-address">Emailadres*: </label>
                     <input type="text" id="email-address" name="email-address" placeholder="example@example.nl"
-                           value="<?= $email ?>">
+                           value="<?= htmlspecialchars($email) ?>">
                     <p class="error-message"><?= isset($errors['email']) ? $errors['email'] : "" ?></p>
                 </div>
 
@@ -52,15 +52,8 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="license-plate">Kenteken*: </label>
                     <input type="text" id="license-plate" name="license-plate" maxlength="8" placeholder="AB-C3D-5"
-                           value="<?= $licensePlate?>">
+                           value="<?= htmlspecialchars($licensePlate) ?>">
                     <p class="error-message"><?= isset($errors['license-plate']) ? $errors['license-plate'] : "" ?></p>
-                </div>
-
-                <!-- input voor omschrijving reparatie of herstel !-->
-                <div>
-                    <label for = "description">Omschrijving wat er gerepareerd of hersteld moet worden*: </label>
-                    <textarea id="description" name="description" rows="4" cols="50"></textarea>
-                    <p class="error-message"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
                 </div>
 
                 <!-- input datum !-->
@@ -68,18 +61,27 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <div>
                     <label for="picked-date">Datum*: </label>
                     <input type="date" id="picked-date" name="picked-date" min="<?= $currentDate ?>"
-                           value="<?= $pickedDate?>">
+                           value="<?= htmlspecialchars($pickedDate) ?>">
                     <p class="error-message"><?= isset($errors['picked-date']) ? $errors['picked-date'] : "" ?></p>
                 </div>
 
                 <div>
                     <label for="picked-time">Tijd (Tussen 8:00 - 18:00)*: </label>
                     <input type="time" id="picked-time" name="picked-time" min="08:00" max="18:00" step="1800"
-                           value="<?= $pickedTime ?>">
+                           value="<?= htmlspecialchars($pickedTime) ?>">
                     <p class="error-message"><?= isset($errors['picked-time']) ? $errors['picked-time'] : "" ?></p>
                 </div>
 
-                <input type="hidden" name="type-reservation" value="repair">
+                <!-- input voor omschrijving reparatie of herstel !-->
+                <div>
+                    <label for = "description">Omschrijving wat er gerepareerd of hersteld moet worden*: </label>
+                    <textarea id="description" name="description" rows="4" cols="50">
+                        <?= htmlspecialchars($description) ?>
+                    </textarea>
+                    <p class="error-message"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
+                </div>
+
+                <input type="hidden" name="type-reservation" value="Reperatie">
 
                 <!-- Reset knop van Sara-->
                 <input type="reset" name="reset" value="Reset">

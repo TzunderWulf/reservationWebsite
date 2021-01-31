@@ -1,34 +1,17 @@
 <!doctype html>
 <html lang="nl">
-
-<!-- R: style sheet deed raar bij mij, reageert niet. style update heb ik hier gedaan-->
-<style>
-    div.a {
-        text-align: center;
-        font-size: 25px;
-
-    }
-
-    div {
-        width: 850px;
-        margin: auto;
-    }
-</style>
-
-    <head>
+ <head>
         <title>Reserveren</title>
         <link rel="stylesheet" href="styles/stylesheet.css">
-
         <!-- Google Font-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <header>
             <img id="header" src="images/header.png" alt="Garage nieuw rijswijk">
         </header>
-
         <main>
             <section>
                 <!-- back to website -->
@@ -79,7 +62,6 @@
                 </div>
             </section>
         </main>
-
         <!--
         <footer>
             <p>Made with the power of PHP</p>

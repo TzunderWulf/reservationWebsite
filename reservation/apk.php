@@ -39,7 +39,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
                 <!-- Input for name, required -->
                 <div>
                     <label for="name">Naam (voor- en achternaam)*: </label>
-                    <input type="text" id="name" name="name" value="<?= $name ?>">
+                    <input type="text" id="name" name="name" value="<?= htmlspecialchars($name) ?>">
                     <p class="error-message"><?= isset($errors['name']) ? $errors['name'] : "" ?></p>
                 </div>
 
