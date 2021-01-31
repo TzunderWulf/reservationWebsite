@@ -72,10 +72,8 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
 
                 <!-- input voor decription !-->
                 <div>
-                    <label for = "description" >Omschrijving wat voor type onderhoud*: </label><br>
-                    <textarea id="description" name="description" rows="4" cols="50">
-                        <?= htmlspecialchars($description) ?>
-                    </textarea><br>
+                    <label for = "description" >Omschrijving wat voor type onderhoud*: </label>
+                    <textarea id="description" name="description" rows="4" cols="50"><?= htmlspecialchars($description) ?></textarea>
                     <p class="error-message"><?= isset($errors['description']) ? $errors['description'] : "" ?></p>
                 </div>
 
