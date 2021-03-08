@@ -20,13 +20,12 @@ $friday = date("Y-m-d", strtotime("friday this week"));
 
 // getting the reservations
 $query = "SELECT id,customerid,type_reservation,date,time,description
-                FROM reservations
-                WHERE date
-                BETWEEN '$monday'
-                    AND '$friday'
-                    ORDER BY time ASC";
-$result = mysqli_query($db, $query)
-    or die('Error '.mysqli_error($db).' with query '. $query);
+          FROM reservations
+          WHERE date
+            BETWEEN '$monday'
+            AND '$friday'
+            ORDER BY time ASC";
+$result = mysqli_query($db, $query);
 
 $reservations = [];
 // loop trough week reservations with while

@@ -13,7 +13,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 require_once('../../includes/config.php'); // to connect to database
 
-$username = $password = $confirmPassword = "";
+$username = $password = $confirmPassword = $admin = "";
 $errors = [];
 
 if (isset($_POST['submit'])) {
@@ -70,24 +70,19 @@ if (isset($_POST['submit'])) {
         // preparing insert statement
         $username = mysqli_escape_string($db, $username);
         $password = mysqli_escape_string($db, $password);
+        $admin = mysqli_escape_string($db, $admin);
 
-        $query = "INSERT INTO users (username, password) 
-                  VALUES ('$username', '$password')";
+        $password = password_hash($password, PASSWORD_DEFAULT); // create hash for password
 
-        if ($stmt = mysqli_prepare($db, $query)) {
-            // bind variables
-            mysqli_stmt_bind_param($stmt, "ss", $paramUsername, $paramPassword);
-            $paramUsername = $username;
-            $paramPassword = password_hash($password, PASSWORD_DEFAULT); // create hash for password
-
-            // attempt to execute statment
-            if (mysqli_stmt_execute($stmt)) {
-                header('Location: index.php');
-                // exit();
-            } else {
-                $errors['general'] = "Er is iets misgegaan, probeer het later opnieuw.";
-            }
-            mysqli_stmt_close($stmt); // close connection
+        $query = "INSERT INTO users (username, password, admin) 
+                  VALUES ('$username', '$password' '$admin')";
+        $result = mysqli_query($db, $query);
+        // check if data is added
+        if ($result) {
+            header('Location: overview-user.php');
+            exit();
+        } else {
+            $errors['general'] = "Er is iets misgegaan, probeer het later opnieuw.";
         }
     }
     mysqli_close($db);

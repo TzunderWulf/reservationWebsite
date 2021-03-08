@@ -10,19 +10,20 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 $id = $_GET['id'];
 
-$sql = "SELECT *
+$query = "SELECT *
         FROM customers
         LEFT JOIN reservations
         ON reservations.customerid = customers.id
             WHERE reservations.id = '$id'";
-$customerResult = mysqli_query($db, $sql)
-    or die('Error '.mysqli_error($db).' with query '. $sql);
+$customerResult = mysqli_query($db, $query);
+
 
 $customers = [];
 while ($customer = mysqli_fetch_assoc($customerResult)) {
     $customers[] = $customer;
     break;
 }
+
 ?>
 
 <!doctype html>

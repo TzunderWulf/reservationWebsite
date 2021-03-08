@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '54a667702892b368c6ed0a1ad5808bb13724cc30',
+    'reference' => '8b52a08059b8c228ada417a24f3e8f5094c02cec',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '54a667702892b368c6ed0a1ad5808bb13724cc30',
+      'reference' => '8b52a08059b8c228ada417a24f3e8f5094c02cec',
     ),
     'divtag-nl/license-plate' => 
     array (

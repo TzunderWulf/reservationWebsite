@@ -1,8 +1,8 @@
 <?php
 
-$host     = "localhost";
-$user     = "root";
+$host     = "";
+$user     = "";
 $password = "";
-$database = "reservation_garage";
+$database = "";
 
 $db = mysqli_connect($host, $user, $password, $database) or die("Error: " . mysqli_connect_error());
