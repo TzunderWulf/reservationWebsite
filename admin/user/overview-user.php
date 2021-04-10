@@ -27,7 +27,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
 
     <title>Gebruikers</title>
-    <link rel="stylesheet" href="../../styles/stylesheet-admin.css">
+    <link rel="stylesheet" href="../../css/stylesheet-admin.css">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

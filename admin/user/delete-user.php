@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 <html lang="nl">
 <head>
     <title>Gebruiker verwijderen</title>
-    <link rel="stylesheet" href="../../styles/stylesheet-forms.css">
+    <link rel="stylesheet" href="../../css/stylesheet-forms.css">
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">

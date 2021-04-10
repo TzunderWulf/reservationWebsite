@@ -2,7 +2,7 @@
 <html lang="nl">
  <head>
         <title>Reserveren</title>
-        <link rel="stylesheet" href="styles/stylesheet.css">
+        <link rel="stylesheet" href="css/stylesheet.css">
         <!-- Google Font-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
                         En de veiligheid kan in het geding komen. Een goed onderhouden auto levert bij inruil meer op en is meestal makkelijker te verkopen.
                         Sommige dingen kun je zelf, andere werkzaamheden kun je beter aan de garage overlaten.</div>
 
-                    <a href="reservation/maintenance.php">
+                    <a href="reservation-pages/maintenance.php">
                         <br> <button>Maak een afspraak</button>
                     </a>
                 </div>
@@ -46,7 +46,7 @@
                      <div>Zoekt u een betrouwbare partner voor uw auto? Ons garagebedrijf helpt u met allerhande reparaties aan uw auto.
                         Wij beschikken over professionele uitlees apparatuur zodat wij de diagnosegegevens van nagenoeg alle merken direct kunnen uitlezen.
                          Zo is het voor ons mogelijk om snel problemen met uw auto op te sporen</div>
-                   <a href="reservation/repair.php">
+                   <a href="reservation-pages/repair.php">
                         <br> <button>Maak een afspraak</button>
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                     <div>Is uw auto toe aan de Algemeen Periodieke Keuring? (APK).
                         Breng uw auto dan snel langs bij Garage nieuw rijswijk of maak tijdig een afspraak. Voorkom onnodige boetes!
                         U kunt al bij ons terecht voor een APK vanaf € 30,50-! </div>
-                    <a href="reservation/apk.php">
+                    <a href="reservation-pages/apk.php">
                         <br> <button>Maak een afspraak</button>
                     </a>
                 </div>

@@ -10,7 +10,7 @@ $currentDate = date('Y-m-d', strtotime("+1 day")); // Var for the current date +
 <html lang="nl">
     <head>
         <title>Reserveren</title>
-        <link rel="stylesheet" href="../styles/stylesheet.css">
+        <link rel="stylesheet" href="../css/stylesheet.css">
 
         <!-- Google Font-->
         <link rel="preconnect" href="https://fonts.gstatic.com">

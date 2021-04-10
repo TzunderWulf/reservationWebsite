@@ -6,7 +6,7 @@ require_once("../includes/validation-login.php")
 <html lang="nl">
 <head>
             <title>Inloggen</title>
-            <link rel="stylesheet" href="../styles/stylesheet-forms.css">
+            <link rel="stylesheet" href="../css/stylesheet-forms.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
             <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">

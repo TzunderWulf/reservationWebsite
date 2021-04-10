@@ -30,7 +30,7 @@ while ($customer = mysqli_fetch_assoc($customerResult)) {
 <html lang="nl">
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="../styles/stylesheet-admin.css">
+    <link rel="stylesheet" href="../css/stylesheet-admin.css">
 
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">

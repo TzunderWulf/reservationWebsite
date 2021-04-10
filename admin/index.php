@@ -43,7 +43,7 @@ $times = timesArray('08:00', '17:30', 15);
 <head>
 
     <title>Homepage</title>
-    <link rel="stylesheet" href="../styles/stylesheet-admin.css">
+    <link rel="stylesheet" href="../css/stylesheet-admin.css">
 
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
