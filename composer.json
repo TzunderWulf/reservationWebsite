@@ -1,6 +1,6 @@
 {
     "require": {
         "divtag-nl/license-plate": "^1.0",
-        "phpmailer/phpmailer": "^6.2"
+        "phpmailer/phpmailer": "6.4.1"
     }
 }
