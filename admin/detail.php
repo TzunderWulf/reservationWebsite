@@ -72,27 +72,27 @@ while ($customer = mysqli_fetch_assoc($customerResult)) {
 <div class="item-b">
     <div id="information">
         <h1>Informatie</h1>
+        <!-- license plate (if it is exists) -->
+        <?php if (isset($customer['license_plate'])) { ?>
+            <h3>Kenteken: <?php print_r(strtoupper($customer['license_plate']));?></h3>
+        <?php } ?>
+        <?php if (isset($customer['description'])) { ?>
+            <h3>Omschrijving: <?php print_r($customer['description']);?></h3>
+        <?php } ?>
+
+            <!-- description (if it is exists) -->
+        
+        <h1>Contact</h1>
         <h3>Naam: <?php print_r($customer['name']);?></h3>
-        <h3>Emailadres: <?php print_r($customer['email']);?></h3>
+        <h3>E-mailadres: <?php print_r($customer['email']);?></h3>
         <!-- phone number (if it is exists) -->
         <?php if (isset($customer['phonenumber'])) { ?>
             <h3>Telefoonnummer: <?php print_r($customer['phonenumber']);?></h3>
         <?php } ?>
 
-        <!-- license plate (if it is exists) -->
-        <?php if (isset($customer['license_plate'])) { ?>
-            <h3>Kenteken: <?php print_r(strtoupper($customer['license_plate']));?></h3>
-        <?php } ?>
+        
 
-            <!-- description (if it is exists) -->
-        <?php if (isset($reservation['description'])) { ?>
-            <h3>Omschrijving: <?php print_r($customer['description']);?></h3>
-        <?php } ?>
-
-        <!-- car choice (if it is exists) -->
-        <?php if (isset($reservation['car'])) { ?>
-            <h3>Keuze auto: <?php print_r($customer['car']);?></h3>
-        <?php } ?>
+        
     </div>
 </div>
 

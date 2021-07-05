@@ -72,7 +72,7 @@ $times = timesArray('08:00', '17:30', 15);
 </div>
 
 <main class="item-b">
-    <h2>Reserveringen voor de week <?= date('W') ?></h2>
+    <h2>Reserveringen voor week <?= date('W') ?></h2>
 
     <!-- row for days of the week -->
     <div class="row">
@@ -116,7 +116,7 @@ $times = timesArray('08:00', '17:30', 15);
 
 <!-- sidebar -->
 <div class="item-c">
-    <h2>Reserveringen voor vandaag <?= $dateDutch ?></h2>
+    <h2>Reserveringen voor vandaag, <?= $dateDutch ?></h2>
     <?php foreach ($result as $reservation) { ?>
         <?php if ($reservation['date'] ==  date('Y-m-d')) { ?>
             <a class="link-button" href="detail.php?id=<?= $reservation['id'] ?>">
